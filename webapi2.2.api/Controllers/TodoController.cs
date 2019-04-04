@@ -56,8 +56,12 @@ namespace webapi2._2.api.Controllers
         //{
         //}
         [HttpPut("{todoListId}")]
-        public ToDoListWithTodos Put(Guid todoListId, [FromBody] ToDoListWithTodos updatedTodoList)
+        public object /*ToDoListWithTodos**/ Put(Guid todoListId, [FromBody] ToDoListWithTodos updatedTodoList)
         {
+            var r = updatedTodoList.ValidateTodoListWithTodos();
+            if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
+
+            updatedTodoList.TodoListId = todoListId;
             return UpdateTodoList(MockDB._userList[0].UserId, updatedTodoList);
         }
 
@@ -70,11 +74,14 @@ namespace webapi2._2.api.Controllers
         }
 
         [HttpPost("{todoListId}")]
-        public /*TodoListItemDtoRow**/ void Post(Guid todoListId, [FromBody] TodoListItemDtoRow newTodoItem)
+        public /*TodoListItemDtoRow**/ object Post(Guid todoListId, [FromBody] TodoListItemDtoRow newTodoItem)
         {
-            var r = newTodoItem.ValidateTodoListDtoRow();
+            var r = newTodoItem.ValidateTodoListItemDtoRow();
+            if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
 
             AddNewTodo(MockDB._userList[0].UserId, todoListId, newTodoItem);
+
+            return null;
         }
     }
 }

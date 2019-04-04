@@ -8,6 +8,27 @@ using webapi22.example.data_access.TypedListClasses;
 
 namespace webapi22.example.validation
 {
+    public static class ValidatorExtensions
+    {
+        public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListItemDtoRow(this TodoListItemDtoRow _listItem)
+        {
+            var validator = new TodoListDtoRowValidator(_listItem).Validate(_listItem);
+
+            var r = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
+
+            return r;
+        }
+
+        public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListWithTodos(
+            this ToDoListWithTodos _todoList)
+        {
+            var validator = new TodoListWithTodosValidator(_todoList).Validate(_todoList);
+            var r = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
+            return r;
+        }
+    }
+
+
     public class TodoListDtoRowValidator : AbstractValidator<TodoListItemDtoRow>
     {
         internal WeakReference<TodoListItemDtoRow> _todoItem;
@@ -20,17 +41,17 @@ namespace webapi22.example.validation
         }
     }
 
-    public static class ValidatorExtensions
+
+
+    public class TodoListWithTodosValidator : AbstractValidator<ToDoListWithTodos>
     {
-        public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListDtoRow(this TodoListItemDtoRow _listItem)
+        internal WeakReference<ToDoListWithTodos> _todoList;
+
+        public TodoListWithTodosValidator(ToDoListWithTodos todoListToValidate)
         {
-            var validator = new TodoListDtoRowValidator(_listItem).Validate(_listItem);
-            
-            var r= new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List < ValidationFailure > )validator.Errors);
+            _todoList = new WeakReference<ToDoListWithTodos>(todoListToValidate);
 
-            return r;
-
-
+            RuleFor(r => r.TodoListName).MaximumLength(20).WithMessage("List name must be less than 20 characters.");
         }
     }
 }
