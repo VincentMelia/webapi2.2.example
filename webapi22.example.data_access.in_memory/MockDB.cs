@@ -41,6 +41,5 @@ namespace webapi22.example.data_access.in_memory
             new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId }
         };
 
-
     }
 }

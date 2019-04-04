@@ -10,7 +10,8 @@ namespace zScrap
         [TestMethod]
         public void TestMethod1()
         {
-            var r = GetTodoList(_userList[0].UserId, _todoList[0].TodoListId);
+            var tl = GetTodoList(_userList[0].UserId, _todoList[0].TodoListId);
+            var u = GetListsForUser(_userList[0].UserId);
         }
 
         
