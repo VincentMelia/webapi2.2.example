@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LayoutInfo>
+  <ModelViews>
+    <ModelView Name="Main">
+      <EntityDefinitions>
+        <Entity Name=":User" X="-89.49988" Y="-274.499939" />
+        <Entity Name=":TodoListItem" X="-178.499878" Y="115.325317" />
+        <Entity Name=":TodoList" X="-348.499878" Y="-46.8494263" />
+      </EntityDefinitions>
+    </ModelView>
+  </ModelViews>
+</LayoutInfo>
