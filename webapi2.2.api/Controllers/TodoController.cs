@@ -38,6 +38,14 @@ namespace webapi2._2.api.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            var u = HttpContext.Session.GetString("UserId");
+
+        }
+
+        [HttpPost]
+        public ToDoListWithTodos Post(ToDoListWithTodos toDoListWithTodos)
+        {
+            return CreateTodoList(MockDB._userList[0].UserId, toDoListWithTodos);
         }
 
         // PUT: api/Todo/5

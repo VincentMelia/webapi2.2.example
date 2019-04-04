@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using webapi22.example.data_access.TypedListClasses;
 using webapi22.example.dtos;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
@@ -34,7 +35,6 @@ namespace webapi22.example.data_access.in_memory
         public static UserTodoLists GetListsForUser(Guid userId)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
-            var todoLists = MockDB._todoList.Where(l => l.UserId == userId);
 
             return new UserTodoLists()
             {
@@ -46,6 +46,31 @@ namespace webapi22.example.data_access.in_memory
                     TodoListName = listItem.TodoListName
                 }).ToList()
             };
+        }
+
+        public static ToDoListWithTodos CreateTodoList(Guid userId, ToDoListWithTodos newTodoListWithTodos)
+        {
+            var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+
+            var newTodoList = new TodoListDtoRow()
+            {
+                TodoListId = Guid.NewGuid(),
+                TodoListName = newTodoListWithTodos.TodoListName,
+                UserId = user.UserId
+            };
+
+            MockDB._todoList.Add(newTodoList);
+
+            newTodoListWithTodos.TodoListItems.ForEach(newItem => MockDB._todoListItems.Add(new TodoListItemDtoRow()
+            {
+                TodoListItemId = Guid.NewGuid(),
+                TodoListId = newTodoList.TodoListId,
+                TodoListItemSubject = newItem.TodoListItemSubject,
+                TodoListItemIsComplete = newItem.TodoListItemIsComplete
+            }));
+
+            return GetTodoList(MockDB._userList.Where(u => u.UserId == userId).ToList()[0].UserId,
+                newTodoList.TodoListId);
         }
     }
 }
