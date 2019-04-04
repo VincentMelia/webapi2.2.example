@@ -35,12 +35,12 @@ namespace webapi2._2.api.Controllers
         }
 
         // POST: api/Todo
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-            var u = HttpContext.Session.GetString("UserId");
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //    var u = HttpContext.Session.GetString("UserId");
 
-        }
+        //}
 
         [HttpPost]
         public ToDoListWithTodos Post(ToDoListWithTodos toDoListWithTodos)
