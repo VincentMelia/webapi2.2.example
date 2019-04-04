@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLBLGEN", "LLBLGEN\LLBLGEN.csproj", "{A2592DBA-9552-424E-A57D-B0A9B71861CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.data_access", "webapi22.example.data_access\webapi22.example.data_access.csproj", "{62F452B1-1AE2-4B8B-9C8C-8CBA31653305}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.dtos", "webapi22.example.dtos\webapi22.example.dtos\webapi22.example.dtos.csproj", "{8B8D5048-C32D-48D0-B8FA-4C218D954DD5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.dtos.Persistence", "webapi22.example.dtos\webapi22.example.dtos.Persistence\webapi22.example.dtos.Persistence.csproj", "{ED5155CA-29D0-4444-AEFA-93D3BE52EED8}"
@@ -19,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi22.example.data_acces
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zScrap", "zScrap\zScrap.csproj", "{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.data_access", "webapi22.example.data_access\webapi22.example.data_access.csproj", "{35B4D874-48D5-4E4C-98C5-B746D4C50154}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +29,6 @@ Global
 		{A2592DBA-9552-424E-A57D-B0A9B71861CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2592DBA-9552-424E-A57D-B0A9B71861CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2592DBA-9552-424E-A57D-B0A9B71861CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62F452B1-1AE2-4B8B-9C8C-8CBA31653305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62F452B1-1AE2-4B8B-9C8C-8CBA31653305}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62F452B1-1AE2-4B8B-9C8C-8CBA31653305}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62F452B1-1AE2-4B8B-9C8C-8CBA31653305}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B8D5048-C32D-48D0-B8FA-4C218D954DD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B8D5048-C32D-48D0-B8FA-4C218D954DD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B8D5048-C32D-48D0-B8FA-4C218D954DD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +53,10 @@ Global
 		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35B4D874-48D5-4E4C-98C5-B746D4C50154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B4D874-48D5-4E4C-98C5-B746D4C50154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B4D874-48D5-4E4C-98C5-B746D4C50154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B4D874-48D5-4E4C-98C5-B746D4C50154}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

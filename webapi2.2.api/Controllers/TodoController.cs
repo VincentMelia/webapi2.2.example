@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi22.example.data_access.in_memory;
+using webapi22.example.data_access.TypedListClasses;
 using static webapi22.example.data_access.in_memory.DAL;
 using static webapi22.example.data_access.in_memory.MockDB;
 using webapi22.example.dtos.DtoClasses;
@@ -65,6 +66,12 @@ namespace webapi2._2.api.Controllers
         public void Delete(Guid todoListId)
         {
             DeleteTodoList(MockDB._userList[0].UserId, todoListId );
+        }
+
+        [HttpPost("{todoListId}")]
+        public /*TodoListItemDtoRow**/ void Post(Guid todoListId, [FromBody] TodoListItemDtoRow newTodoItem)
+        {
+            AddNewTodo(MockDB._userList[0].UserId, todoListId, newTodoItem);
         }
     }
 }
