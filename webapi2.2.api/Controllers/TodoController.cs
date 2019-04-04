@@ -26,10 +26,11 @@ namespace webapi2._2.api.Controllers
         }
 
         // GET: api/Todo/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{todoListId}", Name = "Get")]
+        public ToDoListWithTodos Get(Guid todoListId)
         {
-            return "value";
+            //return "value";
+            return GetTodoList(MockDB._userList[0].UserId, todoListId);
         }
 
         // POST: api/Todo
