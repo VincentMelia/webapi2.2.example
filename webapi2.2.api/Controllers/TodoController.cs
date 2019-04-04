@@ -49,10 +49,16 @@ namespace webapi2._2.api.Controllers
         }
 
         // PUT: api/Todo/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
+        [HttpPut("{todoListId}")]
+        public ToDoListWithTodos Put(Guid todoListId, [FromBody] ToDoListWithTodos updatedTodoList)
         {
+            return UpdateTodoList(MockDB._userList[0].UserId, updatedTodoList);
         }
+
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
