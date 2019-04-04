@@ -8,4 +8,7 @@
   <ItemGroup>
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\webapi22.example.data_access\webapi22.example.data_access.csproj" />
+  </ItemGroup>
 </Project>
