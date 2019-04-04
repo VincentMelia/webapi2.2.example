@@ -19,9 +19,9 @@ namespace webapi2._2.api.Controllers
     {
         // GET: api/Todo
         [HttpGet]
-        public UserTodoLists Get()
+        public UserTodoLists Get() //UserTodoLists
         {
-            // return new string[] { "value1", "value2" };
+            //return new string[] { "value1", "value2" };
             HttpContext.Session.SetString("UserId", "dfdfdfdfd");
             return GetListsForUser(MockDB._userList[0].UserId);
         }
@@ -61,9 +61,10 @@ namespace webapi2._2.api.Controllers
 
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{todoListId}")]
+        public void Delete(Guid todoListId)
         {
+            DeleteTodoList(MockDB._userList[0].UserId, todoListId );
         }
     }
 }
