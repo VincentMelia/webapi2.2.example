@@ -30,5 +30,50 @@ namespace webapi22.example.data_access.FactoryClasses
 		/// <inheritdoc/>
 		protected override IElementCreatorCore CreateElementCreator() { return new ElementCreator(); }
  
+		/// <summary>Gets the query to fetch the typed list TodoListDto</summary>
+		/// <param name="root">Optional. If specified (not null) it's used as the root of the query to fetch the typed list, otherwise a new EntityQuery(Of TodoListEntity) is used</param>
+		/// <returns>Dynamic Query which fetches <see cref="webapi22.example.data_access.TypedListClasses.TodoListDtoRow"/> instances </returns>
+		public DynamicQuery<webapi22.example.data_access.TypedListClasses.TodoListDtoRow> GetTodoListDtoTypedList(EntityQuery<TodoListEntity> root=null)
+		{
+			var rootOfQuery = root ?? this.TodoList;
+			return rootOfQuery
+						.Select(() => new webapi22.example.data_access.TypedListClasses.TodoListDtoRow()
+								{
+									TodoListId = TodoListFields.TodoListId.ToValue<System.Guid>(),
+									TodoListName = TodoListFields.TodoListName.ToValue<System.String>(),
+									UserId = TodoListFields.UserId.ToValue<System.Guid>()
+								});
+		}
+
+		/// <summary>Gets the query to fetch the typed list TodoListItemDto</summary>
+		/// <param name="root">Optional. If specified (not null) it's used as the root of the query to fetch the typed list, otherwise a new EntityQuery(Of TodoListItemEntity) is used</param>
+		/// <returns>Dynamic Query which fetches <see cref="webapi22.example.data_access.TypedListClasses.TodoListItemDtoRow"/> instances </returns>
+		public DynamicQuery<webapi22.example.data_access.TypedListClasses.TodoListItemDtoRow> GetTodoListItemDtoTypedList(EntityQuery<TodoListItemEntity> root=null)
+		{
+			var rootOfQuery = root ?? this.TodoListItem;
+			return rootOfQuery
+						.Select(() => new webapi22.example.data_access.TypedListClasses.TodoListItemDtoRow()
+								{
+									TodoListId = TodoListItemFields.TodoListId.ToValue<System.Guid>(),
+									TodoListItemId = TodoListItemFields.TodoListItemId.ToValue<System.Guid>(),
+									TodoListItemSubject = TodoListItemFields.TodoListItemSubject.ToValue<System.String>(),
+									TodoListItemIsComplete = TodoListItemFields.TodoListItemIsComplete.ToValue<Nullable<System.Boolean>>()
+								});
+		}
+
+		/// <summary>Gets the query to fetch the typed list UserDto</summary>
+		/// <param name="root">Optional. If specified (not null) it's used as the root of the query to fetch the typed list, otherwise a new EntityQuery(Of UserEntity) is used</param>
+		/// <returns>Dynamic Query which fetches <see cref="webapi22.example.data_access.TypedListClasses.UserDtoRow"/> instances </returns>
+		public DynamicQuery<webapi22.example.data_access.TypedListClasses.UserDtoRow> GetUserDtoTypedList(EntityQuery<UserEntity> root=null)
+		{
+			var rootOfQuery = root ?? this.User;
+			return rootOfQuery
+						.Select(() => new webapi22.example.data_access.TypedListClasses.UserDtoRow()
+								{
+									UserId = UserFields.UserId.ToValue<System.Guid>(),
+									UserName = UserFields.UserName.ToValue<System.String>()
+								});
+		}
+
 	}
 }

@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi2.2.api", "webapi2.2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi22.example.dtos.validation", "webapi22.example.dtos.validation\webapi22.example.dtos.validation.csproj", "{ED452164-FFC2-401A-B900-45EAD7A2E004}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi22.example.data_access.in_memory", "webapi22.example.data_access.in_memory\webapi22.example.data_access.in_memory.csproj", "{FE17932C-035A-4AC2-B474-4CCC4EB907C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zScrap", "zScrap\zScrap.csproj", "{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{ED452164-FFC2-401A-B900-45EAD7A2E004}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED452164-FFC2-401A-B900-45EAD7A2E004}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED452164-FFC2-401A-B900-45EAD7A2E004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE17932C-035A-4AC2-B474-4CCC4EB907C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE17932C-035A-4AC2-B474-4CCC4EB907C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE17932C-035A-4AC2-B474-4CCC4EB907C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE17932C-035A-4AC2-B474-4CCC4EB907C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

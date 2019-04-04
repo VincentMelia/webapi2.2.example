@@ -174,6 +174,53 @@
     </Relationships>
     <InheritanceHierarchies />
   </EntityModel>
+  <TypedListDefinitions>
+    <TypedListDefinition Name="TodoListDto">
+      <EntityAliases>
+        <EntityAlias Entity=":TodoList" />
+      </EntityAliases>
+      <Fields>
+        <Field FieldAlias="TodoListId" TargetField="TodoList.TodoListId" />
+        <Field FieldAlias="TodoListName" TargetField="TodoList.TodoListName" />
+        <Field FieldAlias="UserId" TargetField="TodoList.UserId" />
+      </Fields>
+      <OutputSettingValues>
+        <SettingValues>
+          <SettingValue Name="8:OutputType" Value="PocoWithQuerySpecQuery" Type="18" />
+        </SettingValues>
+      </OutputSettingValues>
+    </TypedListDefinition>
+    <TypedListDefinition Name="TodoListItemDto">
+      <EntityAliases>
+        <EntityAlias Entity=":TodoListItem" />
+      </EntityAliases>
+      <Fields>
+        <Field FieldAlias="TodoListId" TargetField="TodoListItem.TodoListId" />
+        <Field FieldAlias="TodoListItemId" TargetField="TodoListItem.TodoListItemId" />
+        <Field FieldAlias="TodoListItemSubject" TargetField="TodoListItem.TodoListItemSubject" />
+        <Field FieldAlias="TodoListItemIsComplete" TargetField="TodoListItem.TodoListItemIsComplete" />
+      </Fields>
+      <OutputSettingValues>
+        <SettingValues>
+          <SettingValue Name="8:OutputType" Value="PocoWithQuerySpecQuery" Type="18" />
+        </SettingValues>
+      </OutputSettingValues>
+    </TypedListDefinition>
+    <TypedListDefinition Name="UserDto">
+      <EntityAliases>
+        <EntityAlias Entity=":User" />
+      </EntityAliases>
+      <Fields>
+        <Field FieldAlias="UserId" TargetField="User.UserId" />
+        <Field FieldAlias="UserName" TargetField="User.UserName" />
+      </Fields>
+      <OutputSettingValues>
+        <SettingValues>
+          <SettingValue Name="8:OutputType" Value="PocoWithQuerySpecQuery" Type="18" />
+        </SettingValues>
+      </OutputSettingValues>
+    </TypedListDefinition>
+  </TypedListDefinitions>
   <TargetDatabases>
     <TargetDatabase Type="2D18D138-1DD2-467E-86CC-4838250611AE" SyncSource="1">
       <ConnectionElements />

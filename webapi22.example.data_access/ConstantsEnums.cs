@@ -10,6 +10,42 @@ using System;
 namespace webapi22.example.data_access
 {
 
+	/// <summary>Index enum to fast-access TypedList Fields in the Columns collection of the Typed List: TodoListDto</summary>
+	public enum TodoListDtoTypedListFieldIndex
+	{
+		///<summary>TodoListId</summary>
+		TodoListId,
+		///<summary>TodoListName</summary>
+		TodoListName,
+		///<summary>UserId</summary>
+		UserId,
+		/// <summary></summary>
+		AmountOfFields
+	}
+	/// <summary>Index enum to fast-access TypedList Fields in the Columns collection of the Typed List: TodoListItemDto</summary>
+	public enum TodoListItemDtoTypedListFieldIndex
+	{
+		///<summary>TodoListId</summary>
+		TodoListId,
+		///<summary>TodoListItemId</summary>
+		TodoListItemId,
+		///<summary>TodoListItemSubject</summary>
+		TodoListItemSubject,
+		///<summary>TodoListItemIsComplete</summary>
+		TodoListItemIsComplete,
+		/// <summary></summary>
+		AmountOfFields
+	}
+	/// <summary>Index enum to fast-access TypedList Fields in the Columns collection of the Typed List: UserDto</summary>
+	public enum UserDtoTypedListFieldIndex
+	{
+		///<summary>UserId</summary>
+		UserId,
+		///<summary>UserName</summary>
+		UserName,
+		/// <summary></summary>
+		AmountOfFields
+	}
 
 	/// <summary>Enum definition for all the entity types defined in this namespace. Used by the entityfields factory.</summary>
 	public enum EntityType
