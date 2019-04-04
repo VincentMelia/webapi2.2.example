@@ -21,7 +21,8 @@ namespace webapi2._2.api.Controllers
         [HttpGet]
         public UserTodoLists Get()
         {
-           // return new string[] { "value1", "value2" };
+            // return new string[] { "value1", "value2" };
+            HttpContext.Session.SetString("UserId", "dfdfdfdfd");
             return GetListsForUser(MockDB._userList[0].UserId);
         }
 
@@ -29,7 +30,7 @@ namespace webapi2._2.api.Controllers
         [HttpGet("{todoListId}", Name = "Get")]
         public ToDoListWithTodos Get(Guid todoListId)
         {
-            //return "value";
+            var u = HttpContext.Session.GetString("UserId");
             return GetTodoList(MockDB._userList[0].UserId, todoListId);
         }
 
