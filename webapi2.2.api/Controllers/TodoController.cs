@@ -11,6 +11,7 @@ using static webapi22.example.data_access.in_memory.MockDB;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
 using webapi22.example.dtos.DtoClasses.UserTodoListsTypes;
+using webapi22.example.validation;
 
 namespace webapi2._2.api.Controllers
 {
@@ -71,6 +72,8 @@ namespace webapi2._2.api.Controllers
         [HttpPost("{todoListId}")]
         public /*TodoListItemDtoRow**/ void Post(Guid todoListId, [FromBody] TodoListItemDtoRow newTodoItem)
         {
+            var r = newTodoItem.ValidateTodoListDtoRow();
+
             AddNewTodo(MockDB._userList[0].UserId, todoListId, newTodoItem);
         }
     }
