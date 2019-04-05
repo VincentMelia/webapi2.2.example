@@ -15,7 +15,8 @@ using webapi22.example.validation;
 
 namespace webapi2._2.api.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
+    [Route("todos")]
     [ApiController]
     public class TodoController : ControllerBase
     {
