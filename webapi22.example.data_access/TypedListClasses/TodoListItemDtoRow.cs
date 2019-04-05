@@ -12,6 +12,7 @@ namespace webapi22.example.data_access.TypedListClasses
 	/// <summary>Class which represents a row in the typed list 'TodoListItemDto'.</summary>
 	/// <remarks>This class is a result class for a query, which is produced with the method <see cref="webapi22.example.data_access.FactoryClasses.QueryFactory.GetTodoListItemDtoTypedList"/>.
 	/// Contains the following entity definition(s):
+	/// Entity: TodoList. <br/>
 	/// Entity: TodoListItem. <br/>
 	/// </remarks>
 	[Serializable]
@@ -33,6 +34,8 @@ namespace webapi22.example.data_access.TypedListClasses
 		public System.String TodoListItemSubject { get; set; }
 		/// <summary>Gets or sets the TodoListItemIsComplete field. Mapped onto 'TodoListItem.TodoListItemIsComplete'</summary>
 		public Nullable<System.Boolean> TodoListItemIsComplete { get; set; }
+		/// <summary>Gets or sets the UserId field. Mapped onto 'TodoList.UserId'</summary>
+		public System.Guid UserId { get; set; }
 	}
 }
 

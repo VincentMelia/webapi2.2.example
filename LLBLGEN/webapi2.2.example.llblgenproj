@@ -192,6 +192,7 @@
     </TypedListDefinition>
     <TypedListDefinition Name="TodoListItemDto">
       <EntityAliases>
+        <EntityAlias Entity=":TodoList" />
         <EntityAlias Entity=":TodoListItem" />
       </EntityAliases>
       <Fields>
@@ -199,7 +200,11 @@
         <Field FieldAlias="TodoListItemId" TargetField="TodoListItem.TodoListItemId" />
         <Field FieldAlias="TodoListItemSubject" TargetField="TodoListItem.TodoListItemSubject" />
         <Field FieldAlias="TodoListItemIsComplete" TargetField="TodoListItem.TodoListItemIsComplete" />
+        <Field FieldAlias="UserId" TargetField="TodoList.UserId" />
       </Fields>
+      <Relationships>
+        <Relationship Name="TodoList.TodoListItems-TodoListItem.TodoList" StartAlias="TodoList" EndAlias="TodoListItem" JoinHint="1" StartAliasIsStartVertex="true" />
+      </Relationships>
       <OutputSettingValues>
         <SettingValues>
           <SettingValue Name="8:OutputType" Value="PocoWithQuerySpecQuery" Type="18" />

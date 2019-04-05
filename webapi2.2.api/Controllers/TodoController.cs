@@ -36,6 +36,7 @@ namespace webapi2._2.api.Controllers
             return GetTodoList(MockDB._userList[0].UserId, todoListId);
         }
 
+
         // POST: api/Todo
         //[HttpPost]
         //public void Post([FromBody] string value)
@@ -83,5 +84,13 @@ namespace webapi2._2.api.Controllers
 
             return null;
         }
+
+        [HttpGet("{todoListId}/{todoListItemId}")]
+        public ActionResult<TodoListItemDtoRow> Get(Guid todoListId, Guid todoListItemId)
+        {
+            return GetSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId);
+            
+        }
+
     }
 }

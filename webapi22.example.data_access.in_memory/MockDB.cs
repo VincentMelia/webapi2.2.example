@@ -30,15 +30,15 @@ namespace webapi22.example.data_access.in_memory
 
         public static List<TodoListItemDtoRow> _todoListItems = new List<TodoListItemDtoRow>()
         {
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId }
+            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId }
         };
 
     }

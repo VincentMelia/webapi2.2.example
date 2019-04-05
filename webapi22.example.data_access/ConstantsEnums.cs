@@ -33,6 +33,8 @@ namespace webapi22.example.data_access
 		TodoListItemSubject,
 		///<summary>TodoListItemIsComplete</summary>
 		TodoListItemIsComplete,
+		///<summary>UserId</summary>
+		UserId,
 		/// <summary></summary>
 		AmountOfFields
 	}

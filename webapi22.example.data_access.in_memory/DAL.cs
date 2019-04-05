@@ -114,8 +114,17 @@ namespace webapi22.example.data_access.in_memory
 
             MockDB._todoListItems.Add(new TodoListItemDtoRow() { TodoListItemId = newid, TodoListId = list.TodoListId
                 , TodoListItemSubject = newItem.TodoListItemSubject, TodoListItemIsComplete = newItem.TodoListItemIsComplete});
+        }
 
-            
+        public static TodoListItemDtoRow GetSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemRowId)
+        {
+            var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+            var item = MockDB._todoListItems.Where
+                (i => i.UserId == userId 
+                      && i.TodoListItemId == todoListItemRowId
+                      && i.TodoListId == todoListId).ToList().First();
+
+            return item;
         }
     }
 }

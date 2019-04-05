@@ -51,14 +51,17 @@ namespace webapi22.example.data_access.FactoryClasses
 		public DynamicQuery<webapi22.example.data_access.TypedListClasses.TodoListItemDtoRow> GetTodoListItemDtoTypedList(EntityQuery<TodoListItemEntity> root=null)
 		{
 			var rootOfQuery = root ?? this.TodoListItem;
-			return rootOfQuery
+			return this.Create()
 						.Select(() => new webapi22.example.data_access.TypedListClasses.TodoListItemDtoRow()
 								{
 									TodoListId = TodoListItemFields.TodoListId.ToValue<System.Guid>(),
 									TodoListItemId = TodoListItemFields.TodoListItemId.ToValue<System.Guid>(),
 									TodoListItemSubject = TodoListItemFields.TodoListItemSubject.ToValue<System.String>(),
-									TodoListItemIsComplete = TodoListItemFields.TodoListItemIsComplete.ToValue<Nullable<System.Boolean>>()
-								});
+									TodoListItemIsComplete = TodoListItemFields.TodoListItemIsComplete.ToValue<Nullable<System.Boolean>>(),
+									UserId = TodoListFields.UserId.ToValue<System.Guid>()
+								})
+						.From(rootOfQuery
+								.InnerJoin(this.TodoList).On(TodoListItemFields.TodoListId.Equal(TodoListFields.TodoListId)));
 		}
 
 		/// <summary>Gets the query to fetch the typed list UserDto</summary>
