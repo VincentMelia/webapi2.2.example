@@ -126,5 +126,44 @@ namespace webapi22.example.data_access.in_memory
 
             return item;
         }
+
+        public static TodoListItemDtoRow UpdateSingleTodoItem(Guid userId, Guid todoListId,
+            TodoListItemDtoRow updatedTodoItem)
+        {
+            var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+
+            var itemToUpdate = MockDB._todoListItems.Where(i =>
+                    i.UserId == userId && i.TodoListId == todoListId && i.TodoListItemId == updatedTodoItem.TodoListItemId)
+                .ToList().First();
+
+            itemToUpdate.TodoListItemIsComplete = updatedTodoItem.TodoListItemIsComplete;
+            itemToUpdate.TodoListItemSubject = updatedTodoItem.TodoListItemSubject;
+
+            return itemToUpdate;
+        }
+
+        //public static ToDoListWithTodos UpdateTodoList(Guid userId, ToDoListWithTodos updatedtDoListWithTodos)
+        //{
+        //    var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+
+        //    var todoListToUpdate = MockDB._todoList
+        //        .Where(l => l.UserId == userId && l.TodoListId == updatedtDoListWithTodos.TodoListId).ToList()[0];
+
+        //    todoListToUpdate.TodoListName = updatedtDoListWithTodos.TodoListName;
+
+        //    MockDB._todoListItems.Where(i => i.TodoListId == updatedtDoListWithTodos.TodoListId).ToList()
+        //        .ForEach(i => MockDB._todoListItems.Remove(i));
+
+        //    updatedtDoListWithTodos.TodoListItems.ForEach(u => MockDB._todoListItems.Add(new TodoListItemDtoRow()
+        //    {
+        //        TodoListId = todoListToUpdate.TodoListId,
+        //        TodoListItemId = Guid.NewGuid(),
+        //        TodoListItemSubject = u.TodoListItemSubject,
+        //        TodoListItemIsComplete = u.TodoListItemIsComplete
+        //    }));
+
+        //    return GetTodoList(user.UserId, todoListToUpdate.TodoListId);
+        //}
+
     }
 }
