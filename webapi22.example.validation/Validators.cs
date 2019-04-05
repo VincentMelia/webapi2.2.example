@@ -29,7 +29,12 @@ namespace webapi22.example.validation
     }
 
 
-    public class TodoListDtoRowValidator : AbstractValidator<TodoListItemDtoRow>
+    /// <summary>
+    /// /////////////////////////////////////////////////////////////
+    /// </summary>
+
+
+    internal class TodoListDtoRowValidator : AbstractValidator<TodoListItemDtoRow>
     {
         internal WeakReference<TodoListItemDtoRow> _todoItem;
 
@@ -43,7 +48,7 @@ namespace webapi22.example.validation
 
 
 
-    public class TodoListWithTodosValidator : AbstractValidator<ToDoListWithTodos>
+    internal class TodoListWithTodosValidator : AbstractValidator<ToDoListWithTodos>
     {
         internal WeakReference<ToDoListWithTodos> _todoList;
 
