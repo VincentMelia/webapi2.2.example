@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2/win-x86",
-    "signature": "847c8f51d2b1b5d6a9e04a9e348281e672843ba2"
+    "signature": "7e19069fcda5fb333e98c5c94e134a60c2f14b96"
   },
   "compilationOptions": {
     "defines": [
@@ -34,7 +34,7 @@
           "webapi2.2.api.dll": {}
         }
       },
-      "FluentValidation/8.2.1": {
+      "FluentValidation/8.2.2": {
         "dependencies": {
           "System.ComponentModel.Annotations": "4.5.0"
         },
@@ -3192,7 +3192,7 @@
       },
       "webapi22.example.validation/1.0.0": {
         "dependencies": {
-          "FluentValidation": "8.2.1",
+          "FluentValidation": "8.2.2",
           "webapi22.example.data_access": "1.0.0",
           "webapi22.example.dtos": "1.0.0"
         },
@@ -3214,14 +3214,14 @@
           "webapi2.2.api.dll": {}
         }
       },
-      "FluentValidation/8.2.1": {
+      "FluentValidation/8.2.2": {
         "dependencies": {
           "System.ComponentModel.Annotations": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/FluentValidation.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.2.1.0"
+            "fileVersion": "8.2.2.0"
           }
         }
       },
@@ -7617,7 +7617,7 @@
       },
       "webapi22.example.validation/1.0.0": {
         "dependencies": {
-          "FluentValidation": "8.2.1",
+          "FluentValidation": "8.2.2",
           "webapi22.example.data_access": "1.0.0",
           "webapi22.example.dtos": "1.0.0"
         },
@@ -7633,12 +7633,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "FluentValidation/8.2.1": {
+    "FluentValidation/8.2.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vrWTQ6JnOwciyyuKlDt+RdpDHlm6IF+nCaiW/9WxeFpHJ+lSzAed3sVi+aXuHscUYYjprBG8rUIwF+Rim/SoFw==",
-      "path": "fluentvalidation/8.2.1",
-      "hashPath": "fluentvalidation.8.2.1.nupkg.sha512"
+      "sha512": "sha512-vecU0PUi85MZ/g6p3L6jxym23pdRUgsZ3wTWCLAaqrD5ig9Jf4MQA+CE2yI5d4TGO0z3bvAozqkJr+L1I6OnJg==",
+      "path": "fluentvalidation/8.2.2",
+      "hashPath": "fluentvalidation.8.2.2.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",
