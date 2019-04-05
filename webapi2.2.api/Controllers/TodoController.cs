@@ -95,10 +95,7 @@ namespace webapi2._2.api.Controllers
         [HttpPut("{todoListId}/{todoListItemId}")]
         public ActionResult<TodoListItemDtoRow> Put(Guid todoListId, Guid todoListItemId, TodoListItemDtoRow updatedTodoItem)
         {
-            //update todo item here
             return UpdateSingleTodoItem(MockDB._userList[0].UserId, todoListId, updatedTodoItem);
-            
-            //return GetSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId);
 
         }
 
