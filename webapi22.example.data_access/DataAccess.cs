@@ -39,7 +39,16 @@ namespace webapi22.example.data_access
             }
             else if(dataaccesstype == 1)
             {
-
+                AbstractGetUsers = in_memory.DAL.GetUsers;
+                AbstractGetTodoList = in_memory.DAL.GetTodoList;
+                AbstractGetListsForUser = in_memory.DAL.GetListsForUser;
+                AbstractCreateTodoList = in_memory.DAL.CreateTodoList;
+                AbstractUpdateTodoList = in_memory.DAL.UpdateTodoList;
+                AbstractDeleteTodoList = in_memory.DAL.DeleteTodoList;
+                AbstractAddNewTodo = in_memory.DAL.AddNewTodo;
+                AbstractGetSingleTodoItem = in_memory.DAL.GetSingleTodoItem;
+                AbstractUpdateSingleTodoItem = in_memory.DAL.UpdateSingleTodoItem;
+                AbstractDeleteSingleTodo = in_memory.DAL.DeleteSingleTodo;
             }
             else
             {

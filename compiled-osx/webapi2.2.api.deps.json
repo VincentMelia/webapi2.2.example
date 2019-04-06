@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2/osx-x64",
-    "signature": "1a55e8bb3fb97177879de39d48e586677586cbf3"
+    "signature": "cddbc994ac58e4fc2037b74cf939a8d931ee0470"
   },
   "compilationOptions": {
     "defines": [
@@ -27,7 +27,7 @@
           "Microsoft.AspNetCore.App": "2.2.1",
           "Microsoft.NETCore.App": "2.2.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "webapi22.example.data_access.in_memory": "1.0.0",
+          "webapi22.example.data_access": "1.0.0",
           "webapi22.example.validation": "1.0.0"
         },
         "compile": {
@@ -2219,15 +2219,15 @@
       "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
-      "SD.LLBLGen.Pro.DQE.SqlServer/5.5.2": {
+      "SD.LLBLGen.Pro.DQE.SqlServer/5.4.0": {
         "dependencies": {
-          "SD.LLBLGen.Pro.ORMSupportClasses": "5.5.2"
+          "SD.LLBLGen.Pro.ORMSupportClasses": "5.4.0"
         },
         "compile": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.DQE.SqlServer.dll": {}
         }
       },
-      "SD.LLBLGen.Pro.ORMSupportClasses/5.5.2": {
+      "SD.LLBLGen.Pro.ORMSupportClasses/5.4.0": {
         "dependencies": {
           "System.Data.SqlClient": "4.6.0"
         },
@@ -3167,7 +3167,10 @@
       },
       "webapi22.example.data_access/1.0.0": {
         "dependencies": {
-          "SD.LLBLGen.Pro.DQE.SqlServer": "5.5.2"
+          "webapi22.example.data_access.in_memory": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
+          "webapi22.example.data_access.sql.dal": "1.0.0",
+          "webapi22.example.dtos": "1.0.0"
         },
         "compile": {
           "webapi22.example.data_access.dll": {}
@@ -3175,11 +3178,28 @@
       },
       "webapi22.example.data_access.in_memory/1.0.0": {
         "dependencies": {
-          "webapi22.example.data_access": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
           "webapi22.example.dtos": "1.0.0"
         },
         "compile": {
           "webapi22.example.data_access.in_memory.dll": {}
+        }
+      },
+      "webapi22.example.data_access.sql/1.0.0": {
+        "dependencies": {
+          "SD.LLBLGen.Pro.DQE.SqlServer": "5.4.0"
+        },
+        "compile": {
+          "webapi22.example.data_access.sql.dll": {}
+        }
+      },
+      "webapi22.example.data_access.sql.dal/1.0.0": {
+        "dependencies": {
+          "webapi22.example.data_access.sql": "1.0.0",
+          "webapi22.example.dtos": "1.0.0"
+        },
+        "compile": {
+          "webapi22.example.data_access.sql.dal.dll": {}
         }
       },
       "webapi22.example.dtos/1.0.0": {
@@ -3193,7 +3213,8 @@
       "webapi22.example.validation/1.0.0": {
         "dependencies": {
           "FluentValidation": "8.2.2",
-          "webapi22.example.data_access": "1.0.0",
+          "webapi22.example.data_access.in_memory": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
           "webapi22.example.dtos": "1.0.0"
         },
         "compile": {
@@ -3207,7 +3228,7 @@
           "Microsoft.AspNetCore.App": "2.2.1",
           "Microsoft.NETCore.App": "2.2.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "webapi22.example.data_access.in_memory": "1.0.0",
+          "webapi22.example.data_access": "1.0.0",
           "webapi22.example.validation": "1.0.0"
         },
         "runtime": {
@@ -6461,25 +6482,25 @@
       "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
-      "SD.LLBLGen.Pro.DQE.SqlServer/5.5.2": {
+      "SD.LLBLGen.Pro.DQE.SqlServer/5.4.0": {
         "dependencies": {
-          "SD.LLBLGen.Pro.ORMSupportClasses": "5.5.2"
+          "SD.LLBLGen.Pro.ORMSupportClasses": "5.4.0"
         },
         "runtime": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.DQE.SqlServer.dll": {
-            "assemblyVersion": "5.5.0.0",
-            "fileVersion": "5.5.2.0"
+            "assemblyVersion": "5.4.0.0",
+            "fileVersion": "5.4.0.0"
           }
         }
       },
-      "SD.LLBLGen.Pro.ORMSupportClasses/5.5.2": {
+      "SD.LLBLGen.Pro.ORMSupportClasses/5.4.0": {
         "dependencies": {
           "System.Data.SqlClient": "4.6.0"
         },
         "runtime": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.ORMSupportClasses.dll": {
-            "assemblyVersion": "5.5.0.0",
-            "fileVersion": "5.5.2.0"
+            "assemblyVersion": "5.4.0.0",
+            "fileVersion": "5.4.0.0"
           }
         }
       },
@@ -7489,7 +7510,10 @@
       },
       "webapi22.example.data_access/1.0.0": {
         "dependencies": {
-          "SD.LLBLGen.Pro.DQE.SqlServer": "5.5.2"
+          "webapi22.example.data_access.in_memory": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
+          "webapi22.example.data_access.sql.dal": "1.0.0",
+          "webapi22.example.dtos": "1.0.0"
         },
         "runtime": {
           "webapi22.example.data_access.dll": {}
@@ -7497,11 +7521,28 @@
       },
       "webapi22.example.data_access.in_memory/1.0.0": {
         "dependencies": {
-          "webapi22.example.data_access": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
           "webapi22.example.dtos": "1.0.0"
         },
         "runtime": {
           "webapi22.example.data_access.in_memory.dll": {}
+        }
+      },
+      "webapi22.example.data_access.sql/1.0.0": {
+        "dependencies": {
+          "SD.LLBLGen.Pro.DQE.SqlServer": "5.4.0"
+        },
+        "runtime": {
+          "webapi22.example.data_access.sql.dll": {}
+        }
+      },
+      "webapi22.example.data_access.sql.dal/1.0.0": {
+        "dependencies": {
+          "webapi22.example.data_access.sql": "1.0.0",
+          "webapi22.example.dtos": "1.0.0"
+        },
+        "runtime": {
+          "webapi22.example.data_access.sql.dal.dll": {}
         }
       },
       "webapi22.example.dtos/1.0.0": {
@@ -7515,7 +7556,8 @@
       "webapi22.example.validation/1.0.0": {
         "dependencies": {
           "FluentValidation": "8.2.2",
-          "webapi22.example.data_access": "1.0.0",
+          "webapi22.example.data_access.in_memory": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
           "webapi22.example.dtos": "1.0.0"
         },
         "runtime": {
@@ -9000,19 +9042,19 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
-    "SD.LLBLGen.Pro.DQE.SqlServer/5.5.2": {
+    "SD.LLBLGen.Pro.DQE.SqlServer/5.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aciu/xsaf0FeTKsh1oZmA+dRPePa2R57r/C4GtWqzO8jOOlUT+QCNdKMqxEqjJRiFhn4G4vsE2615vQyNXBVTg==",
-      "path": "sd.llblgen.pro.dqe.sqlserver/5.5.2",
-      "hashPath": "sd.llblgen.pro.dqe.sqlserver.5.5.2.nupkg.sha512"
+      "sha512": "sha512-m/vqsf5u4kHWNBEgUYXZ3FOwK37A6y1Zvuj8AFZ0Y43W2tEGqwxN6sic2oRjsPZCCJJgtmqhgW2XZeZ0A1f7ug==",
+      "path": "sd.llblgen.pro.dqe.sqlserver/5.4.0",
+      "hashPath": "sd.llblgen.pro.dqe.sqlserver.5.4.0.nupkg.sha512"
     },
-    "SD.LLBLGen.Pro.ORMSupportClasses/5.5.2": {
+    "SD.LLBLGen.Pro.ORMSupportClasses/5.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-jABaeT9UHvBPAWLLVf0OkWnUI0Dg190KmMwD0Oj9nkrI4jpWxaa4t9YWNkjP31ZYE21UqZs9qlk3wtFShHgNDw==",
-      "path": "sd.llblgen.pro.ormsupportclasses/5.5.2",
-      "hashPath": "sd.llblgen.pro.ormsupportclasses.5.5.2.nupkg.sha512"
+      "sha512": "sha512-SooCtUrqYe3Us2MiTKkQY7FOEcmBaL73ljyEXhNSzipals2lYkz3yb14UQz8+eqhy8WJIuzUFlp+/i/JTdXy0g==",
+      "path": "sd.llblgen.pro.ormsupportclasses/5.4.0",
+      "hashPath": "sd.llblgen.pro.ormsupportclasses.5.4.0.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
@@ -9685,6 +9727,16 @@
       "sha512": ""
     },
     "webapi22.example.data_access.in_memory/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "webapi22.example.data_access.sql/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "webapi22.example.data_access.sql.dal/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
