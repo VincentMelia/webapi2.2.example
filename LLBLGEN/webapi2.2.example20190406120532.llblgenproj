@@ -175,7 +175,7 @@
     <InheritanceHierarchies />
   </EntityModel>
   <TypedListDefinitions>
-    <TypedListDefinition Name="TodoListEntityDto">
+    <TypedListDefinition Name="TodoListDto">
       <EntityAliases>
         <EntityAlias Entity=":TodoList" />
       </EntityAliases>
@@ -190,7 +190,7 @@
         </SettingValues>
       </OutputSettingValues>
     </TypedListDefinition>
-    <TypedListDefinition Name="TodoListItemEntityDto">
+    <TypedListDefinition Name="TodoListItemDto">
       <EntityAliases>
         <EntityAlias Entity=":TodoList" />
         <EntityAlias Entity=":TodoListItem" />
@@ -211,7 +211,7 @@
         </SettingValues>
       </OutputSettingValues>
     </TypedListDefinition>
-    <TypedListDefinition Name="UserEntityDto">
+    <TypedListDefinition Name="UserDto">
       <EntityAliases>
         <EntityAlias Entity=":User" />
       </EntityAliases>
@@ -238,7 +238,7 @@
       <Catalogs>
         <Catalog Name="Webapi22Example" CreatedByDesigner="true" SyncSource="1">
           <Schemas>
-            <Schema Name="dbo" CreatedByDesigner="true" SyncSource="1" LastSyncWithModel="2019-04-06T16:05:32.3782319Z">
+            <Schema Name="dbo" CreatedByDesigner="true" SyncSource="1" LastSyncWithModel="2019-04-04T00:22:47.306677Z">
               <Tables>
                 <Table Name="TodoList" CreatedByDesigner="true">
                   <PkConstraintName Name="PK_3cb4a8d4a1f828d4c2da8cc60bf" />
@@ -386,7 +386,7 @@
         </LastUsedPreferences>
       </CodeGenerationCyclePreferences>
       <Documents>
-        <Document Name="Todo">
+        <Document Name="TodoListItem">
           <RootEntity Entity=":TodoListItem" />
           <Fields>
             <Field Name="TodoListItemId">

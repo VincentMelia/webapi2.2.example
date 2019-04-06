@@ -6,39 +6,39 @@ namespace webapi22.example.data_access.in_memory
 {
     public class MockDB
     {
-        public static List<UserDtoRow> _userList = new List<UserDtoRow>()
+        public static List<UserEntityDtoRow> _userList = new List<UserEntityDtoRow>()
         {
-            new UserDtoRow() { UserId = Guid.NewGuid(), UserName = "Vinny"},
-            new UserDtoRow() { UserId = Guid.NewGuid(), UserName = "Dimitri"},
-            new UserDtoRow() { UserId = Guid.NewGuid(), UserName = "Jim"}
+            new UserEntityDtoRow() { UserId = Guid.NewGuid(), UserName = "Vinny"},
+            new UserEntityDtoRow() { UserId = Guid.NewGuid(), UserName = "Dimitri"},
+            new UserEntityDtoRow() { UserId = Guid.NewGuid(), UserName = "Jim"}
         };
 
-        public static List<TodoListDtoRow> _todoList = new List<TodoListDtoRow>()
+        public static List<TodoListEntityDtoRow> _todoList = new List<TodoListEntityDtoRow>()
         {
-            new TodoListDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
-            new TodoListDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
-            new TodoListDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
-            new TodoListDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
-            new TodoListDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
-            new TodoListDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
-            new TodoListDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
-            new TodoListDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
-            new TodoListDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
-            new TodoListDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId }
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's Default List", UserId = _userList[0].UserId }
 
         };
 
-        public static List<TodoListItemDtoRow> _todoListItems = new List<TodoListItemDtoRow>()
+        public static List<TodoListItemEntityDtoRow> _todoListItems = new List<TodoListItemEntityDtoRow>()
         {
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId }
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId }
         };
 
     }

@@ -9,18 +9,18 @@ using System;
 
 namespace webapi22.example.data_access.TypedListClasses
 {
-	/// <summary>Class which represents a row in the typed list 'UserDto'.</summary>
-	/// <remarks>This class is a result class for a query, which is produced with the method <see cref="webapi22.example.data_access.FactoryClasses.QueryFactory.GetUserDtoTypedList"/>.
+	/// <summary>Class which represents a row in the typed list 'UserEntityDto'.</summary>
+	/// <remarks>This class is a result class for a query, which is produced with the method <see cref="webapi22.example.data_access.FactoryClasses.QueryFactory.GetUserEntityDtoTypedList"/>.
 	/// Contains the following entity definition(s):
 	/// Entity: User. <br/>
 	/// </remarks>
 	[Serializable]
-	public partial class UserDtoRow 
+	public partial class UserEntityDtoRow 
 	{
 		partial void OnCreated();
 		
-		/// <summary>Initializes a new instance of the <see cref="UserDtoRow"/> class.</summary>
-		public UserDtoRow()
+		/// <summary>Initializes a new instance of the <see cref="UserEntityDtoRow"/> class.</summary>
+		public UserEntityDtoRow()
 		{
 			OnCreated();
 		}

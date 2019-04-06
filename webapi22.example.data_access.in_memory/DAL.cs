@@ -52,7 +52,7 @@ namespace webapi22.example.data_access.in_memory
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 
-            var newTodoList = new TodoListDtoRow()
+            var newTodoList = new TodoListEntityDtoRow()
             {
                 TodoListId = Guid.NewGuid(),
                 TodoListName = newTodoListWithTodos.TodoListName,
@@ -61,7 +61,7 @@ namespace webapi22.example.data_access.in_memory
 
             MockDB._todoList.Add(newTodoList);
 
-            newTodoListWithTodos.TodoListItems.ForEach(newItem => MockDB._todoListItems.Add(new TodoListItemDtoRow()
+            newTodoListWithTodos.TodoListItems.ForEach(newItem => MockDB._todoListItems.Add(new TodoListItemEntityDtoRow()
             {
                 TodoListItemId = Guid.NewGuid(),
                 TodoListId = newTodoList.TodoListId,
@@ -85,7 +85,7 @@ namespace webapi22.example.data_access.in_memory
             MockDB._todoListItems.Where(i => i.TodoListId == updatedtDoListWithTodos.TodoListId).ToList()
                 .ForEach(i => MockDB._todoListItems.Remove(i));
 
-            updatedtDoListWithTodos.TodoListItems.ForEach(u => MockDB._todoListItems.Add(new TodoListItemDtoRow()
+            updatedtDoListWithTodos.TodoListItems.ForEach(u => MockDB._todoListItems.Add(new TodoListItemEntityDtoRow()
             {
                 TodoListId = todoListToUpdate.TodoListId,
                 TodoListItemId = Guid.NewGuid(),
@@ -104,7 +104,7 @@ namespace webapi22.example.data_access.in_memory
             MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList().ForEach(list => MockDB._todoList.Remove(list));
         }
 
-        public static void AddNewTodo(Guid userId, Guid todoListId, TodoListItemDtoRow newItem)
+        public static void AddNewTodo(Guid userId, Guid todoListId, TodoListItemEntityDtoRow newItem)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 
@@ -112,11 +112,11 @@ namespace webapi22.example.data_access.in_memory
 
             var newid = Guid.NewGuid();
 
-            MockDB._todoListItems.Add(new TodoListItemDtoRow() { TodoListItemId = newid, TodoListId = list.TodoListId
+            MockDB._todoListItems.Add(new TodoListItemEntityDtoRow() { TodoListItemId = newid, TodoListId = list.TodoListId
                 , TodoListItemSubject = newItem.TodoListItemSubject, TodoListItemIsComplete = newItem.TodoListItemIsComplete});
         }
 
-        public static TodoListItemDtoRow GetSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemRowId)
+        public static TodoListItemEntityDtoRow GetSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemRowId)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
             var item = MockDB._todoListItems.Where
@@ -127,8 +127,8 @@ namespace webapi22.example.data_access.in_memory
             return item;
         }
 
-        public static TodoListItemDtoRow UpdateSingleTodoItem(Guid userId, Guid todoListId,
-            TodoListItemDtoRow updatedTodoItem)
+        public static TodoListItemEntityDtoRow UpdateSingleTodoItem(Guid userId, Guid todoListId,
+            TodoListItemEntityDtoRow updatedTodoItem)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 

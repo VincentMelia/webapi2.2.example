@@ -10,8 +10,8 @@ using System;
 namespace webapi22.example.data_access
 {
 
-	/// <summary>Index enum to fast-access TypedList Fields in the Columns collection of the Typed List: TodoListDto</summary>
-	public enum TodoListDtoTypedListFieldIndex
+	/// <summary>Index enum to fast-access TypedList Fields in the Columns collection of the Typed List: TodoListEntityDto</summary>
+	public enum TodoListEntityDtoTypedListFieldIndex
 	{
 		///<summary>TodoListId</summary>
 		TodoListId,
@@ -22,8 +22,8 @@ namespace webapi22.example.data_access
 		/// <summary></summary>
 		AmountOfFields
 	}
-	/// <summary>Index enum to fast-access TypedList Fields in the Columns collection of the Typed List: TodoListItemDto</summary>
-	public enum TodoListItemDtoTypedListFieldIndex
+	/// <summary>Index enum to fast-access TypedList Fields in the Columns collection of the Typed List: TodoListItemEntityDto</summary>
+	public enum TodoListItemEntityDtoTypedListFieldIndex
 	{
 		///<summary>TodoListId</summary>
 		TodoListId,
@@ -38,8 +38,8 @@ namespace webapi22.example.data_access
 		/// <summary></summary>
 		AmountOfFields
 	}
-	/// <summary>Index enum to fast-access TypedList Fields in the Columns collection of the Typed List: UserDto</summary>
-	public enum UserDtoTypedListFieldIndex
+	/// <summary>Index enum to fast-access TypedList Fields in the Columns collection of the Typed List: UserEntityDto</summary>
+	public enum UserEntityDtoTypedListFieldIndex
 	{
 		///<summary>UserId</summary>
 		UserId,

@@ -9,18 +9,18 @@ using System;
 
 namespace webapi22.example.data_access.TypedListClasses
 {
-	/// <summary>Class which represents a row in the typed list 'TodoListDto'.</summary>
-	/// <remarks>This class is a result class for a query, which is produced with the method <see cref="webapi22.example.data_access.FactoryClasses.QueryFactory.GetTodoListDtoTypedList"/>.
+	/// <summary>Class which represents a row in the typed list 'TodoListEntityDto'.</summary>
+	/// <remarks>This class is a result class for a query, which is produced with the method <see cref="webapi22.example.data_access.FactoryClasses.QueryFactory.GetTodoListEntityDtoTypedList"/>.
 	/// Contains the following entity definition(s):
 	/// Entity: TodoList. <br/>
 	/// </remarks>
 	[Serializable]
-	public partial class TodoListDtoRow 
+	public partial class TodoListEntityDtoRow 
 	{
 		partial void OnCreated();
 		
-		/// <summary>Initializes a new instance of the <see cref="TodoListDtoRow"/> class.</summary>
-		public TodoListDtoRow()
+		/// <summary>Initializes a new instance of the <see cref="TodoListEntityDtoRow"/> class.</summary>
+		public TodoListEntityDtoRow()
 		{
 			OnCreated();
 		}

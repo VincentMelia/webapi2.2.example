@@ -9,19 +9,19 @@ using System;
 
 namespace webapi22.example.data_access.TypedListClasses
 {
-	/// <summary>Class which represents a row in the typed list 'TodoListItemDto'.</summary>
-	/// <remarks>This class is a result class for a query, which is produced with the method <see cref="webapi22.example.data_access.FactoryClasses.QueryFactory.GetTodoListItemDtoTypedList"/>.
+	/// <summary>Class which represents a row in the typed list 'TodoListItemEntityDto'.</summary>
+	/// <remarks>This class is a result class for a query, which is produced with the method <see cref="webapi22.example.data_access.FactoryClasses.QueryFactory.GetTodoListItemEntityDtoTypedList"/>.
 	/// Contains the following entity definition(s):
 	/// Entity: TodoList. <br/>
 	/// Entity: TodoListItem. <br/>
 	/// </remarks>
 	[Serializable]
-	public partial class TodoListItemDtoRow 
+	public partial class TodoListItemEntityDtoRow 
 	{
 		partial void OnCreated();
 		
-		/// <summary>Initializes a new instance of the <see cref="TodoListItemDtoRow"/> class.</summary>
-		public TodoListItemDtoRow()
+		/// <summary>Initializes a new instance of the <see cref="TodoListItemEntityDtoRow"/> class.</summary>
+		public TodoListItemEntityDtoRow()
 		{
 			OnCreated();
 		}

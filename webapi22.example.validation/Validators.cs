@@ -10,7 +10,7 @@ namespace webapi22.example.validation
 {
     public static class ValidatorExtensions
     {
-        public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListItemDtoRow(this TodoListItemDtoRow _listItem)
+        public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListItemDtoRow(this TodoListItemEntityDtoRow _listItem)
         {
             var validator = new TodoListDtoRowValidator(_listItem).Validate(_listItem);
 
@@ -34,13 +34,13 @@ namespace webapi22.example.validation
     /// </summary>
 
 
-    internal class TodoListDtoRowValidator : AbstractValidator<TodoListItemDtoRow>
+    internal class TodoListDtoRowValidator : AbstractValidator<TodoListItemEntityDtoRow>
     {
-        internal WeakReference<TodoListItemDtoRow> _todoItem;
+        internal WeakReference<TodoListItemEntityDtoRow> _todoItem;
 
-        public TodoListDtoRowValidator(TodoListItemDtoRow todoItemToValidate)
+        public TodoListDtoRowValidator(TodoListItemEntityDtoRow todoItemToValidate)
         {
-            _todoItem = new WeakReference<TodoListItemDtoRow>(todoItemToValidate);
+            _todoItem = new WeakReference<TodoListItemEntityDtoRow>(todoItemToValidate);
 
             RuleFor(r => r.TodoListItemSubject).MaximumLength(50).WithMessage("Subject must be less than 50 characters");
         }

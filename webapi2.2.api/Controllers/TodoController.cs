@@ -76,7 +76,7 @@ namespace webapi2._2.api.Controllers
         }
 
         [HttpPost("{todoListId}")]
-        public /*TodoListItemDtoRow**/ object Post(Guid todoListId, [FromBody] TodoListItemDtoRow newTodoItem)
+        public /*TodoListItemDtoRow**/ object Post(Guid todoListId, [FromBody] TodoListItemEntityDtoRow newTodoItem)
         {
             var r = newTodoItem.ValidateTodoListItemDtoRow();
             if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
@@ -87,15 +87,19 @@ namespace webapi2._2.api.Controllers
         }
 
         [HttpGet("{todoListId}/{todoListItemId}")]
-        public ActionResult<TodoListItemDtoRow> Get(Guid todoListId, Guid todoListItemId)
+        public ActionResult<TodoListItemEntityDtoRow> Get(Guid todoListId, Guid todoListItemId)
         {
             return GetSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId);
             
         }
 
         [HttpPut("{todoListId}/{todoListItemId}")]
-        public ActionResult<TodoListItemDtoRow> Put(Guid todoListId, Guid todoListItemId, TodoListItemDtoRow updatedTodoItem)
+        public object /*ActionResult<TodoListItemDtoRow>**/ Put(Guid todoListId, Guid todoListItemId, TodoListItemEntityDtoRow updatedTodoItem)
         {
+            //StatusCodes.Status406NotAcceptable
+            var r = updatedTodoItem.ValidateTodoListItemDtoRow();
+            if (!r.Item1) return  r.Item2.Select(i => i.ErrorMessage).ToList();
+
             return UpdateSingleTodoItem(MockDB._userList[0].UserId, todoListId, updatedTodoItem);
 
         }
