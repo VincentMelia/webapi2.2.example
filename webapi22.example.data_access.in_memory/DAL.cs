@@ -164,13 +164,13 @@ namespace webapi22.example.data_access.in_memory
         }
 
 
-        public static Todo UpdateSingleTodoItem(Guid userId, Guid todoListId,
+        public static Todo UpdateSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemId,
             Todo updatedTodoItem)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 
             var itemToUpdate = MockDB._todoListItems.Where(i =>
-                    i.UserId == userId && i.TodoListId == todoListId && i.TodoListItemId == updatedTodoItem.TodoListItemId)
+                    i.UserId == userId && i.TodoListId == todoListId && i.TodoListItemId == todoListItemId)
                 .ToList().First();
 
             itemToUpdate.TodoListItemIsComplete = updatedTodoItem.TodoListItemIsComplete;

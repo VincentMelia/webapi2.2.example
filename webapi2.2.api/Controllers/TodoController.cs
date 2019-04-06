@@ -102,7 +102,7 @@ namespace webapi2._2.api.Controllers
             var r = updatedTodoItem.ValidateTodoListItemDtoRow();
             if (!r.Item1) return  r.Item2.Select(i => i.ErrorMessage).ToList();
 
-            return UpdateSingleTodoItem(MockDB._userList[0].UserId, todoListId, updatedTodoItem);
+            return UpdateSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId, updatedTodoItem);
         }
 
         [HttpDelete("{todoListId}/{todoListItemId}")]
