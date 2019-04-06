@@ -117,7 +117,7 @@ namespace webapi22.example.data_access.in_memory
         //        , TodoListItemSubject = newItem.TodoListItemSubject, TodoListItemIsComplete = newItem.TodoListItemIsComplete});
         //}
 
-        public static void AddNewTodo(Guid userId, Guid todoListId, dtos.DtoClasses.Todo newItem)
+        public static Todo AddNewTodo(Guid userId, Guid todoListId, dtos.DtoClasses.Todo newItem)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 
@@ -133,6 +133,8 @@ namespace webapi22.example.data_access.in_memory
                 TodoListItemSubject = newItem.TodoListItemSubject,
                 TodoListItemIsComplete = newItem.TodoListItemIsComplete
             });
+
+            return GetSingleTodoItem(user.UserId, todoListId, newid);
         }
 
 

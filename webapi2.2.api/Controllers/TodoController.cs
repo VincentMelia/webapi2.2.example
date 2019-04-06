@@ -82,9 +82,7 @@ namespace webapi2._2.api.Controllers
             var r = newTodoItem.ValidateTodoListItemDtoRow();
             if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
 
-            AddNewTodo(MockDB._userList[0].UserId, todoListId, newTodoItem);
-
-            return null;
+            return AddNewTodo(MockDB._userList[0].UserId, todoListId, newTodoItem);
         }
 
 
