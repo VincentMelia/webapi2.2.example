@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\webapi22.example.data_access.in_memory\webapi22.example.data_access.in_memory.csproj" />
+    <ProjectReference Include="..\webapi22.example.dtos\webapi22.example.dtos\webapi22.example.dtos.csproj" />
+  </ItemGroup>
+
+</Project>

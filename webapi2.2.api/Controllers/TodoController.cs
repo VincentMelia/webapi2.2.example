@@ -31,7 +31,8 @@ namespace webapi2._2.api.Controllers
             
             //return new string[] { "value1", "value2" };
             HttpContext.Session.SetString("UserId", "dfdfdfdfd");
-            return GetListsForUser(MockDB._userList[0].UserId);
+            //return GetListsForUser(MockDB._userList[0].UserId);
+            return webapi22.example.data_access.DataAccess.AbstractGetListsForUser(MockDB._userList[0].UserId);
         }
 
         // GET: api/Todo/5
@@ -40,7 +41,7 @@ namespace webapi2._2.api.Controllers
         {
             var v = ValidatePath(todoListId);
             var u = HttpContext.Session.GetString("UserId");
-            return GetTodoList(MockDB._userList[0].UserId, todoListId);
+            return webapi22.example.data_access.DataAccess.AbstractGetTodoList(MockDB._userList[0].UserId, todoListId);
         }
 
 
@@ -55,7 +56,7 @@ namespace webapi2._2.api.Controllers
         [HttpPost]
         public ToDoListWithTodos Post(ToDoListWithTodos toDoListWithTodos)
         {
-            return CreateTodoList(MockDB._userList[0].UserId, toDoListWithTodos);
+            return webapi22.example.data_access.DataAccess.AbstractCreateTodoList(MockDB._userList[0].UserId, toDoListWithTodos);
         }
 
         // PUT: api/Todo/5
@@ -70,7 +71,7 @@ namespace webapi2._2.api.Controllers
             if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
 
             updatedTodoList.TodoListId = todoListId;
-            return UpdateTodoList(MockDB._userList[0].UserId, updatedTodoList);
+            return webapi22.example.data_access.DataAccess.AbstractUpdateTodoList(MockDB._userList[0].UserId, updatedTodoList);
         }
 
 
@@ -78,7 +79,7 @@ namespace webapi2._2.api.Controllers
         [HttpDelete("{todoListId}")]
         public void Delete(Guid todoListId)
         {
-            DeleteTodoList(MockDB._userList[0].UserId, todoListId );
+            webapi22.example.data_access.DataAccess.AbstractDeleteTodoList(MockDB._userList[0].UserId, todoListId );
         }
 
         [HttpPost("{todoListId}")]
@@ -87,7 +88,7 @@ namespace webapi2._2.api.Controllers
             var r = newTodoItem.ValidateTodoListItem();
             if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
 
-            return AddNewTodo(MockDB._userList[0].UserId, todoListId, newTodoItem);
+            return webapi22.example.data_access.DataAccess.AbstractAddNewTodo(MockDB._userList[0].UserId, todoListId, newTodoItem);
         }
 
 
@@ -95,7 +96,7 @@ namespace webapi2._2.api.Controllers
         public ActionResult<Todo> Get(Guid todoListId, Guid todoListItemId)
         {
             var v = ValidatePath(todoListId, todoListItemId);
-            return GetSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId);
+            return webapi22.example.data_access.DataAccess.AbstractGetSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId);
             
         }
 
@@ -106,14 +107,14 @@ namespace webapi2._2.api.Controllers
             var r = updatedTodoItem.ValidateTodoListItem();
             if (!r.Item1) return  r.Item2.Select(i => i.ErrorMessage).ToList();
 
-            return UpdateSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId, updatedTodoItem);
+            return webapi22.example.data_access.DataAccess.AbstractUpdateSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId, updatedTodoItem);
         }
 
         [HttpDelete("{todoListId}/{todoListItemId}")]
         public void Delete(Guid todoListId, Guid todoListItemId)
         {
             //DeleteTodoList(MockDB._userList[0].UserId, todoListId);
-            DeleteSingleTodo(MockDB._userList[0].UserId, todoListId, todoListItemId);
+            webapi22.example.data_access.DataAccess.AbstractDeleteSingleTodo(MockDB._userList[0].UserId, todoListId, todoListItemId);
         }
 
     }
