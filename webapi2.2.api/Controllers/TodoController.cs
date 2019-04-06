@@ -66,7 +66,7 @@ namespace webapi2._2.api.Controllers
             if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
 
             updatedTodoList.TodoListId = todoListId;
-            return webapi22.example.data_access.DataAccess.AbstractUpdateTodoList(new Guid(HttpContext.Session.GetString("UserId")), updatedTodoList);
+            return webapi22.example.data_access.DataAccess.AbstractUpdateTodoList(new Guid(HttpContext.Session.GetString("UserId")), todoListId, updatedTodoList);
         }
 
 

@@ -75,11 +75,11 @@ namespace webapi22.example.data_access.in_memory
                 TodoListItemIsComplete = newItem.TodoListItemIsComplete
             }));
 
-            return GetTodoList(MockDB._userList.Where(u => u.UserId == userId).ToList()[0].UserId,
+            return GetTodoList(user.UserId,
                 newTodoList.TodoListId);
         }
 
-        public static ToDoListWithTodos UpdateTodoList(Guid userId, ToDoListWithTodos updatedtDoListWithTodos)
+        public static ToDoListWithTodos UpdateTodoList(Guid userId, Guid todoListId, ToDoListWithTodos updatedtDoListWithTodos)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 
@@ -96,7 +96,8 @@ namespace webapi22.example.data_access.in_memory
                 TodoListId = todoListToUpdate.TodoListId,
                 TodoListItemId = Guid.NewGuid(),
                 TodoListItemSubject = u.TodoListItemSubject,
-                TodoListItemIsComplete = u.TodoListItemIsComplete
+                TodoListItemIsComplete = u.TodoListItemIsComplete,
+                UserId = user.UserId
             }));
 
             return GetTodoList(user.UserId, todoListToUpdate.TodoListId);

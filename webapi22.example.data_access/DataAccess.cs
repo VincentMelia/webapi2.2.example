@@ -11,7 +11,7 @@ namespace webapi22.example.data_access
         public static Func<Guid, Guid, ToDoListWithTodos> AbstractGetTodoList = webapi22.example.data_access.in_memory.DAL.GetTodoList;
         public static Func<Guid, UserTodoLists> AbstractGetListsForUser = webapi22.example.data_access.in_memory.DAL.GetListsForUser;
         public static Func<Guid, ToDoListWithTodos, ToDoListWithTodos> AbstractCreateTodoList = webapi22.example.data_access.in_memory.DAL.CreateTodoList;
-        public static Func<Guid, ToDoListWithTodos, ToDoListWithTodos> AbstractUpdateTodoList = webapi22.example.data_access.in_memory.DAL.UpdateTodoList;
+        public static Func<Guid, Guid, ToDoListWithTodos, ToDoListWithTodos> AbstractUpdateTodoList = webapi22.example.data_access.in_memory.DAL.UpdateTodoList;
         public static Action<Guid, Guid> AbstractDeleteTodoList = webapi22.example.data_access.in_memory.DAL.DeleteTodoList;
         public static Func<Guid, Guid, Todo, Todo> AbstractAddNewTodo = webapi22.example.data_access.in_memory.DAL.AddNewTodo;
         public static Func<Guid, Guid, Guid, Todo> AbstractGetSingleTodoItem = webapi22.example.data_access.in_memory.DAL.GetSingleTodoItem;
