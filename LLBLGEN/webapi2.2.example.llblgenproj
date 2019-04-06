@@ -427,6 +427,17 @@
             </Field>
           </Fields>
         </Document>
+        <Document Name="User">
+          <RootEntity Entity=":User" />
+          <Fields>
+            <Field Name="UserId">
+              <EntityField Name="UserId" />
+            </Field>
+            <Field Name="UserName">
+              <EntityField Name="UserName" />
+            </Field>
+          </Fields>
+        </Document>
         <Document Name="UserTodoLists">
           <RootEntity Entity=":User" />
           <Fields>

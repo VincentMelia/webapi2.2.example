@@ -13,6 +13,11 @@ namespace webapi22.example.data_access.in_memory
 {
     public static class DAL
     {
+        public static List<User> GetUsers()
+        {
+            return MockDB._userList.Select(u => new User() {UserId = u.UserId, UserName = u.UserName}).ToList();
+        }
+
         public static ToDoListWithTodos GetTodoList(Guid userId, Guid todoListId)
         {
             var todoList = MockDB._todoList.Where(t => t.UserId == userId && t.TodoListId == todoListId).ToList()[0];

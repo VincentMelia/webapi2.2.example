@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using webapi22.example.dtos.DtoClasses;
 
 namespace webapi22.example.data_access
 {
     public static class DataAccess
     {
+        public static Func<List<User>> AbstractGetUsers = webapi22.example.data_access.in_memory.DAL.GetUsers;
+
         public static Func<Guid, Guid, ToDoListWithTodos> AbstractGetTodoList = webapi22.example.data_access.in_memory.DAL.GetTodoList;
         public static Func<Guid, UserTodoLists> AbstractGetListsForUser = webapi22.example.data_access.in_memory.DAL.GetListsForUser;
         public static Func<Guid, ToDoListWithTodos, ToDoListWithTodos> AbstractCreateTodoList = webapi22.example.data_access.in_memory.DAL.CreateTodoList;
