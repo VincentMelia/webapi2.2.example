@@ -26,7 +26,7 @@ namespace webapi22.example.data_access.in_memory
                 TodoListId = todoList.TodoListId,
                 TodoListName = todoList.TodoListName,
                 //TodoListItems = new List<TodoListItem>()
-                TodoListItems = todoItems.Where(item => item.UserId == userId).Select(item => new TodoListItem()
+                TodoListItems = todoItems.Where(item => item.UserId == userId && item.TodoListItemIsComplete == false).Select(item => new TodoListItem()
                 {
                     TodoListItemId = item.TodoListItemId,
                     TodoListItemSubject = item.TodoListItemSubject,
