@@ -72,7 +72,8 @@ namespace webapi22.example.data_access.in_memory
                 TodoListItemId = Guid.NewGuid(),
                 TodoListId = newTodoList.TodoListId,
                 TodoListItemSubject = newItem.TodoListItemSubject,
-                TodoListItemIsComplete = newItem.TodoListItemIsComplete
+                TodoListItemIsComplete = newItem.TodoListItemIsComplete,
+                UserId = user.UserId
             }));
 
             return GetTodoList(user.UserId,
