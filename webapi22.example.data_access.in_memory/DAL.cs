@@ -110,17 +110,6 @@ namespace webapi22.example.data_access.in_memory
             MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList().ForEach(list => MockDB._todoList.Remove(list));
         }
 
-        //public static void AddNewTodo(Guid userId, Guid todoListId, TodoListItemEntityDtoRow newItem)
-        //{
-        //    var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
-
-        //    var list = MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList()[0];
-
-        //    var newid = Guid.NewGuid();
-
-        //    MockDB._todoListItems.Add(new TodoListItemEntityDtoRow() { TodoListItemId = newid, TodoListId = list.TodoListId
-        //        , TodoListItemSubject = newItem.TodoListItemSubject, TodoListItemIsComplete = newItem.TodoListItemIsComplete});
-        //}
 
         public static Todo AddNewTodo(Guid userId, Guid todoListId, dtos.DtoClasses.Todo newItem)
         {
@@ -143,16 +132,7 @@ namespace webapi22.example.data_access.in_memory
         }
 
 
-        //public static TodoListItemEntityDtoRow GetSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemRowId)
-        //{
-        //    var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
-        //    var item = MockDB._todoListItems.Where
-        //        (i => i.UserId == userId 
-        //              && i.TodoListItemId == todoListItemRowId
-        //              && i.TodoListId == todoListId).ToList().First();
 
-        //    return item;
-        //}
 
         public static Todo GetSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemRowId)
         {
@@ -196,14 +176,6 @@ namespace webapi22.example.data_access.in_memory
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
             MockDB._todoListItems.Where(i => i.TodoListId == todoListId && i.TodoListItemId == todoItemId).ToList().ForEach(item => MockDB._todoListItems.Remove(item));
         }
-
-        //public static void DeleteTodoList(Guid userId, Guid todoListId)
-        //{
-        //    var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
-
-        //    MockDB._todoListItems.Where(i => i.TodoListId == todoListId).ToList().ForEach(item => MockDB._todoListItems.Remove(item));
-        //    MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList().ForEach(list => MockDB._todoList.Remove(list));
-        //}
 
 
     }

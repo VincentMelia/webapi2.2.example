@@ -13,8 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\webapi22.example.data_access.in_memory\webapi22.example.data_access.in_memory.csproj" />
-    <ProjectReference Include="..\webapi22.example.data_access.sql\webapi22.example.data_access.sql.csproj" />
     <ProjectReference Include="..\webapi22.example.data_access\webapi22.example.data_access.csproj" />
     <ProjectReference Include="..\webapi22.example.validation\webapi22.example.validation.csproj" />
   </ItemGroup>
