@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi22.example.data_access.in_memory;
-//using webapi22.example.data_access.TypedListClasses;
+using webapi22.example.data_access.sql.TypedListClasses;
 using static webapi22.example.data_access.in_memory.DAL;
 using static webapi22.example.data_access.in_memory.MockDB;
 using static webapi22.example.validation.RouteValidators;
-
+using webapi22.example.data_access.sql;
+using webapi22.example.data_access.sql.EntityClasses;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
 using webapi22.example.dtos.DtoClasses.UserTodoListsTypes;
@@ -27,6 +28,7 @@ namespace webapi2._2.api.Controllers
         [HttpGet]
         public UserTodoLists Get() //UserTodoLists
         {
+            
             //return new string[] { "value1", "value2" };
             HttpContext.Session.SetString("UserId", "dfdfdfdfd");
             return GetListsForUser(MockDB._userList[0].UserId);

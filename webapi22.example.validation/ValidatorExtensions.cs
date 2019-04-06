@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using FluentValidation;
 using FluentValidation.Results;
 using webapi22.example.dtos.DtoClasses;
-using webapi22.example.data_access.TypedListClasses;
+using webapi22.example.data_access.sql.TypedListClasses;
 
 namespace webapi22.example.validation
 {

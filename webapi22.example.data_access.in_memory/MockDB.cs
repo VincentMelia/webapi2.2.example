@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using webapi22.example.data_access.TypedListClasses;
+using webapi22.example.data_access.sql.TypedListClasses;
 
 namespace webapi22.example.data_access.in_memory
 {

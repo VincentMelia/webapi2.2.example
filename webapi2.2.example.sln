@@ -3,21 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLBLGEN", "LLBLGEN\LLBLGEN.csproj", "{A2592DBA-9552-424E-A57D-B0A9B71861CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LLBLGEN", "LLBLGEN\LLBLGEN.csproj", "{A2592DBA-9552-424E-A57D-B0A9B71861CF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.dtos", "webapi22.example.dtos\webapi22.example.dtos\webapi22.example.dtos.csproj", "{8B8D5048-C32D-48D0-B8FA-4C218D954DD5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.dtos.Persistence", "webapi22.example.dtos\webapi22.example.dtos.Persistence\webapi22.example.dtos.Persistence.csproj", "{ED5155CA-29D0-4444-AEFA-93D3BE52EED8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi2.2.api", "webapi2.2.api\webapi2.2.api.csproj", "{99D2FED6-38B5-4523-BD89-659671B825C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi2.2.api", "webapi2.2.api\webapi2.2.api.csproj", "{99D2FED6-38B5-4523-BD89-659671B825C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi22.example.data_access.in_memory", "webapi22.example.data_access.in_memory\webapi22.example.data_access.in_memory.csproj", "{FE17932C-035A-4AC2-B474-4CCC4EB907C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.data_access.in_memory", "webapi22.example.data_access.in_memory\webapi22.example.data_access.in_memory.csproj", "{FE17932C-035A-4AC2-B474-4CCC4EB907C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zScrap", "zScrap\zScrap.csproj", "{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zScrap", "zScrap\zScrap.csproj", "{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.data_access", "webapi22.example.data_access\webapi22.example.data_access.csproj", "{35B4D874-48D5-4E4C-98C5-B746D4C50154}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.validation", "webapi22.example.validation\webapi22.example.validation.csproj", "{E816CBF7-F47C-4610-92F3-80BBF5D05121}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi22.example.validation", "webapi22.example.validation\webapi22.example.validation.csproj", "{E816CBF7-F47C-4610-92F3-80BBF5D05121}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.data_access.sql", "webapi22.example.data_access.sql\webapi22.example.data_access.sql.csproj", "{3D3DB64E-88C2-4E18-BDA1-6198F4ECF09E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data_Access_Providers", "Data_Access_Providers", "{F5C61C37-63AA-476E-A1F3-C257057CA733}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{98603938-27C8-48AE-AA85-D2335AB55D26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "z - deleteme", "z - deleteme", "{3D991B18-49CE-442E-B6AB-FB1262B01065}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,17 +55,24 @@ Global
 		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{35B4D874-48D5-4E4C-98C5-B746D4C50154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{35B4D874-48D5-4E4C-98C5-B746D4C50154}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{35B4D874-48D5-4E4C-98C5-B746D4C50154}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{35B4D874-48D5-4E4C-98C5-B746D4C50154}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E816CBF7-F47C-4610-92F3-80BBF5D05121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E816CBF7-F47C-4610-92F3-80BBF5D05121}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E816CBF7-F47C-4610-92F3-80BBF5D05121}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E816CBF7-F47C-4610-92F3-80BBF5D05121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D3DB64E-88C2-4E18-BDA1-6198F4ECF09E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D3DB64E-88C2-4E18-BDA1-6198F4ECF09E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D3DB64E-88C2-4E18-BDA1-6198F4ECF09E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D3DB64E-88C2-4E18-BDA1-6198F4ECF09E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A2592DBA-9552-424E-A57D-B0A9B71861CF} = {98603938-27C8-48AE-AA85-D2335AB55D26}
+		{ED5155CA-29D0-4444-AEFA-93D3BE52EED8} = {F5C61C37-63AA-476E-A1F3-C257057CA733}
+		{FE17932C-035A-4AC2-B474-4CCC4EB907C5} = {F5C61C37-63AA-476E-A1F3-C257057CA733}
+		{218285CF-EDB7-4C8F-B0AE-2B018429DBE0} = {3D991B18-49CE-442E-B6AB-FB1262B01065}
+		{3D3DB64E-88C2-4E18-BDA1-6198F4ECF09E} = {F5C61C37-63AA-476E-A1F3-C257057CA733}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC18CF35-F8D0-4274-807E-FF79BDACC38A}

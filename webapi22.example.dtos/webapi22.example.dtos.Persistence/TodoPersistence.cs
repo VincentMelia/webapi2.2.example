@@ -11,31 +11,31 @@ namespace webapi22.example.dtos.Persistence
 	/// <summary>Static class for (extension) methods for fetching and projecting instances of webapi22.example.dtos.DtoClasses.Todo from / to the entity model.</summary>
 	public static partial class TodoPersistence
 	{
-		private static readonly System.Linq.Expressions.Expression<Func<webapi22.example.data_access.EntityClasses.TodoListItemEntity, webapi22.example.dtos.DtoClasses.Todo>> _projectorExpression = CreateProjectionFunc();
-		private static readonly Func<webapi22.example.data_access.EntityClasses.TodoListItemEntity, webapi22.example.dtos.DtoClasses.Todo> _compiledProjector = CreateProjectionFunc().Compile();
+		private static readonly System.Linq.Expressions.Expression<Func<webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity, webapi22.example.dtos.DtoClasses.Todo>> _projectorExpression = CreateProjectionFunc();
+		private static readonly Func<webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity, webapi22.example.dtos.DtoClasses.Todo> _compiledProjector = CreateProjectionFunc().Compile();
 	
 		/// <summary>Empty static ctor for triggering initialization of static members in a thread-safe manner</summary>
 		static TodoPersistence() { }
 	
 		/// <summary>Extension method which produces a projection to webapi22.example.dtos.DtoClasses.Todo which instances are projected from the 
-		/// results of the specified baseQuery, which returns webapi22.example.data_access.EntityClasses.TodoListItemEntity instances, the root entity of the derived element returned by this query.</summary>
+		/// results of the specified baseQuery, which returns webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity instances, the root entity of the derived element returned by this query.</summary>
 		/// <param name="baseQuery">The base query to project the derived element instances from.</param>
 		/// <returns>IQueryable to retrieve webapi22.example.dtos.DtoClasses.Todo instances</returns>
-		public static IQueryable<webapi22.example.dtos.DtoClasses.Todo> ProjectToTodo(this IQueryable<webapi22.example.data_access.EntityClasses.TodoListItemEntity> baseQuery)
+		public static IQueryable<webapi22.example.dtos.DtoClasses.Todo> ProjectToTodo(this IQueryable<webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity> baseQuery)
 		{
 			return baseQuery.Select(_projectorExpression);
 		}
 		
 		/// <summary>Extension method which produces a projection to webapi22.example.dtos.DtoClasses.Todo which instances are projected from the
-		/// webapi22.example.data_access.EntityClasses.TodoListItemEntity entity instance specified, the root entity of the derived element returned by this method.</summary>
+		/// webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity entity instance specified, the root entity of the derived element returned by this method.</summary>
 		/// <param name="entity">The entity to project from.</param>
-		/// <returns>webapi22.example.data_access.EntityClasses.TodoListItemEntity instance created from the specified entity instance</returns>
-		public static webapi22.example.dtos.DtoClasses.Todo ProjectToTodo(this webapi22.example.data_access.EntityClasses.TodoListItemEntity entity)
+		/// <returns>webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity instance created from the specified entity instance</returns>
+		public static webapi22.example.dtos.DtoClasses.Todo ProjectToTodo(this webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity entity)
 		{
 			return _compiledProjector(entity);
 		}
 		
-		private static System.Linq.Expressions.Expression<Func<webapi22.example.data_access.EntityClasses.TodoListItemEntity, webapi22.example.dtos.DtoClasses.Todo>> CreateProjectionFunc()
+		private static System.Linq.Expressions.Expression<Func<webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity, webapi22.example.dtos.DtoClasses.Todo>> CreateProjectionFunc()
 		{
 			return p__0 => new webapi22.example.dtos.DtoClasses.Todo()
 			{
@@ -49,7 +49,7 @@ namespace webapi22.example.dtos.Persistence
 		/// <summary>Creates a primary key predicate to be used in a Where() clause in a Linq query which is executed on the database to fetch the original entity instance the specified <see cref="dto"/> object was projected from.</summary>
 		/// <param name="dto">The dto object for which the primary key predicate has to be created for.</param>
 		/// <returns>ready to use expression</returns>
-		public static System.Linq.Expressions.Expression<Func<webapi22.example.data_access.EntityClasses.TodoListItemEntity, bool>> CreatePkPredicate(webapi22.example.dtos.DtoClasses.Todo dto)
+		public static System.Linq.Expressions.Expression<Func<webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity, bool>> CreatePkPredicate(webapi22.example.dtos.DtoClasses.Todo dto)
 		{
 			return p__0 => p__0.TodoListItemId == dto.TodoListItemId;
 		}
@@ -57,7 +57,7 @@ namespace webapi22.example.dtos.Persistence
 		/// <summary>Creates a primary key predicate to be used in a Where() clause in a Linq query which is executed on the database to fetch the original entity instances the specified set of <see cref="dtos"/> objects was projected from.</summary>
 		/// <param name="dtos">The dto objects for which the primary key predicate has to be created for.</param>
 		/// <returns>ready to use expression</returns>
-		public static System.Linq.Expressions.Expression<Func<webapi22.example.data_access.EntityClasses.TodoListItemEntity, bool>> CreatePkPredicate(IEnumerable<webapi22.example.dtos.DtoClasses.Todo> dtos)
+		public static System.Linq.Expressions.Expression<Func<webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity, bool>> CreatePkPredicate(IEnumerable<webapi22.example.dtos.DtoClasses.Todo> dtos)
 		{
 			return p__0 => dtos.Select(p__1=>p__1.TodoListItemId).ToList().Contains(p__0.TodoListItemId);
 		}
@@ -65,16 +65,16 @@ namespace webapi22.example.dtos.Persistence
 		/// <summary>Creates a primary key predicate to be used in a Where() clause in a Linq query on an IEnumerable in-memory set of entity instances to retrieve the original entity instance the specified <see cref="dto"/> object was projected from.</summary>
 		/// <param name="dto">The dto object for which the primary key predicate has to be created for.</param>
 		/// <returns>ready to use func</returns>
-		public static Func<webapi22.example.data_access.EntityClasses.TodoListItemEntity, bool> CreateInMemoryPkPredicate(webapi22.example.dtos.DtoClasses.Todo dto)
+		public static Func<webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity, bool> CreateInMemoryPkPredicate(webapi22.example.dtos.DtoClasses.Todo dto)
 		{
 			return p__0 => p__0.TodoListItemId == dto.TodoListItemId;
 		}
 		
-		/// <summary>Updates the specified webapi22.example.data_access.EntityClasses.TodoListItemEntity entity with the values stored in the dto object specified</summary>
+		/// <summary>Updates the specified webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity entity with the values stored in the dto object specified</summary>
 		/// <param name="toUpdate">the entity instance to update.</param>
 		/// <param name="dto">The dto object containing the source values.</param>
 		/// <remarks>The PK field of toUpdate is set only if it's not marked as readonly.</remarks>
-		public static void UpdateFromTodo(this webapi22.example.data_access.EntityClasses.TodoListItemEntity toUpdate, webapi22.example.dtos.DtoClasses.Todo dto)
+		public static void UpdateFromTodo(this webapi22.example.data_access.sql.EntityClasses.TodoListItemEntity toUpdate, webapi22.example.dtos.DtoClasses.Todo dto)
 		{
 			if((toUpdate == null) || (dto == null))
 			{

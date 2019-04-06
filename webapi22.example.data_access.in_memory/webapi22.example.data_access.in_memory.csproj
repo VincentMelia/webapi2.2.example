@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\webapi22.example.data_access\webapi22.example.data_access.csproj" />
+    <ProjectReference Include="..\webapi22.example.data_access.sql\webapi22.example.data_access.sql.csproj" />
     <ProjectReference Include="..\webapi22.example.dtos\webapi22.example.dtos\webapi22.example.dtos.csproj" />
   </ItemGroup>
 
