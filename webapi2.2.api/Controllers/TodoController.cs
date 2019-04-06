@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi22.example.data_access.in_memory;
-using webapi22.example.data_access.TypedListClasses;
+//using webapi22.example.data_access.TypedListClasses;
 using static webapi22.example.data_access.in_memory.DAL;
 using static webapi22.example.data_access.in_memory.MockDB;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
 using webapi22.example.dtos.DtoClasses.UserTodoListsTypes;
 using webapi22.example.validation;
+//using Todo = webapi22.example.data_access.TypedListClasses.Todo;
 
 namespace webapi2._2.api.Controllers
 {
@@ -76,7 +77,7 @@ namespace webapi2._2.api.Controllers
         }
 
         [HttpPost("{todoListId}")]
-        public /*TodoListItemDtoRow**/ object Post(Guid todoListId, [FromBody] TodoListItemEntityDtoRow newTodoItem)
+        public /*TodoListItemDtoRow**/ object Post(Guid todoListId, [FromBody] Todo newTodoItem)
         {
             var r = newTodoItem.ValidateTodoListItemDtoRow();
             if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
@@ -86,22 +87,29 @@ namespace webapi2._2.api.Controllers
             return null;
         }
 
+
         [HttpGet("{todoListId}/{todoListItemId}")]
-        public ActionResult<TodoListItemEntityDtoRow> Get(Guid todoListId, Guid todoListItemId)
+        public ActionResult<Todo> Get(Guid todoListId, Guid todoListItemId)
         {
             return GetSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId);
             
         }
 
         [HttpPut("{todoListId}/{todoListItemId}")]
-        public object /*ActionResult<TodoListItemDtoRow>**/ Put(Guid todoListId, Guid todoListItemId, TodoListItemEntityDtoRow updatedTodoItem)
+        public object /*ActionResult<TodoListItemDtoRow>**/ Put(Guid todoListId, Guid todoListItemId, Todo updatedTodoItem)
         {
             //StatusCodes.Status406NotAcceptable
             var r = updatedTodoItem.ValidateTodoListItemDtoRow();
             if (!r.Item1) return  r.Item2.Select(i => i.ErrorMessage).ToList();
 
             return UpdateSingleTodoItem(MockDB._userList[0].UserId, todoListId, updatedTodoItem);
+        }
 
+        [HttpDelete("{todoListId}/{todoListItemId}")]
+        public void Delete(Guid todoListId, Guid todoListItemId)
+        {
+            //DeleteTodoList(MockDB._userList[0].UserId, todoListId);
+            DeleteSingleTodo(MockDB._userList[0].UserId, todoListId, todoListItemId);
         }
 
     }

@@ -7,6 +7,7 @@ using webapi22.example.dtos;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
 using webapi22.example.dtos.DtoClasses.UserTodoListsTypes;
+//using Todo = webapi22.example.data_access.TypedListClasses.Todo;
 
 namespace webapi22.example.data_access.in_memory
 {
@@ -104,7 +105,19 @@ namespace webapi22.example.data_access.in_memory
             MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList().ForEach(list => MockDB._todoList.Remove(list));
         }
 
-        public static void AddNewTodo(Guid userId, Guid todoListId, TodoListItemEntityDtoRow newItem)
+        //public static void AddNewTodo(Guid userId, Guid todoListId, TodoListItemEntityDtoRow newItem)
+        //{
+        //    var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+
+        //    var list = MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList()[0];
+
+        //    var newid = Guid.NewGuid();
+
+        //    MockDB._todoListItems.Add(new TodoListItemEntityDtoRow() { TodoListItemId = newid, TodoListId = list.TodoListId
+        //        , TodoListItemSubject = newItem.TodoListItemSubject, TodoListItemIsComplete = newItem.TodoListItemIsComplete});
+        //}
+
+        public static void AddNewTodo(Guid userId, Guid todoListId, dtos.DtoClasses.Todo newItem)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 
@@ -112,23 +125,47 @@ namespace webapi22.example.data_access.in_memory
 
             var newid = Guid.NewGuid();
 
-            MockDB._todoListItems.Add(new TodoListItemEntityDtoRow() { TodoListItemId = newid, TodoListId = list.TodoListId
-                , TodoListItemSubject = newItem.TodoListItemSubject, TodoListItemIsComplete = newItem.TodoListItemIsComplete});
+            MockDB._todoListItems.Add(new TodoListItemEntityDtoRow()
+            {
+                TodoListItemId = newid,
+                TodoListId = todoListId,
+                UserId = userId,
+                TodoListItemSubject = newItem.TodoListItemSubject,
+                TodoListItemIsComplete = newItem.TodoListItemIsComplete
+            });
         }
 
-        public static TodoListItemEntityDtoRow GetSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemRowId)
+
+        //public static TodoListItemEntityDtoRow GetSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemRowId)
+        //{
+        //    var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+        //    var item = MockDB._todoListItems.Where
+        //        (i => i.UserId == userId 
+        //              && i.TodoListItemId == todoListItemRowId
+        //              && i.TodoListId == todoListId).ToList().First();
+
+        //    return item;
+        //}
+
+        public static Todo GetSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemRowId)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
             var item = MockDB._todoListItems.Where
-                (i => i.UserId == userId 
-                      && i.TodoListItemId == todoListItemRowId
-                      && i.TodoListId == todoListId).ToList().First();
+            (i => i.UserId == userId
+                  && i.TodoListItemId == todoListItemRowId
+                  && i.TodoListId == todoListId).ToList().First();
 
-            return item;
+            return new Todo()
+            {
+                TodoListItemId = item.TodoListItemId,
+                TodoListItemSubject = item.TodoListItemSubject,
+                TodoListItemIsComplete = item.TodoListItemIsComplete
+            };
         }
 
-        public static TodoListItemEntityDtoRow UpdateSingleTodoItem(Guid userId, Guid todoListId,
-            TodoListItemEntityDtoRow updatedTodoItem)
+
+        public static Todo UpdateSingleTodoItem(Guid userId, Guid todoListId,
+            Todo updatedTodoItem)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 
@@ -139,8 +176,28 @@ namespace webapi22.example.data_access.in_memory
             itemToUpdate.TodoListItemIsComplete = updatedTodoItem.TodoListItemIsComplete;
             itemToUpdate.TodoListItemSubject = updatedTodoItem.TodoListItemSubject;
 
-            return itemToUpdate;
+            return new Todo()
+            {
+                TodoListItemId = itemToUpdate.TodoListItemId,
+                TodoListItemSubject = itemToUpdate.TodoListItemSubject,
+                TodoListItemIsComplete = itemToUpdate.TodoListItemIsComplete
+            };
         }
+
+        public static void DeleteSingleTodo(Guid userId, Guid todoListId, Guid todoItemId)
+        {
+            var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+            MockDB._todoListItems.Where(i => i.TodoListId == todoListId && i.TodoListItemId == todoItemId).ToList().ForEach(item => MockDB._todoListItems.Remove(item));
+        }
+
+        //public static void DeleteTodoList(Guid userId, Guid todoListId)
+        //{
+        //    var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+
+        //    MockDB._todoListItems.Where(i => i.TodoListId == todoListId).ToList().ForEach(item => MockDB._todoListItems.Remove(item));
+        //    MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList().ForEach(list => MockDB._todoList.Remove(list));
+        //}
+
 
     }
 }
