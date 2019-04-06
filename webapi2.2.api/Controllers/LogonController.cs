@@ -16,7 +16,7 @@ namespace webapi2._2.api.Controllers
         public List<User> Get()
         {
             return AbstractGetUsers();
-
+            
         }
 
         [HttpGet("{UserName}")]
