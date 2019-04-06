@@ -84,6 +84,7 @@ namespace webapi22.example.dtos.Persistence
 			{
 				return;
 			}
+			toUpdate.UserId = dto.UserId;
 			toUpdate.UserName = dto.UserName;
 		}
 	}

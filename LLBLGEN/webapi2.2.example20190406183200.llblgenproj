@@ -104,21 +104,6 @@
         </TemplateBindings>
       </LastUsedPreferences>
     </OutputType>
-    <OutputType Value="1">
-      <LastUsedPreferences>
-        <DestinationRootFolder Value="D:\Users\Vmelia\Desktop\webapi2.2.example\LLBLGEN\schema" />
-        <FrameworkName Value="DDL SQL" />
-        <LanguageName Value="SQL" />
-        <PlatformName Value="RDBMS" />
-        <PresetName Value="SD.Presets.DDLSQL.CreateScript" />
-        <RootNamespace Value="" />
-        <TemplateGroup Value="Create DDL SQL" />
-        <TemplateBindings>
-          <Binding Name="SD.TemplateBindings.SqlServerSpecific.DDLSQL" />
-          <Binding Name="SD.TemplateBindings.SharedTemplates.DDLSQL" />
-        </TemplateBindings>
-      </LastUsedPreferences>
-    </OutputType>
   </CodeGenerationCyclePreferences>
   <OutputSettingValues>
     <SettingValues>
@@ -155,7 +140,7 @@
     <EntityDefinitions>
       <EntityDefinition Name="TodoList" ObjectID="cbf3943a-623c-464f-af04-1380375917ab">
         <Fields>
-          <Field Name="TodoListId" Type="guid" IsPrimaryKey="true" FieldIndex="0" />
+          <Field Name="TodoListId" Type="guid" IsReadOnly="true" IsPrimaryKey="true" FieldIndex="0" />
           <Field Name="TodoListName" Type="string" MaxLength="20" FieldIndex="2" />
           <Field Name="UserId" Type="guid" FieldIndex="1" />
         </Fields>
@@ -163,14 +148,14 @@
       <EntityDefinition Name="TodoListItem" ObjectID="f8cacb6d-d500-4c2e-b37d-502ae6fb9167">
         <Fields>
           <Field Name="TodoListId" Type="guid" FieldIndex="1" />
-          <Field Name="TodoListItemId" Type="guid" IsPrimaryKey="true" FieldIndex="0" />
+          <Field Name="TodoListItemId" Type="guid" IsReadOnly="true" IsPrimaryKey="true" FieldIndex="0" />
           <Field Name="TodoListItemIsComplete" Type="bool" IsOptional="true" FieldIndex="3" />
           <Field Name="TodoListItemSubject" Type="string" MaxLength="50" FieldIndex="2" />
         </Fields>
       </EntityDefinition>
       <EntityDefinition Name="User" ObjectID="5d99e503-2da7-4851-a655-d88b4b4de629">
         <Fields>
-          <Field Name="UserId" Type="guid" IsPrimaryKey="true" FieldIndex="0" />
+          <Field Name="UserId" Type="guid" IsReadOnly="true" IsPrimaryKey="true" FieldIndex="0" />
           <Field Name="UserName" Type="string" MaxLength="10" FieldIndex="1" />
         </Fields>
       </EntityDefinition>
@@ -251,44 +236,44 @@
         <Sequence Name="@@IDENTITY" />
       </SystemSequences>
       <Catalogs>
-        <Catalog Name="Webapi22Example" SyncSource="1">
+        <Catalog Name="Webapi22Example" CreatedByDesigner="true" SyncSource="1">
           <Schemas>
-            <Schema Name="dbo" SyncSource="1" LastSyncWithModel="2019-04-06T22:40:47.5912224Z">
+            <Schema Name="dbo" CreatedByDesigner="true" SyncSource="1" LastSyncWithModel="2019-04-06T16:05:32.3782319Z">
               <Tables>
-                <Table Name="TodoList">
+                <Table Name="TodoList" CreatedByDesigner="true">
                   <PkConstraintName Name="PK_3cb4a8d4a1f828d4c2da8cc60bf" />
                   <Fields>
-                    <Field Name="TodoListId" Ordinal="1" IsPrimaryKey="true" DbType="25" />
-                    <Field Name="UserId" Ordinal="2" DbType="25" />
-                    <Field Name="TodoListName" Ordinal="3" DbType="12" Length="20" />
+                    <Field Name="TodoListId" Ordinal="1" TrackedChanges="512" IsPrimaryKey="true" CreatedByDesigner="true" DbType="25" />
+                    <Field Name="UserId" Ordinal="2" CreatedByDesigner="true" DbType="25" />
+                    <Field Name="TodoListName" Ordinal="3" CreatedByDesigner="true" DbType="12" Length="20" />
                   </Fields>
                 </Table>
-                <Table Name="TodoListItem">
+                <Table Name="TodoListItem" CreatedByDesigner="true">
                   <PkConstraintName Name="PK_b6fb24048e4bd1f3cddc598f1ed" />
                   <Fields>
-                    <Field Name="TodoListItemId" Ordinal="1" IsPrimaryKey="true" DbType="25" />
-                    <Field Name="TodoListId" Ordinal="2" DbType="25" />
-                    <Field Name="TodoListItemSubject" Ordinal="3" DbType="12" Length="50" />
-                    <Field Name="TodoListItemIsComplete" Ordinal="4" IsOptional="true" DbType="2" />
+                    <Field Name="TodoListItemId" Ordinal="1" TrackedChanges="512" IsPrimaryKey="true" CreatedByDesigner="true" DbType="25" />
+                    <Field Name="TodoListId" Ordinal="2" CreatedByDesigner="true" DbType="25" />
+                    <Field Name="TodoListItemSubject" Ordinal="3" CreatedByDesigner="true" DbType="12" Length="50" />
+                    <Field Name="TodoListItemIsComplete" Ordinal="4" IsOptional="true" CreatedByDesigner="true" DbType="2" />
                   </Fields>
                 </Table>
-                <Table Name="User">
+                <Table Name="User" CreatedByDesigner="true">
                   <PkConstraintName Name="PK_e9021b5472aa86b86625e601682" />
                   <Fields>
-                    <Field Name="UserId" Ordinal="1" IsPrimaryKey="true" DbType="25" />
-                    <Field Name="UserName" Ordinal="2" DbType="12" Length="10" />
+                    <Field Name="UserId" Ordinal="1" TrackedChanges="512" IsPrimaryKey="true" CreatedByDesigner="true" DbType="25" />
+                    <Field Name="UserName" Ordinal="2" CreatedByDesigner="true" DbType="12" Length="10" />
                   </Fields>
                 </Table>
               </Tables>
             </Schema>
           </Schemas>
           <ForeignKeyConstraints>
-            <ForeignKeyConstraint Name="dbo:TodoList:FK_3f9d69b4c39a303fc647411d926" DeleteRuleAction="1">
+            <ForeignKeyConstraint Name="dbo:TodoList:FK_3f9d69b4c39a303fc647411d926" CreatedByDesigner="true" DeleteRuleAction="1" TrackedChanges="16">
               <FieldPairs>
                 <FieldPair PkField="dbo:User:UserId" FkField="dbo:TodoList:UserId" />
               </FieldPairs>
             </ForeignKeyConstraint>
-            <ForeignKeyConstraint Name="dbo:TodoListItem:FK_93327b74338ab5a4526cc2c436c" DeleteRuleAction="1">
+            <ForeignKeyConstraint Name="dbo:TodoListItem:FK_93327b74338ab5a4526cc2c436c" CreatedByDesigner="true" DeleteRuleAction="1" TrackedChanges="16">
               <FieldPairs>
                 <FieldPair PkField="dbo:TodoList:TodoListId" FkField="dbo:TodoListItem:TodoListId" />
               </FieldPairs>

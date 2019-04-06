@@ -80,6 +80,7 @@ namespace webapi22.example.dtos.Persistence
 			{
 				return;
 			}
+			toUpdate.TodoListItemId = dto.TodoListItemId;
 			toUpdate.TodoListItemIsComplete = dto.TodoListItemIsComplete;
 			toUpdate.TodoListItemSubject = dto.TodoListItemSubject;
 		}

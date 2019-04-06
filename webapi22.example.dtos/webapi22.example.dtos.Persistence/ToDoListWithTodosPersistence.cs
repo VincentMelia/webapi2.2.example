@@ -85,6 +85,7 @@ namespace webapi22.example.dtos.Persistence
 			{
 				return;
 			}
+			toUpdate.TodoListId = dto.TodoListId;
 			toUpdate.TodoListName = dto.TodoListName;
 		}
 	}

@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SD.LLBLGen.Pro.DQE.SqlServer;
+using SD.LLBLGen.Pro.ORMSupportClasses;
+using SD.Tools.OrmProfiler.Interceptor;
 
 namespace webapi2._2.api
 {
@@ -44,6 +48,15 @@ namespace webapi2._2.api
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            RuntimeConfiguration.AddConnectionString("ConnectionString.SQL Server (SqlClient)", "data source=IP-C613C28D;initial catalog=Webapi22Example;trusted_connection=true;persist security info=False;packet size=4096");
+
+            // Configure the DQE
+            RuntimeConfiguration.ConfigureDQE<SQLServerDQEConfiguration>(
+                c => c.SetTraceLevel(TraceLevel.Verbose)
+                    .AddDbProviderFactory(typeof(System.Data.SqlClient.SqlClientFactory))
+                    .SetDefaultCompatibilityLevel(SqlServerCompatibilityLevel.SqlServer2012));
+
         }
     }
 }

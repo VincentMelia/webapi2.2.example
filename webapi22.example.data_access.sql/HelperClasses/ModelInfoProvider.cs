@@ -51,7 +51,7 @@ namespace webapi22.example.data_access.sql.HelperClasses
 		private void InitTodoListEntityInfo()
 		{
 			this.AddFieldIndexEnumForElementName(typeof(TodoListFieldIndex), "TodoListEntity");
-			this.AddElementFieldInfo("TodoListEntity", "TodoListId", typeof(System.Guid), true, false, true, false,  (int)TodoListFieldIndex.TodoListId, 0, 0, 0);
+			this.AddElementFieldInfo("TodoListEntity", "TodoListId", typeof(System.Guid), true, false, false, false,  (int)TodoListFieldIndex.TodoListId, 0, 0, 0);
 			this.AddElementFieldInfo("TodoListEntity", "UserId", typeof(System.Guid), false, true, false, false,  (int)TodoListFieldIndex.UserId, 0, 0, 0);
 			this.AddElementFieldInfo("TodoListEntity", "TodoListName", typeof(System.String), false, false, false, false,  (int)TodoListFieldIndex.TodoListName, 20, 0, 0);
 		}
@@ -60,7 +60,7 @@ namespace webapi22.example.data_access.sql.HelperClasses
 		private void InitTodoListItemEntityInfo()
 		{
 			this.AddFieldIndexEnumForElementName(typeof(TodoListItemFieldIndex), "TodoListItemEntity");
-			this.AddElementFieldInfo("TodoListItemEntity", "TodoListItemId", typeof(System.Guid), true, false, true, false,  (int)TodoListItemFieldIndex.TodoListItemId, 0, 0, 0);
+			this.AddElementFieldInfo("TodoListItemEntity", "TodoListItemId", typeof(System.Guid), true, false, false, false,  (int)TodoListItemFieldIndex.TodoListItemId, 0, 0, 0);
 			this.AddElementFieldInfo("TodoListItemEntity", "TodoListId", typeof(System.Guid), false, true, false, false,  (int)TodoListItemFieldIndex.TodoListId, 0, 0, 0);
 			this.AddElementFieldInfo("TodoListItemEntity", "TodoListItemSubject", typeof(System.String), false, false, false, false,  (int)TodoListItemFieldIndex.TodoListItemSubject, 50, 0, 0);
 			this.AddElementFieldInfo("TodoListItemEntity", "TodoListItemIsComplete", typeof(Nullable<System.Boolean>), false, false, false, true,  (int)TodoListItemFieldIndex.TodoListItemIsComplete, 0, 0, 0);
@@ -70,7 +70,7 @@ namespace webapi22.example.data_access.sql.HelperClasses
 		private void InitUserEntityInfo()
 		{
 			this.AddFieldIndexEnumForElementName(typeof(UserFieldIndex), "UserEntity");
-			this.AddElementFieldInfo("UserEntity", "UserId", typeof(System.Guid), true, false, true, false,  (int)UserFieldIndex.UserId, 0, 0, 0);
+			this.AddElementFieldInfo("UserEntity", "UserId", typeof(System.Guid), true, false, false, false,  (int)UserFieldIndex.UserId, 0, 0, 0);
 			this.AddElementFieldInfo("UserEntity", "UserName", typeof(System.String), false, false, false, false,  (int)UserFieldIndex.UserName, 10, 0, 0);
 		}
 
