@@ -8,6 +8,8 @@ using webapi22.example.data_access.in_memory;
 //using webapi22.example.data_access.TypedListClasses;
 using static webapi22.example.data_access.in_memory.DAL;
 using static webapi22.example.data_access.in_memory.MockDB;
+using static webapi22.example.validation.RouteValidators;
+
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
 using webapi22.example.dtos.DtoClasses.UserTodoListsTypes;
@@ -34,6 +36,7 @@ namespace webapi2._2.api.Controllers
         [HttpGet("{todoListId}", Name = "Get")]
         public ToDoListWithTodos Get(Guid todoListId)
         {
+            var v = ValidatePath(todoListId);
             var u = HttpContext.Session.GetString("UserId");
             return GetTodoList(MockDB._userList[0].UserId, todoListId);
         }
@@ -89,6 +92,7 @@ namespace webapi2._2.api.Controllers
         [HttpGet("{todoListId}/{todoListItemId}")]
         public ActionResult<Todo> Get(Guid todoListId, Guid todoListItemId)
         {
+            var v = ValidatePath(todoListId, todoListItemId);
             return GetSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId);
             
         }
