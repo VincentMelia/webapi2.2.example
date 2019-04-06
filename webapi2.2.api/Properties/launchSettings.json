@@ -13,7 +13,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       //"launchUrl": "api/values",
-      "launchUrl": "todos",
+      "launchUrl": "todos/logon",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -21,7 +21,7 @@
     "webapi2._2.api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "todos/logon",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

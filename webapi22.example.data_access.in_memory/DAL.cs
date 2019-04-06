@@ -28,7 +28,7 @@ namespace webapi22.example.data_access.in_memory
                 TodoListId = todoList.TodoListId,
                 TodoListName = todoList.TodoListName,
                 //TodoListItems = new List<TodoListItem>()
-                TodoListItems = todoItems.Select(item => new TodoListItem()
+                TodoListItems = todoItems.Where(item => item.UserId == userId).Select(item => new TodoListItem()
                 {
                     TodoListItemId = item.TodoListItemId,
                     TodoListItemSubject = item.TodoListItemSubject,
@@ -46,7 +46,7 @@ namespace webapi22.example.data_access.in_memory
             {
                 UserId = user.UserId,
                 UserName = user.UserName,
-                TodoLists = MockDB._todoList.Select(listItem => new TodoList()
+                TodoLists = MockDB._todoList.Where(listItem => listItem.UserId == user.UserId).Select(listItem => new TodoList()
                 {
                     TodoListId = listItem.TodoListId,
                     TodoListName = listItem.TodoListName

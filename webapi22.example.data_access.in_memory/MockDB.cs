@@ -8,9 +8,9 @@ namespace webapi22.example.data_access.in_memory
     {
         public static List<UserEntityDtoRow> _userList = new List<UserEntityDtoRow>()
         {
-            new UserEntityDtoRow() { UserId = Guid.NewGuid(), UserName = "Vinny"},
-            new UserEntityDtoRow() { UserId = Guid.NewGuid(), UserName = "Dimitri"},
-            new UserEntityDtoRow() { UserId = Guid.NewGuid(), UserName = "Jim"}
+            new UserEntityDtoRow() { UserId = new Guid("69b53ae6-a02e-4a6e-9d10-7b69498089e1"), UserName = "Vinny"},
+            new UserEntityDtoRow() { UserId = new Guid("2157e527-2fdc-4d7a-b3af-9b3ddf3f10aa"), UserName = "Dimitri"},
+            new UserEntityDtoRow() { UserId = new Guid("2e4ecd52-a9f1-4b38-ae2c-d07205704fd1"), UserName = "Jim"}
         };
 
         public static List<TodoListEntityDtoRow> _todoList = new List<TodoListEntityDtoRow>()
