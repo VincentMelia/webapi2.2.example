@@ -79,7 +79,7 @@ namespace webapi2._2.api.Controllers
         [HttpPost("{todoListId}")]
         public /*TodoListItemDtoRow**/ object Post(Guid todoListId, [FromBody] Todo newTodoItem)
         {
-            var r = newTodoItem.ValidateTodoListItemDtoRow();
+            var r = newTodoItem.ValidateTodoListItem();
             if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
 
             return AddNewTodo(MockDB._userList[0].UserId, todoListId, newTodoItem);
@@ -97,7 +97,7 @@ namespace webapi2._2.api.Controllers
         public object /*ActionResult<TodoListItemDtoRow>**/ Put(Guid todoListId, Guid todoListItemId, Todo updatedTodoItem)
         {
             //StatusCodes.Status406NotAcceptable
-            var r = updatedTodoItem.ValidateTodoListItemDtoRow();
+            var r = updatedTodoItem.ValidateTodoListItem();
             if (!r.Item1) return  r.Item2.Select(i => i.ErrorMessage).ToList();
 
             return UpdateSingleTodoItem(MockDB._userList[0].UserId, todoListId, todoListItemId, updatedTodoItem);
