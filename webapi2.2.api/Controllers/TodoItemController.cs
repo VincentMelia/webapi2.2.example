@@ -2,8 +2,6 @@
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using static webapi22.example.validation.RouteValidators;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.validation;
 using static webapi22.example.data_access.DataAccess;

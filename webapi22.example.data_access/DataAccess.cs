@@ -47,6 +47,9 @@ namespace webapi22.example.data_access
             }
             else if(dataaccesstype == 1)
             {
+                //AbstractValidatePathForList = sql.dal.DAL.ValidatePath;
+                //AbstractValidatePathForListAndItem = sql.dal.DAL.ValidatePath;
+
                 AbstractGetUsers = sql.dal.DAL.GetUsers;
                 AbstractGetTodoList = sql.dal.DAL.GetTodoList;
                 AbstractGetListsForUser = sql.dal.DAL.GetListsForUser;

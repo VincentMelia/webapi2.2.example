@@ -2,21 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.CSharp.RuntimeBinder;
-using static webapi22.example.validation.ValidatorExtensions;
-using static webapi22.example.validation.RouteValidators;
+using static webapi22.example.data_access.DataAccess;
 using webapi22.example.validation;
 
 namespace webapi22.example.validation
 {
     public static class MainValidator
     {
-        //dynamic t = new Todo();
-        //var r = MainValidator.Validate(t);
-
-        //d.GetType() == typeof(webapi22.example.dtos.DtoClasses.Todo)
-
-        //var r = newTodoItem.ValidateTodoListItem();
-        //    if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
 
         public static List<Tuple<bool, string>> Validate(dynamic d, Guid userId, Guid todoListId, Guid todoItemId)
         {
@@ -25,7 +17,7 @@ namespace webapi22.example.validation
             if (typeofMessageBody == typeof(webapi22.example.dtos.DtoClasses.Todo))
             {
                 var validatorResults = (Tuple<bool, List<FluentValidation.Results.ValidationFailure>>) ValidatorExtensions.ValidateTodoListItem(d);
-                var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId, todoItemId);
+                var routeValidatorResults = AbstractValidatePathForListAndItem(userId, todoListId, todoItemId);
 
                 ((List<FluentValidation.Results.ValidationFailure>) validatorResults.Item2).ForEach(f =>
                     routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));  //){Item1=  validatorResults.Item1, Item2 = f.ErrorMessage));
@@ -35,7 +27,7 @@ namespace webapi22.example.validation
             else if (typeofMessageBody == typeof(dtos.DtoClasses.ToDoListWithTodos))
             {
                 var validatorResults = ValidatorExtensions.ValidateTodoListWithTodos(d);
-                var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId);
+                var routeValidatorResults = data_access.DataAccess.AbstractValidatePathForList(userId, todoListId);
 
                 ((List<FluentValidation.Results.ValidationFailure>)validatorResults.Item2).ForEach(f =>
                     routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));  //){Item1=  validatorResults.Item1, Item2 = f.ErrorMessage));
@@ -49,14 +41,14 @@ namespace webapi22.example.validation
 
         public static List<Tuple<bool, string>> Validate(Guid userId, Guid todoListId, Guid todoItemId)
         {
-            var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId, todoItemId);
+            var routeValidatorResults = AbstractValidatePathForListAndItem(userId, todoListId, todoItemId);
 
             return routeValidatorResults;
         }
 
         public static List<Tuple<bool, string>> Validate(Guid userId, Guid todoListId)
         {
-            var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId);
+            var routeValidatorResults = AbstractValidatePathForList(userId, todoListId);
 
             return routeValidatorResults;
         }

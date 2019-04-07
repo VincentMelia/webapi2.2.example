@@ -37,8 +37,6 @@ namespace webapi22.example.data_access.in_memory
             validationList.Add(validTodoItemResults);
 
             return validationList;
-            //return MockDB._todoListItems.Where(i => i.TodoListId == listId && i.TodoListItemId == itemId && i.UserId == userId).ToList()
-            //           .Count > 0;
         }
 
 
