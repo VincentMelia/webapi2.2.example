@@ -13,10 +13,12 @@ namespace webapi22.example.validation
         //dynamic t = new Todo();
         //var r = MainValidator.Validate(t);
 
+        //d.GetType() == typeof(webapi22.example.dtos.DtoClasses.Todo)
+
         public static bool Validate(dynamic d)
         {
-            var v = d.GetType().ToString();
-            var r = ValidatorExtensions.ValidateTodoListItem(d);// d.ValidateTodoListItem();
+            var v = d.GetType();
+            var r = ValidatorExtensions.ValidateTodoListItem(d);
             return false;
         }
     }
