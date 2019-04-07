@@ -15,6 +15,9 @@ namespace webapi22.example.validation
 
         //d.GetType() == typeof(webapi22.example.dtos.DtoClasses.Todo)
 
+        //var r = newTodoItem.ValidateTodoListItem();
+        //    if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
+
         public static bool Validate(dynamic d, Guid userId, Guid todoListId, Guid todoItemId)
         {
             var v = d.GetType();
