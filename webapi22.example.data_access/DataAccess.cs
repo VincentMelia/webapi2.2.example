@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using webapi22.example.dtos.DtoClasses;
-using webapi22.example.data_access.sql.dal;
+//using webapi22.example.data_access.sql.dal;
 
 namespace webapi22.example.data_access
 {
     
     public static class DataAccess
     {
-        public static readonly int dataaccesstype = 0;
+        public static readonly int dataaccesstype = 1;
 
         public static Func<List<User>> AbstractGetUsers;
         public static Func<Guid, Guid, ToDoListWithTodos> AbstractGetTodoList;
@@ -39,16 +39,16 @@ namespace webapi22.example.data_access
             }
             else if(dataaccesstype == 1)
             {
-                AbstractGetUsers = in_memory.DAL.GetUsers;
-                AbstractGetTodoList = in_memory.DAL.GetTodoList;
-                AbstractGetListsForUser = in_memory.DAL.GetListsForUser;
-                AbstractCreateTodoList = in_memory.DAL.CreateTodoList;
-                AbstractUpdateTodoList = in_memory.DAL.UpdateTodoList;
-                AbstractDeleteTodoList = in_memory.DAL.DeleteTodoList;
-                AbstractAddNewTodo = in_memory.DAL.AddNewTodo;
-                AbstractGetSingleTodoItem = in_memory.DAL.GetSingleTodoItem;
-                AbstractUpdateSingleTodoItem = in_memory.DAL.UpdateSingleTodoItem;
-                AbstractDeleteSingleTodo = in_memory.DAL.DeleteSingleTodo;
+                AbstractGetUsers = sql.dal.DAL.GetUsers;
+                AbstractGetTodoList = sql.dal.DAL.GetTodoList;
+                AbstractGetListsForUser = sql.dal.DAL.GetListsForUser;
+                AbstractCreateTodoList = sql.dal.DAL.CreateTodoList;
+                AbstractUpdateTodoList = sql.dal.DAL.UpdateTodoList;
+                AbstractDeleteTodoList = sql.dal.DAL.DeleteTodoList;
+                AbstractAddNewTodo = sql.dal.DAL.AddNewTodo;
+                AbstractGetSingleTodoItem = sql.dal.DAL.GetSingleTodoItem;
+                AbstractUpdateSingleTodoItem = sql.dal.DAL.UpdateSingleTodoItem;
+                AbstractDeleteSingleTodo = sql.dal.DAL.DeleteSingleTodo;
             }
             else
             {

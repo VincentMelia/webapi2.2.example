@@ -1,6 +1,17 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
+using SD.LLBLGen.Pro.ORMSupportClasses;
+using SD.LLBLGen.Pro.QuerySpec;
 using webapi22.example.dtos.DtoClasses;
+using webapi22.example.data_access.sql.EntityClasses;
+using webapi22.example.data_access.sql.CollectionClasses;
+using webapi22.example.data_access.sql.FactoryClasses;
+using webapi22.example.data_access.sql.HelperClasses;
+using webapi22.example.dtos.Persistence;
+using webapi22.example.dtos.DtoClasses.UserTodoListsTypes;
+using SD.LLBLGen.Pro.QuerySpec.SelfServicing;
+using webapi22.example.data_access.sql.DaoClasses;
 
 namespace webapi22.example.data_access.sql.dal
 {
@@ -8,101 +19,96 @@ namespace webapi22.example.data_access.sql.dal
     {
         public static List<User> GetUsers()
         {
+            List<User> users = new List<User>();
             //return MockDB._userList.Select(u => new User() { UserId = u.UserId, UserName = u.UserName }).ToList();
-            return null;
+            var userentities = new UserCollection().GetMulti<UserEntity>(new QueryFactory().User);
+            foreach (UserEntity user in userentities)
+            {
+                users.Add(user.ProjectToUser());
+            }
+            return users;
         }
 
         public static ToDoListWithTodos GetTodoList(Guid userId, Guid todoListId)
         {
-            //var todoList = MockDB._todoList.Where(t => t.UserId == userId && t.TodoListId == todoListId).ToList()[0];
-            //var todoItems = MockDB._todoListItems.Where(t => t.TodoListId == todoListId);
+            var qf = new QueryFactory();
 
-            //return new ToDoListWithTodos()
-            //{
-            //    TodoListId = todoList.TodoListId,
-            //    TodoListName = todoList.TodoListName,
-            //    //TodoListItems = new List<TodoListItem>()
-            //    TodoListItems = todoItems.Where(item => item.UserId == userId).Select(item => new TodoListItem()
-            //    {
-            //        TodoListItemId = item.TodoListItemId,
-            //        TodoListItemSubject = item.TodoListItemSubject,
-            //        TodoListItemIsComplete = item.TodoListItemIsComplete
-            //    }).ToList()
-            //};
-            return null;
+            var todolist = qf.TodoList
+                .From(QueryTarget.InnerJoin(qf.TodoListItem)
+                    .On(TodoListItemFields.TodoListId.Equal(TodoListFields.TodoListId)))
+                .Where(TodoListFields.UserId.Equal(userId)
+                    .And(TodoListFields.TodoListId.Equal(todoListId)
+                    .And(TodoListItemFields.TodoListItemIsComplete.NotEqual(true)))).GetFirst();
 
+            return todolist.ProjectToToDoListWithTodos();
         }
 
         public static UserTodoLists GetListsForUser(Guid userId)
         {
-            //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
-
-            //return new UserTodoLists()
-            //{
-            //    UserId = user.UserId,
-            //    UserName = user.UserName,
-            //    TodoLists = MockDB._todoList.Where(listItem => listItem.UserId == user.UserId).Select(listItem => new TodoList()
-            //    {
-            //        TodoListId = listItem.TodoListId,
-            //        TodoListName = listItem.TodoListName
-            //    }).ToList()
-            //};
-            return null;
-
+            List<UserTodoLists> todoLists = new List<UserTodoLists>();
+            return new QueryFactory().User.Where(UserFields.UserId.Equal(userId)).GetFirst().ProjectToUserTodoLists();
         }
 
         public static ToDoListWithTodos CreateTodoList(Guid userId, ToDoListWithTodos newTodoListWithTodos)
         {
-            //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+            var newlist = new TodoListEntity();
+            newlist.UpdateFromToDoListWithTodos(newTodoListWithTodos);
+            newlist.UserId = userId;
+            newlist.TodoListId = Guid.NewGuid();
 
-            //var newTodoList = new TodoListEntityDtoRow()
-            //{
-            //    TodoListId = Guid.NewGuid(),
-            //    TodoListName = newTodoListWithTodos.TodoListName,
-            //    UserId = user.UserId
-            //};
+            foreach (var todoListItem in newTodoListWithTodos.TodoListItems)
+            {
+                newlist.TodoListItems.Add(new TodoListItemEntity()
+                    {
+                        TodoListItemId = Guid.NewGuid(),
+                        TodoListItemSubject = todoListItem.TodoListItemSubject,
+                        TodoListItemIsComplete = todoListItem.TodoListItemIsComplete,    
+                    });
+            }
+            newlist.Save(true);
 
-            //MockDB._todoList.Add(newTodoList);
-
-            //newTodoListWithTodos.TodoListItems.ForEach(newItem => MockDB._todoListItems.Add(new TodoListItemEntityDtoRow()
-            //{
-            //    TodoListItemId = Guid.NewGuid(),
-            //    TodoListId = newTodoList.TodoListId,
-            //    TodoListItemSubject = newItem.TodoListItemSubject,
-            //    TodoListItemIsComplete = newItem.TodoListItemIsComplete,
-            //    UserId = user.UserId
-            //}));
-
-            //return GetTodoList(user.UserId,
-            //    newTodoList.TodoListId);
-            return null;
-
+            return GetTodoList(userId, newlist.TodoListId);
         }
 
         public static ToDoListWithTodos UpdateTodoList(Guid userId, Guid todoListId, ToDoListWithTodos updatedtDoListWithTodos)
         {
-            //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+            var listToUpdate = new QueryFactory().TodoList
+                .Where(TodoListFields.UserId.Equal(userId).And(TodoListFields.TodoListId.Equal(todoListId))).GetFirst();
 
-            //var todoListToUpdate = MockDB._todoList
-            //    .Where(l => l.UserId == userId && l.TodoListId == updatedtDoListWithTodos.TodoListId).ToList()[0];
+            listToUpdate.UpdateFromToDoListWithTodos(updatedtDoListWithTodos);
 
-            //todoListToUpdate.TodoListName = updatedtDoListWithTodos.TodoListName;
+            foreach (var updatedItem in updatedtDoListWithTodos.TodoListItems)
+            {
+                var itemToUpdate =
+                    listToUpdate.TodoListItems.Where(x => x.TodoListItemId == updatedItem.TodoListItemId)
+                        .FirstOrDefault() ?? listToUpdate.TodoListItems.AddNew();
 
-            //MockDB._todoListItems.Where(i => i.TodoListId == updatedtDoListWithTodos.TodoListId).ToList()
-            //    .ForEach(i => MockDB._todoListItems.Remove(i));
+                itemToUpdate.TodoListId = listToUpdate.TodoListId;
+                if (itemToUpdate.IsNew) itemToUpdate.TodoListItemId = Guid.NewGuid();
+                itemToUpdate.TodoListItemSubject = updatedItem.TodoListItemSubject;
+                itemToUpdate.TodoListItemIsComplete = updatedItem.TodoListItemIsComplete;
+            }
 
-            //updatedtDoListWithTodos.TodoListItems.ForEach(u => MockDB._todoListItems.Add(new TodoListItemEntityDtoRow()
+            //foreach (Property p in newLead.Properties)
             //{
-            //    TodoListId = todoListToUpdate.TodoListId,
-            //    TodoListItemId = Guid.NewGuid(),
-            //    TodoListItemSubject = u.TodoListItemSubject,
-            //    TodoListItemIsComplete = u.TodoListItemIsComplete,
-            //    UserId = user.UserId
-            //}));
+            //    var prop = customerentity.Properties.Where(x => x.PropertyId == p.PropertyId).FirstOrDefault() ?? customerentity.Properties.AddNew();
+            //    prop.UpdateFromPropertyDerivedRoot(p);
 
-            //return GetTodoList(user.UserId, todoListToUpdate.TodoListId);
-            return null;
+            //    foreach (PropertyNote pn in p.PropertyNotes)
+            //    {
+            //        var note = prop.PropertyNotes.Where(x => x.PropertyNotesId == pn.PropertyNotesId).FirstOrDefault() ?? prop.PropertyNotes.AddNew();
+            //        note.UpdateFromPropertyNoteDerivedRoot(pn);
+            //    }
+            //    foreach (PropertyNote pn in _deletedPropertyNotes)
+            //    {
+            //        var note = prop.PropertyNotes.Where(x => x.PropertyNotesId == pn.PropertyNotesId).FirstOrDefault();
+            //        if (note != null) uow.AddForDelete(note);
+            //    }
+            //}
 
+            listToUpdate.Save(true);
+
+            return GetTodoList(userId, todoListId);
         }
 
         public static void DeleteTodoList(Guid userId, Guid todoListId)
