@@ -8,13 +8,15 @@ namespace webapi22.example.validation
 {
     public static class ValidatorExtensions
     {
- 
+
         public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListItem(this Todo _listItem)
         {
             var validator = new TodoListDtoRowValidator(_listItem).Validate(_listItem);
             var r = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
             return r;
         }
+
+
 
         public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListWithTodos(
             this ToDoListWithTodos _todoList)
@@ -40,7 +42,11 @@ namespace webapi22.example.validation
         {
             _todoItem = new WeakReference<Todo>(todoItemToValidate);
 
-            RuleFor(r => r.TodoListItemSubject).MaximumLength(50).WithMessage("Subject must be less than 50 characters");
+            RuleFor(r => r.TodoListItemSubject)
+                .MaximumLength(50).WithMessage("Subject must be less than 50 characters")
+                .MinimumLength(1).WithMessage("Subject is required.")
+                .NotNull().WithMessage("Subject is required.")
+                .NotEmpty().WithMessage("Subject is required.");
         }
     }
 

@@ -23,7 +23,7 @@ namespace webapi2._2.api.Controllers
         [HttpGet("{todoListId}", Name = "Get")]
         public ToDoListWithTodos Get(Guid todoListId)
         {
-            var v = ValidatePath(todoListId);
+            var v = ValidatePath(new Guid(HttpContext.Session.GetString("UserId")), todoListId);
             return webapi22.example.data_access.DataAccess.AbstractGetTodoList(new Guid(HttpContext.Session.GetString("UserId")), todoListId);
         }
 

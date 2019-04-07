@@ -18,17 +18,38 @@ namespace webapi22.example.validation
         //var r = newTodoItem.ValidateTodoListItem();
         //    if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
 
-        public static bool Validate(dynamic d, Guid userId, Guid todoListId, Guid todoItemId)
+        public static List<Tuple<bool, string>> Validate(dynamic d, Guid userId, Guid todoListId, Guid todoItemId)
         {
-            var v = d.GetType();
+            var typeofMessageBody = d.GetType();
 
-            if (v == typeof(webapi22.example.dtos.DtoClasses.Todo))
+            if (typeofMessageBody == typeof(webapi22.example.dtos.DtoClasses.Todo))
             {
-                var validatorResults = ValidatorExtensions.ValidateTodoListItem(d);
-                var routeValidatorResults = RouteValidators.ValidatePath(todoListId, todoItemId);
+                var validatorResults = (Tuple<bool, List<FluentValidation.Results.ValidationFailure>>) ValidatorExtensions.ValidateTodoListItem(d);
+                var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId, todoItemId);
+
+                ((List<FluentValidation.Results.ValidationFailure>) validatorResults.Item2).ForEach(f =>
+                    routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));  //){Item1=  validatorResults.Item1, Item2 = f.ErrorMessage));
+
+                return routeValidatorResults;
+            }
+            else if (typeofMessageBody == typeof(dtos.DtoClasses.ToDoListWithTodos))
+            {
+                //var validatorResults = ValidatorExtensions.ValidateTodoListWithTodos(d);
+                //var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId);
             }
 
-            return false;
+
+            return null;
         }
+
+        public static List<Tuple<bool, string>> Validate(Guid userId, Guid todoListId, Guid todoItemId)
+        {
+            var r = RouteValidators.ValidatePath(userId, todoListId, todoItemId);
+
+            var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId, todoItemId);
+
+            return routeValidatorResults;
+        }
+
     }
 }

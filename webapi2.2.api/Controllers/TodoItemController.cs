@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static webapi22.example.validation.RouteValidators;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.validation;
@@ -16,11 +17,12 @@ namespace webapi2._2.api.Controllers
         [HttpGet("{todoListId}/{todoListItemId}")]
         public ActionResult<Todo> Get(Guid todoListId, Guid todoListItemId)
         {
-            dynamic t = new Todo();
-            var r = MainValidator.Validate(t, new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
+            var r = MainValidator.Validate(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
 
-            var v = ValidatePath(todoListId, todoListItemId);
-            return webapi22.example.data_access.DataAccess.AbstractGetSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
+            if (r.Any(x => !x.Item1))
+                return BadRequest(r.Where(x => !x.Item1).ToList());
+
+            return Ok(webapi22.example.data_access.DataAccess.AbstractGetSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId));
         }
 
         [HttpPut("{todoListId}/{todoListItemId}")]
