@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.CSharp.RuntimeBinder;
 using static webapi22.example.data_access.DataAccess;
-using webapi22.example.validation;
 
 namespace webapi22.example.validation
 {

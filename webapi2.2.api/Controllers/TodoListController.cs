@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,26 +6,18 @@ using webapi22.example.dtos.DtoClasses;
 using webapi22.example.validation;
 using static webapi22.example.data_access.DataAccess;
 //using Todo = webapi22.example.data_access.TypedListClasses.Todo;
-using static webapi22.example.validation.MainValidator;
 
 namespace webapi2._2.api.Controllers
 {
     [Route("todos")]
     [ApiController]
+    [LogonRequired]
     public class TodoListController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<UserTodoLists> Get()
+        public /*ActionResult<UserTodoLists>*/object Get()
         {
-            var notloggedon = new List<Tuple<bool, string>>();
-            notloggedon.Add(
-                new Tuple<bool, string>(false, "not logged on."));
-
-            var b = new byte[10];
-            var userexists  = HttpContext.Session.TryGetValue("UserId", out b);
-
-            var validationResults = userexists ? AbstractValidateUser(new Guid(HttpContext.Session?.GetString("UserId")))
-                                    : notloggedon;
+            var validationResults = AbstractValidateUser(new Guid(HttpContext.Session?.GetString("UserId")));
 
             if (validationResults.Any(x => !x.Item1))
                 return BadRequest(validationResults.Where(x => !x.Item1).ToList());
@@ -36,7 +27,7 @@ namespace webapi2._2.api.Controllers
         }
 
         [HttpGet("{todoListId}", Name = "Get")]
-        public ActionResult<ToDoListWithTodos> Get(Guid todoListId)
+        public /*ActionResult<ToDoListWithTodos>*/object Get(Guid todoListId)
         {
             var validationResults = MainValidator.Validate(
                 new Guid(HttpContext.Session.GetString("UserId")), todoListId);
@@ -48,7 +39,7 @@ namespace webapi2._2.api.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ToDoListWithTodos> Post(ToDoListWithTodos toDoListWithTodos)
+        public /*ActionResult<ToDoListWithTodos>*/ object Post(ToDoListWithTodos toDoListWithTodos)
         {
             var validationResults = MainValidator.Validate(
                 new Guid(HttpContext.Session.GetString("UserId")), toDoListWithTodos.TodoListId);
@@ -61,7 +52,7 @@ namespace webapi2._2.api.Controllers
 
   
         [HttpPut("{todoListId}")]
-        public ActionResult<ToDoListWithTodos> Put(Guid todoListId, [FromBody] ToDoListWithTodos updatedTodoList)
+        public /*ActionResult<ToDoListWithTodos>*/object Put(Guid todoListId, [FromBody] ToDoListWithTodos updatedTodoList)
         {
             var validationResults = MainValidator.Validate(
                 new Guid(HttpContext.Session.GetString("UserId")), todoListId);
@@ -76,7 +67,7 @@ namespace webapi2._2.api.Controllers
 
 
         [HttpDelete("{todoListId}")]
-        public IActionResult Delete(Guid todoListId)
+        public /*IActionResult*/object Delete(Guid todoListId)
         {
             var validationResults = MainValidator.Validate(
                 new Guid(HttpContext.Session.GetString("UserId")), todoListId);
@@ -90,7 +81,7 @@ namespace webapi2._2.api.Controllers
         }
 
         [HttpPost("{todoListId}")]
-        public ActionResult<ToDoListWithTodos> Post(Guid todoListId, [FromBody] Todo newTodoItem)
+        public /*ActionResult<ToDoListWithTodos>*/object Post(Guid todoListId, [FromBody] Todo newTodoItem)
         {
             var validationResults = MainValidator.Validate(
                 new Guid(HttpContext.Session.GetString("UserId")), todoListId);

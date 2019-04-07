@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using SD.LLBLGen.Pro.ORMSupportClasses;
 using SD.LLBLGen.Pro.QuerySpec;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.data_access.sql.EntityClasses;
@@ -10,9 +8,7 @@ using webapi22.example.data_access.sql.CollectionClasses;
 using webapi22.example.data_access.sql.FactoryClasses;
 using webapi22.example.data_access.sql.HelperClasses;
 using webapi22.example.dtos.Persistence;
-using webapi22.example.dtos.DtoClasses.UserTodoListsTypes;
 using SD.LLBLGen.Pro.QuerySpec.SelfServicing;
-using webapi22.example.data_access.sql.DaoClasses;
 
 namespace webapi22.example.data_access.sql.dal
 {

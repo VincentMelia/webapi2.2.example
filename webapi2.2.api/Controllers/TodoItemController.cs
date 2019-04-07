@@ -12,7 +12,7 @@ namespace webapi2._2.api.Controllers
     [ApiController]
     public class TodoItemController : ControllerBase
     {
-
+        [LogonRequired]
         [HttpGet("{todoListId}/{todoListItemId}")]
         public ActionResult<Todo> Get(Guid todoListId, Guid todoListItemId)
         {
@@ -24,6 +24,7 @@ namespace webapi2._2.api.Controllers
             return Ok(AbstractGetSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId));
         }
 
+        [LogonRequired]
         [HttpPut("{todoListId}/{todoListItemId}")]
         public ActionResult<Todo> Put(Guid todoListId, Guid todoListItemId, Todo updatedTodoItem)
         {
@@ -38,6 +39,7 @@ namespace webapi2._2.api.Controllers
             return Ok(AbstractUpdateSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId, updatedTodoItem));
         }
 
+        [LogonRequired]
         [HttpDelete("{todoListId}/{todoListItemId}")]
         public IActionResult Delete(Guid todoListId, Guid todoListItemId)
         {
@@ -52,6 +54,7 @@ namespace webapi2._2.api.Controllers
         }
 
         //[HttpPut("{todoListId}/{todoListItemId}/MarkComplete")]
+        [LogonRequired]
         [Route("{todoListId}/{todoListItemId}/MarkComplete")]
         public ActionResult<Todo> Put(Guid todoListId, Guid todoListItemId)
         {
