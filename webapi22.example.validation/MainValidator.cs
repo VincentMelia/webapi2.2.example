@@ -34,8 +34,13 @@ namespace webapi22.example.validation
             }
             else if (typeofMessageBody == typeof(dtos.DtoClasses.ToDoListWithTodos))
             {
-                //var validatorResults = ValidatorExtensions.ValidateTodoListWithTodos(d);
-                //var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId);
+                var validatorResults = ValidatorExtensions.ValidateTodoListWithTodos(d);
+                var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId);
+
+                ((List<FluentValidation.Results.ValidationFailure>)validatorResults.Item2).ForEach(f =>
+                    routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));  //){Item1=  validatorResults.Item1, Item2 = f.ErrorMessage));
+
+                return routeValidatorResults;
             }
 
 
@@ -44,9 +49,14 @@ namespace webapi22.example.validation
 
         public static List<Tuple<bool, string>> Validate(Guid userId, Guid todoListId, Guid todoItemId)
         {
-            var r = RouteValidators.ValidatePath(userId, todoListId, todoItemId);
-
             var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId, todoItemId);
+
+            return routeValidatorResults;
+        }
+
+        public static List<Tuple<bool, string>> Validate(Guid userId, Guid todoListId)
+        {
+            var routeValidatorResults = RouteValidators.ValidatePath(userId, todoListId);
 
             return routeValidatorResults;
         }

@@ -10,6 +10,11 @@ namespace webapi22.example.data_access
     {
         public static readonly int dataaccesstype = 0;
 
+        public static Func<Guid, Guid, List<Tuple<bool, string>>> AbstractValidatePathForList;
+        public static Func<Guid, Guid, Guid, List<Tuple<bool, string>>> AbstractValidatePathForListAndItem;
+
+
+        //public static List<Tuple<bool, string>> ValidatePath(Guid userId, Guid listId, Guid itemId)
         public static Func<List<User>> AbstractGetUsers;
         public static Func<Guid, Guid, ToDoListWithTodos> AbstractGetTodoList;
         public static Func<Guid, UserTodoLists> AbstractGetListsForUser;
@@ -26,6 +31,9 @@ namespace webapi22.example.data_access
         {
             if (dataaccesstype == 0)
             {
+                AbstractValidatePathForList = in_memory.DAL.ValidatePath;
+                AbstractValidatePathForListAndItem = in_memory.DAL.ValidatePath;
+
                 AbstractGetUsers = in_memory.DAL.GetUsers;
                 AbstractGetTodoList = in_memory.DAL.GetTodoList;
                 AbstractGetListsForUser = in_memory.DAL.GetListsForUser;

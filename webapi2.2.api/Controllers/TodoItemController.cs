@@ -6,6 +6,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static webapi22.example.validation.RouteValidators;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.validation;
+using static webapi22.example.data_access.DataAccess;
 
 namespace webapi2._2.api.Controllers
 {
@@ -22,7 +23,7 @@ namespace webapi2._2.api.Controllers
             if (validationResults.Any(x => !x.Item1))
                 return BadRequest(validationResults.Where(x => !x.Item1).ToList());
 
-            return Ok(webapi22.example.data_access.DataAccess.AbstractGetSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId));
+            return Ok(AbstractGetSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId));
         }
 
         [HttpPut("{todoListId}/{todoListItemId}")]
@@ -36,26 +37,40 @@ namespace webapi2._2.api.Controllers
                 return BadRequest(validationResults.Where(x => !x.Item1).ToList());
 
 
-            return Ok(webapi22.example.data_access.DataAccess.AbstractUpdateSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId, updatedTodoItem));
+            return Ok(AbstractUpdateSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId, updatedTodoItem));
         }
 
         [HttpDelete("{todoListId}/{todoListItemId}")]
-        public void Delete(Guid todoListId, Guid todoListItemId)
+        public IActionResult Delete(Guid todoListId, Guid todoListItemId)
         {
-            webapi22.example.data_access.DataAccess.AbstractDeleteSingleTodo(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
+            var validationResults = MainValidator.Validate(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
+
+            if (validationResults.Any(x => !x.Item1))
+                return BadRequest(validationResults.Where(x => !x.Item1).ToList());
+
+            AbstractDeleteSingleTodo(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
+
+            return Ok();
         }
 
         //[HttpPut("{todoListId}/{todoListItemId}/MarkComplete")]
         [Route("{todoListId}/{todoListItemId}/MarkComplete")]
-        public object /*ActionResult<TodoListItemDtoRow>**/ Put(Guid todoListId, Guid todoListItemId)
-        {        
+        public ActionResult<Todo> Put(Guid todoListId, Guid todoListItemId)
+        {
+            var validationResults = MainValidator.Validate(new Guid(HttpContext.Session.GetString("UserId")),
+                todoListId, todoListItemId);
+
+            if (validationResults.Any(x => !x.Item1))
+                return BadRequest(validationResults.Where(x => !x.Item1).ToList());
+
             var todoToUpdate =
                 webapi22.example.data_access.DataAccess.AbstractGetSingleTodoItem(
                     new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
 
             todoToUpdate.TodoListItemIsComplete = true;
 
-            return webapi22.example.data_access.DataAccess.AbstractUpdateSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId, todoToUpdate);
+            return Ok(AbstractUpdateSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId,
+                todoListItemId, todoToUpdate));
         }
 
     }

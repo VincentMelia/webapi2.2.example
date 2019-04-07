@@ -2,9 +2,11 @@
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using webapi22.example.data_access.sql.DaoClasses;
 using static webapi22.example.validation.RouteValidators;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.validation;
+using static webapi22.example.data_access.DataAccess;
 //using Todo = webapi22.example.data_access.TypedListClasses.Todo;
 using static webapi22.example.validation.MainValidator;
 
@@ -21,43 +23,69 @@ namespace webapi2._2.api.Controllers
         }
 
         [HttpGet("{todoListId}", Name = "Get")]
-        public ToDoListWithTodos Get(Guid todoListId)
+        public ActionResult<ToDoListWithTodos> Get(Guid todoListId)
         {
-            var v = ValidatePath(new Guid(HttpContext.Session.GetString("UserId")), todoListId);
-            return webapi22.example.data_access.DataAccess.AbstractGetTodoList(new Guid(HttpContext.Session.GetString("UserId")), todoListId);
+            var validationResults = MainValidator.Validate(
+                new Guid(HttpContext.Session.GetString("UserId")), todoListId);
+
+            if (validationResults.Any(x => !x.Item1))
+                return BadRequest(validationResults.Where(x => !x.Item1).ToList());
+
+            return Ok(AbstractGetTodoList(new Guid(HttpContext.Session.GetString("UserId")), todoListId));
         }
 
         [HttpPost]
-        public ToDoListWithTodos Post(ToDoListWithTodos toDoListWithTodos)
+        public ActionResult<ToDoListWithTodos> Post(ToDoListWithTodos toDoListWithTodos)
         {
-            return webapi22.example.data_access.DataAccess.AbstractCreateTodoList(new Guid(HttpContext.Session.GetString("UserId")), toDoListWithTodos);
+            var validationResults = MainValidator.Validate(
+                new Guid(HttpContext.Session.GetString("UserId")), toDoListWithTodos.TodoListId);
+
+            if (validationResults.Any(x => !x.Item1))
+                return BadRequest(validationResults.Where(x => !x.Item1).ToList());
+
+            return Ok(AbstractCreateTodoList(new Guid(HttpContext.Session.GetString("UserId")), toDoListWithTodos));
         }
 
   
         [HttpPut("{todoListId}")]
-        public object /*ToDoListWithTodos**/ Put(Guid todoListId, [FromBody] ToDoListWithTodos updatedTodoList)
+        public ActionResult<ToDoListWithTodos> Put(Guid todoListId, [FromBody] ToDoListWithTodos updatedTodoList)
         {
-            var r = updatedTodoList.ValidateTodoListWithTodos();
-            if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
+            var validationResults = MainValidator.Validate(
+                new Guid(HttpContext.Session.GetString("UserId")), todoListId);
+
+            if (validationResults.Any(x => !x.Item1))
+                return BadRequest(validationResults.Where(x => !x.Item1).ToList());
 
             updatedTodoList.TodoListId = todoListId;
-            return webapi22.example.data_access.DataAccess.AbstractUpdateTodoList(new Guid(HttpContext.Session.GetString("UserId")), todoListId, updatedTodoList);
+
+            return Ok(AbstractUpdateTodoList(new Guid(HttpContext.Session.GetString("UserId")), todoListId, updatedTodoList));
         }
 
 
         [HttpDelete("{todoListId}")]
-        public void Delete(Guid todoListId)
+        public IActionResult Delete(Guid todoListId)
         {
-            webapi22.example.data_access.DataAccess.AbstractDeleteTodoList(new Guid(HttpContext.Session.GetString("UserId")), todoListId );
+            var validationResults = MainValidator.Validate(
+                new Guid(HttpContext.Session.GetString("UserId")), todoListId);
+
+            if (validationResults.Any(x => !x.Item1))
+                return BadRequest(validationResults.Where(x => !x.Item1).ToList());
+
+            AbstractDeleteTodoList(new Guid(HttpContext.Session.GetString("UserId")), todoListId );
+
+            return Ok();
         }
 
         [HttpPost("{todoListId}")]
-        public /*TodoListItemDtoRow**/ object Post(Guid todoListId, [FromBody] Todo newTodoItem)
+        public ActionResult<ToDoListWithTodos> Post(Guid todoListId, [FromBody] Todo newTodoItem)
         {
-            var r = newTodoItem.ValidateTodoListItem();
-            if (!r.Item1) return r.Item2.Select(i => i.ErrorMessage).ToList();
+            var validationResults = MainValidator.Validate(
+                new Guid(HttpContext.Session.GetString("UserId")), todoListId);
 
-            return webapi22.example.data_access.DataAccess.AbstractAddNewTodo(new Guid(HttpContext.Session.GetString("UserId")), todoListId, newTodoItem);
+            if (validationResults.Any(x => !x.Item1))
+                return BadRequest(validationResults.Where(x => !x.Item1).ToList());
+
+            return Ok(AbstractAddNewTodo(new Guid(HttpContext.Session.GetString("UserId")), todoListId, newTodoItem));
         }
 
 
