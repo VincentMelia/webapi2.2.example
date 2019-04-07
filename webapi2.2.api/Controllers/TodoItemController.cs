@@ -18,7 +18,6 @@ namespace webapi2._2.api.Controllers
         {
             var v = ValidatePath(todoListId, todoListItemId);
             return webapi22.example.data_access.DataAccess.AbstractGetSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
-
         }
 
         [HttpPut("{todoListId}/{todoListItemId}")]

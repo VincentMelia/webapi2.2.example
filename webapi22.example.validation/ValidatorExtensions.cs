@@ -8,6 +8,7 @@ namespace webapi22.example.validation
 {
     public static class ValidatorExtensions
     {
+ 
         public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListItem(this Todo _listItem)
         {
             var validator = new TodoListDtoRowValidator(_listItem).Validate(_listItem);
@@ -22,6 +23,7 @@ namespace webapi22.example.validation
             var r = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
             return r;
         }
+
     }
 
 

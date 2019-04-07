@@ -8,7 +8,7 @@ namespace webapi22.example.data_access
     
     public static class DataAccess
     {
-        public static readonly int dataaccesstype = 1;
+        public static readonly int dataaccesstype = 0;
 
         public static Func<List<User>> AbstractGetUsers;
         public static Func<Guid, Guid, ToDoListWithTodos> AbstractGetTodoList;

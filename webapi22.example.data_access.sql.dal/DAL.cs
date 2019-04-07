@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 using SD.LLBLGen.Pro.QuerySpec;
 using webapi22.example.dtos.DtoClasses;
@@ -84,7 +85,9 @@ namespace webapi22.example.data_access.sql.dal
                         .FirstOrDefault() ?? listToUpdate.TodoListItems.AddNew();
 
                 itemToUpdate.TodoListId = listToUpdate.TodoListId;
-                if (itemToUpdate.IsNew) itemToUpdate.TodoListItemId = Guid.NewGuid();
+                if (itemToUpdate.IsNew)
+                    itemToUpdate.TodoListItemId = Guid.NewGuid();
+                   
                 itemToUpdate.TodoListItemSubject = updatedItem.TodoListItemSubject;
                 itemToUpdate.TodoListItemIsComplete = updatedItem.TodoListItemIsComplete;
             }

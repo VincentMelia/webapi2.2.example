@@ -6,6 +6,7 @@ using static webapi22.example.validation.RouteValidators;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.validation;
 //using Todo = webapi22.example.data_access.TypedListClasses.Todo;
+using static webapi22.example.validation.MainValidator;
 
 namespace webapi2._2.api.Controllers
 {
@@ -16,6 +17,9 @@ namespace webapi2._2.api.Controllers
         [HttpGet]
         public UserTodoLists Get()
         {
+            dynamic t = new Todo();
+            var r = MainValidator.Validate(t);
+            
             return webapi22.example.data_access.DataAccess.AbstractGetListsForUser(new Guid(HttpContext.Session.GetString("UserId")));
         }
 
