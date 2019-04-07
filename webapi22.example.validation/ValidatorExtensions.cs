@@ -29,9 +29,7 @@ namespace webapi22.example.validation
     }
 
 
-    /// <summary>
-    /// /////////////////////////////////////////////////////////////
-    /// </summary>
+   ////////////////////////////////////////////////////////////////////////////////////////////////// 
 
 
     internal class TodoListDtoRowValidator : AbstractValidator<Todo>
@@ -60,7 +58,11 @@ namespace webapi22.example.validation
         {
             _todoList = new WeakReference<ToDoListWithTodos>(todoListToValidate);
 
-            RuleFor(r => r.TodoListName).MaximumLength(20).WithMessage("List name must be less than 20 characters.");
+            RuleFor(r => r.TodoListName)
+                .MaximumLength(20).WithMessage("List name must be less than 20 characters.")
+                .MinimumLength(1).WithMessage("List name is required.")
+                .NotNull().WithMessage("List name is required.")
+                .NotEmpty().WithMessage("List name is required.");
         }
     }
 }

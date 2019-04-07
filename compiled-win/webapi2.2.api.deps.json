@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2/win-x86",
-    "signature": "7e19069fcda5fb333e98c5c94e134a60c2f14b96"
+    "signature": "c0526a9ba83ab3dc5aa73efdc2517439169f1aa2"
   },
   "compilationOptions": {
     "defines": [
@@ -27,7 +27,8 @@
           "Microsoft.AspNetCore.App": "2.2.1",
           "Microsoft.NETCore.App": "2.2.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "webapi22.example.data_access.in_memory": "1.0.0",
+          "SD.Tools.OrmProfiler.Interceptor": "1.5.20150715",
+          "webapi22.example.data_access": "1.0.0",
           "webapi22.example.validation": "1.0.0"
         },
         "compile": {
@@ -2137,7 +2138,7 @@
           "System.Diagnostics.Debug": "4.3.0",
           "System.Linq": "4.3.0",
           "System.Linq.Expressions": "4.3.0",
-          "System.Linq.Queryable": "4.0.1",
+          "System.Linq.Queryable": "4.3.0",
           "System.ObjectModel": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
@@ -2219,20 +2220,43 @@
         }
       },
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
-      "SD.LLBLGen.Pro.DQE.SqlServer/5.5.2": {
+      "SD.LLBLGen.Pro.DQE.SqlServer/5.4.0": {
         "dependencies": {
-          "SD.LLBLGen.Pro.ORMSupportClasses": "5.5.2"
+          "SD.LLBLGen.Pro.ORMSupportClasses": "5.4.0"
         },
         "compile": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.DQE.SqlServer.dll": {}
         }
       },
-      "SD.LLBLGen.Pro.ORMSupportClasses/5.5.2": {
+      "SD.LLBLGen.Pro.ORMSupportClasses/5.4.0": {
         "dependencies": {
           "System.Data.SqlClient": "4.6.0"
         },
         "compile": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.ORMSupportClasses.dll": {}
+        }
+      },
+      "SD.Tools.Algorithmia/1.1.0": {
+        "dependencies": {
+          "SD.Tools.BCLExtensions": "1.0.0"
+        },
+        "compile": {
+          "lib/SD.Tools.Algorithmia.dll": {}
+        }
+      },
+      "SD.Tools.BCLExtensions/1.0.0": {
+        "compile": {
+          "lib/SD.Tools.BCLExtensions.dll": {}
+        }
+      },
+      "SD.Tools.OrmProfiler.Interceptor/1.5.20150715": {
+        "dependencies": {
+          "SD.Tools.Algorithmia": "1.1.0",
+          "SD.Tools.BCLExtensions": "1.0.0"
+        },
+        "compile": {
+          "lib/net35/SD.Tools.OrmProfiler.Interceptor.dll": {},
+          "lib/net35/SD.Tools.OrmProfiler.Shared.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -2598,7 +2622,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Linq.Queryable/4.0.1": {
+      "System.Linq.Queryable/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -3167,7 +3191,10 @@
       },
       "webapi22.example.data_access/1.0.0": {
         "dependencies": {
-          "SD.LLBLGen.Pro.DQE.SqlServer": "5.5.2"
+          "webapi22.example.data_access.in_memory": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
+          "webapi22.example.data_access.sql.dal": "1.0.0",
+          "webapi22.example.dtos": "1.0.0"
         },
         "compile": {
           "webapi22.example.data_access.dll": {}
@@ -3175,11 +3202,29 @@
       },
       "webapi22.example.data_access.in_memory/1.0.0": {
         "dependencies": {
-          "webapi22.example.data_access": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
           "webapi22.example.dtos": "1.0.0"
         },
         "compile": {
           "webapi22.example.data_access.in_memory.dll": {}
+        }
+      },
+      "webapi22.example.data_access.sql/1.0.0": {
+        "dependencies": {
+          "SD.LLBLGen.Pro.DQE.SqlServer": "5.4.0"
+        },
+        "compile": {
+          "webapi22.example.data_access.sql.dll": {}
+        }
+      },
+      "webapi22.example.data_access.sql.dal/1.0.0": {
+        "dependencies": {
+          "webapi22.example.data_access.sql": "1.0.0",
+          "webapi22.example.dtos": "1.0.0",
+          "webapi22.example.dtos.Persistence": "1.0.0"
+        },
+        "compile": {
+          "webapi22.example.data_access.sql.dal.dll": {}
         }
       },
       "webapi22.example.dtos/1.0.0": {
@@ -3190,10 +3235,23 @@
           "webapi22.example.dtos.dll": {}
         }
       },
+      "webapi22.example.dtos.Persistence/1.0.0": {
+        "dependencies": {
+          "System.Linq.Queryable": "4.3.0",
+          "webapi22.example.data_access.sql": "1.0.0",
+          "webapi22.example.dtos": "1.0.0"
+        },
+        "compile": {
+          "webapi22.example.dtos.Persistence.dll": {}
+        }
+      },
       "webapi22.example.validation/1.0.0": {
         "dependencies": {
           "FluentValidation": "8.2.2",
+          "Microsoft.CSharp": "4.5.0",
           "webapi22.example.data_access": "1.0.0",
+          "webapi22.example.data_access.in_memory": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
           "webapi22.example.dtos": "1.0.0"
         },
         "compile": {
@@ -3207,7 +3265,8 @@
           "Microsoft.AspNetCore.App": "2.2.1",
           "Microsoft.NETCore.App": "2.2.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "webapi22.example.data_access.in_memory": "1.0.0",
+          "SD.Tools.OrmProfiler.Interceptor": "1.5.20150715",
+          "webapi22.example.data_access": "1.0.0",
           "webapi22.example.validation": "1.0.0"
         },
         "runtime": {
@@ -5690,7 +5749,7 @@
           "System.Diagnostics.Debug": "4.3.0",
           "System.Linq": "4.3.0",
           "System.Linq.Expressions": "4.3.0",
-          "System.Linq.Queryable": "4.0.1",
+          "System.Linq.Queryable": "4.3.0",
           "System.ObjectModel": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
@@ -6591,25 +6650,60 @@
           }
         }
       },
-      "SD.LLBLGen.Pro.DQE.SqlServer/5.5.2": {
+      "SD.LLBLGen.Pro.DQE.SqlServer/5.4.0": {
         "dependencies": {
-          "SD.LLBLGen.Pro.ORMSupportClasses": "5.5.2"
+          "SD.LLBLGen.Pro.ORMSupportClasses": "5.4.0"
         },
         "runtime": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.DQE.SqlServer.dll": {
-            "assemblyVersion": "5.5.0.0",
-            "fileVersion": "5.5.2.0"
+            "assemblyVersion": "5.4.0.0",
+            "fileVersion": "5.4.0.0"
           }
         }
       },
-      "SD.LLBLGen.Pro.ORMSupportClasses/5.5.2": {
+      "SD.LLBLGen.Pro.ORMSupportClasses/5.4.0": {
         "dependencies": {
           "System.Data.SqlClient": "4.6.0"
         },
         "runtime": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.ORMSupportClasses.dll": {
-            "assemblyVersion": "5.5.0.0",
-            "fileVersion": "5.5.2.0"
+            "assemblyVersion": "5.4.0.0",
+            "fileVersion": "5.4.0.0"
+          }
+        }
+      },
+      "SD.Tools.Algorithmia/1.1.0": {
+        "dependencies": {
+          "SD.Tools.BCLExtensions": "1.0.0"
+        },
+        "runtime": {
+          "lib/SD.Tools.Algorithmia.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.11.1129"
+          }
+        }
+      },
+      "SD.Tools.BCLExtensions/1.0.0": {
+        "runtime": {
+          "lib/SD.Tools.BCLExtensions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.10.1127"
+          }
+        }
+      },
+      "SD.Tools.OrmProfiler.Interceptor/1.5.20150715": {
+        "dependencies": {
+          "SD.Tools.Algorithmia": "1.1.0",
+          "SD.Tools.BCLExtensions": "1.0.0"
+        },
+        "runtime": {
+          "lib/net35/SD.Tools.OrmProfiler.Interceptor.dll": {
+            "assemblyVersion": "1.5.0.0",
+            "fileVersion": "1.5.15.209"
+          },
+          "lib/net35/SD.Tools.OrmProfiler.Shared.dll": {
+            "assemblyVersion": "1.5.0.0",
+            "fileVersion": "1.5.13.1007"
           }
         }
       },
@@ -7003,7 +7097,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Linq.Queryable/4.0.1": {
+      "System.Linq.Queryable/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -7592,7 +7686,10 @@
       },
       "webapi22.example.data_access/1.0.0": {
         "dependencies": {
-          "SD.LLBLGen.Pro.DQE.SqlServer": "5.5.2"
+          "webapi22.example.data_access.in_memory": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
+          "webapi22.example.data_access.sql.dal": "1.0.0",
+          "webapi22.example.dtos": "1.0.0"
         },
         "runtime": {
           "webapi22.example.data_access.dll": {}
@@ -7600,11 +7697,29 @@
       },
       "webapi22.example.data_access.in_memory/1.0.0": {
         "dependencies": {
-          "webapi22.example.data_access": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
           "webapi22.example.dtos": "1.0.0"
         },
         "runtime": {
           "webapi22.example.data_access.in_memory.dll": {}
+        }
+      },
+      "webapi22.example.data_access.sql/1.0.0": {
+        "dependencies": {
+          "SD.LLBLGen.Pro.DQE.SqlServer": "5.4.0"
+        },
+        "runtime": {
+          "webapi22.example.data_access.sql.dll": {}
+        }
+      },
+      "webapi22.example.data_access.sql.dal/1.0.0": {
+        "dependencies": {
+          "webapi22.example.data_access.sql": "1.0.0",
+          "webapi22.example.dtos": "1.0.0",
+          "webapi22.example.dtos.Persistence": "1.0.0"
+        },
+        "runtime": {
+          "webapi22.example.data_access.sql.dal.dll": {}
         }
       },
       "webapi22.example.dtos/1.0.0": {
@@ -7615,10 +7730,23 @@
           "webapi22.example.dtos.dll": {}
         }
       },
+      "webapi22.example.dtos.Persistence/1.0.0": {
+        "dependencies": {
+          "System.Linq.Queryable": "4.3.0",
+          "webapi22.example.data_access.sql": "1.0.0",
+          "webapi22.example.dtos": "1.0.0"
+        },
+        "runtime": {
+          "webapi22.example.dtos.Persistence.dll": {}
+        }
+      },
       "webapi22.example.validation/1.0.0": {
         "dependencies": {
           "FluentValidation": "8.2.2",
+          "Microsoft.CSharp": "4.5.0",
           "webapi22.example.data_access": "1.0.0",
+          "webapi22.example.data_access.in_memory": "1.0.0",
+          "webapi22.example.data_access.sql": "1.0.0",
           "webapi22.example.dtos": "1.0.0"
         },
         "runtime": {
@@ -9103,19 +9231,40 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
-    "SD.LLBLGen.Pro.DQE.SqlServer/5.5.2": {
+    "SD.LLBLGen.Pro.DQE.SqlServer/5.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aciu/xsaf0FeTKsh1oZmA+dRPePa2R57r/C4GtWqzO8jOOlUT+QCNdKMqxEqjJRiFhn4G4vsE2615vQyNXBVTg==",
-      "path": "sd.llblgen.pro.dqe.sqlserver/5.5.2",
-      "hashPath": "sd.llblgen.pro.dqe.sqlserver.5.5.2.nupkg.sha512"
+      "sha512": "sha512-m/vqsf5u4kHWNBEgUYXZ3FOwK37A6y1Zvuj8AFZ0Y43W2tEGqwxN6sic2oRjsPZCCJJgtmqhgW2XZeZ0A1f7ug==",
+      "path": "sd.llblgen.pro.dqe.sqlserver/5.4.0",
+      "hashPath": "sd.llblgen.pro.dqe.sqlserver.5.4.0.nupkg.sha512"
     },
-    "SD.LLBLGen.Pro.ORMSupportClasses/5.5.2": {
+    "SD.LLBLGen.Pro.ORMSupportClasses/5.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-jABaeT9UHvBPAWLLVf0OkWnUI0Dg190KmMwD0Oj9nkrI4jpWxaa4t9YWNkjP31ZYE21UqZs9qlk3wtFShHgNDw==",
-      "path": "sd.llblgen.pro.ormsupportclasses/5.5.2",
-      "hashPath": "sd.llblgen.pro.ormsupportclasses.5.5.2.nupkg.sha512"
+      "sha512": "sha512-SooCtUrqYe3Us2MiTKkQY7FOEcmBaL73ljyEXhNSzipals2lYkz3yb14UQz8+eqhy8WJIuzUFlp+/i/JTdXy0g==",
+      "path": "sd.llblgen.pro.ormsupportclasses/5.4.0",
+      "hashPath": "sd.llblgen.pro.ormsupportclasses.5.4.0.nupkg.sha512"
+    },
+    "SD.Tools.Algorithmia/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1bX3UbNyHzYaYYUTZ+XhskrzA3g8XdQs9EkAK93B24itAo06vVpZ911ToF3t6nYWBiphN8PWG0LKKCNctWViuw==",
+      "path": "sd.tools.algorithmia/1.1.0",
+      "hashPath": "sd.tools.algorithmia.1.1.0.nupkg.sha512"
+    },
+    "SD.Tools.BCLExtensions/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cIvFT57epNlWzRvJRHkzWikflcHvU2vVYbSjs5gqf6JVB8VJAMshBFhVxry8F8CR5tnqumIumRWAqS3sjQ7v7Q==",
+      "path": "sd.tools.bclextensions/1.0.0",
+      "hashPath": "sd.tools.bclextensions.1.0.0.nupkg.sha512"
+    },
+    "SD.Tools.OrmProfiler.Interceptor/1.5.20150715": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yiORYHHrUqaXUVfSj2p+ruaA51Sf57b3c6G0j4VjOuaYBtu5EGdYwD84aMVDLmeFj7z/eiJTyEqqne/bXVHb2A==",
+      "path": "sd.tools.ormprofiler.interceptor/1.5.20150715",
+      "hashPath": "sd.tools.ormprofiler.interceptor.1.5.20150715.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
@@ -9376,12 +9525,12 @@
       "path": "system.linq.parallel/4.3.0",
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
     },
-    "System.Linq.Queryable/4.0.1": {
+    "System.Linq.Queryable/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
-      "path": "system.linq.queryable/4.0.1",
-      "hashPath": "system.linq.queryable.4.0.1.nupkg.sha512"
+      "sha512": "sha512-wdbQgzMijyDkBQySuqYnDcK/V70V6KIUUQdXpkXShHbgQRn0bn9wY3ar0VnsDwCcwu8ig6XBrpC2EU2xK+TuQg==",
+      "path": "system.linq.queryable/4.3.0",
+      "hashPath": "system.linq.queryable.4.3.0.nupkg.sha512"
     },
     "System.Memory/4.5.1": {
       "type": "package",
@@ -9792,7 +9941,22 @@
       "serviceable": false,
       "sha512": ""
     },
+    "webapi22.example.data_access.sql/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "webapi22.example.data_access.sql.dal/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "webapi22.example.dtos/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "webapi22.example.dtos.Persistence/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

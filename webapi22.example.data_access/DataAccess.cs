@@ -12,9 +12,8 @@ namespace webapi22.example.data_access
 
         public static Func<Guid, Guid, List<Tuple<bool, string>>> AbstractValidatePathForList;
         public static Func<Guid, Guid, Guid, List<Tuple<bool, string>>> AbstractValidatePathForListAndItem;
+        public static Func<Guid, List<Tuple<bool, string>>> AbstractValidateUser;
 
-
-        //public static List<Tuple<bool, string>> ValidatePath(Guid userId, Guid listId, Guid itemId)
         public static Func<List<User>> AbstractGetUsers;
         public static Func<Guid, Guid, ToDoListWithTodos> AbstractGetTodoList;
         public static Func<Guid, UserTodoLists> AbstractGetListsForUser;
@@ -33,6 +32,7 @@ namespace webapi22.example.data_access
             {
                 AbstractValidatePathForList = in_memory.DAL.ValidatePath;
                 AbstractValidatePathForListAndItem = in_memory.DAL.ValidatePath;
+                AbstractValidateUser = in_memory.DAL.ValidateUser;
 
                 AbstractGetUsers = in_memory.DAL.GetUsers;
                 AbstractGetTodoList = in_memory.DAL.GetTodoList;
@@ -47,8 +47,9 @@ namespace webapi22.example.data_access
             }
             else if(dataaccesstype == 1)
             {
-                //AbstractValidatePathForList = sql.dal.DAL.ValidatePath;
-                //AbstractValidatePathForListAndItem = sql.dal.DAL.ValidatePath;
+                AbstractValidatePathForList = sql.dal.DAL.ValidatePath;
+                AbstractValidatePathForListAndItem = sql.dal.DAL.ValidatePath;
+                //AbstractValidateUser = sql.dal.DAL.ValidateUser;
 
                 AbstractGetUsers = sql.dal.DAL.GetUsers;
                 AbstractGetTodoList = sql.dal.DAL.GetTodoList;

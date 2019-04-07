@@ -20,6 +20,7 @@ namespace webapi2._2.api.Controllers
         }
 
         [HttpGet("{UserName}")]
+        
         public User Get(string userName)
         {
             var userlist = AbstractGetUsers();

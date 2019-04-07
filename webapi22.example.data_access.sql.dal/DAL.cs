@@ -18,6 +18,55 @@ namespace webapi22.example.data_access.sql.dal
 {
     public static class DAL
     {
+        public static List<Tuple<bool, string>> ValidatePath(Guid userId, Guid listId)
+        {
+            return null;
+            //var result = new List<Tuple<bool, string>>();
+
+            //bool exists = MockDB._todoList.Where(l => l.TodoListId == listId && l.UserId == userId).ToList().Count > 0;
+
+            //result.Add(new Tuple<bool, string>(exists, !exists ? "Todo list doesn't exist." : string.Empty));
+            //return result;
+        }
+
+        public static List<Tuple<bool, string>> ValidatePath(Guid userId, Guid listId, Guid itemId)
+        {
+            return null;
+            //var validationList = new List<Tuple<bool, string>>();
+
+            //var validTodoListResults = ValidatePath(userId, listId);
+
+            //bool exists = MockDB._todoListItems
+            //                  .Where(i => i.TodoListId == listId && i.TodoListItemId == itemId &&
+            //                              i.UserId == userId).ToList()
+            //                  .Count > 0;
+
+            //var validTodoItemResults = new Tuple<bool, string>(exists, !exists ? "Todo item doesn't exist." : string.Empty);
+
+            //validationList.Add(validTodoListResults[0]);
+            //validationList.Add(validTodoItemResults);
+
+            //return validationList;
+        }
+
+        public static List<Tuple<bool, string>> ValidateUser(Guid userId)
+        {
+            return null;
+            //bool exists = MockDB._userList
+            //                  .Where(u => u.UserId == userId).ToList()
+            //                  .Count > 0;
+
+            //var validTodoItemResults = new Tuple<bool, string>(exists, !exists ? "User doesn't exist." : string.Empty);
+
+            //var validationList = new List<Tuple<bool, string>>();
+            //validationList.Add(validTodoItemResults);
+
+            //return validationList;
+        }
+
+
+
+
         public static List<User> GetUsers()
         {
             List<User> users = new List<User>();

@@ -14,13 +14,19 @@ namespace webapi22.example.validation
         {
             var typeofMessageBody = d.GetType();
 
+            //always validate the user
+            var userResults = AbstractValidateUser(userId);
+
+
             if (typeofMessageBody == typeof(webapi22.example.dtos.DtoClasses.Todo))
             {
                 var validatorResults = (Tuple<bool, List<FluentValidation.Results.ValidationFailure>>) ValidatorExtensions.ValidateTodoListItem(d);
                 var routeValidatorResults = AbstractValidatePathForListAndItem(userId, todoListId, todoItemId);
 
                 ((List<FluentValidation.Results.ValidationFailure>) validatorResults.Item2).ForEach(f =>
-                    routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));  //){Item1=  validatorResults.Item1, Item2 = f.ErrorMessage));
+                    routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));  
+
+                routeValidatorResults.Add(userResults[0]);
 
                 return routeValidatorResults;
             }
@@ -30,25 +36,34 @@ namespace webapi22.example.validation
                 var routeValidatorResults = data_access.DataAccess.AbstractValidatePathForList(userId, todoListId);
 
                 ((List<FluentValidation.Results.ValidationFailure>)validatorResults.Item2).ForEach(f =>
-                    routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));  //){Item1=  validatorResults.Item1, Item2 = f.ErrorMessage));
+                    routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));
+
+                routeValidatorResults.Add(userResults[0]);
 
                 return routeValidatorResults;
             }
 
-
-            return null;
+            throw new Exception("Trying to validate a type that doesn't exist.");
         }
 
         public static List<Tuple<bool, string>> Validate(Guid userId, Guid todoListId, Guid todoItemId)
         {
+            var userResults = AbstractValidateUser(userId);
+
             var routeValidatorResults = AbstractValidatePathForListAndItem(userId, todoListId, todoItemId);
+
+            routeValidatorResults.Add(userResults[0]);
 
             return routeValidatorResults;
         }
 
         public static List<Tuple<bool, string>> Validate(Guid userId, Guid todoListId)
         {
+            var userResults = AbstractValidateUser(userId);
+
             var routeValidatorResults = AbstractValidatePathForList(userId, todoListId);
+
+            routeValidatorResults.Add(userResults[0]);
 
             return routeValidatorResults;
         }

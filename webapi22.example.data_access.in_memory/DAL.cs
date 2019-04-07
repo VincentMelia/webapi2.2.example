@@ -39,7 +39,19 @@ namespace webapi22.example.data_access.in_memory
             return validationList;
         }
 
+        public static List<Tuple<bool, string>> ValidateUser(Guid userId)
+        {
+            bool exists = MockDB._userList
+                              .Where(u => u.UserId == userId).ToList()
+                              .Count > 0;
 
+            var validTodoItemResults = new Tuple<bool, string>(exists, !exists ? "User doesn't exist." : string.Empty);
+
+            var validationList = new List<Tuple<bool, string>>();
+            validationList.Add(validTodoItemResults);
+
+            return validationList;
+        }
 
 
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +16,23 @@ namespace webapi2._2.api.Controllers
     public class TodoListController : ControllerBase
     {
         [HttpGet]
-        public UserTodoLists Get()
+        public ActionResult<UserTodoLists> Get()
         {
-            return webapi22.example.data_access.DataAccess.AbstractGetListsForUser(new Guid(HttpContext.Session.GetString("UserId")));
+            var notloggedon = new List<Tuple<bool, string>>();
+            notloggedon.Add(
+                new Tuple<bool, string>(false, "not logged on."));
+
+            var b = new byte[10];
+            var userexists  = HttpContext.Session.TryGetValue("UserId", out b);
+
+            var validationResults = userexists ? AbstractValidateUser(new Guid(HttpContext.Session?.GetString("UserId")))
+                                    : notloggedon;
+
+            if (validationResults.Any(x => !x.Item1))
+                return BadRequest(validationResults.Where(x => !x.Item1).ToList());
+
+            return AbstractGetListsForUser(
+                new Guid(HttpContext.Session.GetString("UserId")));
         }
 
         [HttpGet("{todoListId}", Name = "Get")]
