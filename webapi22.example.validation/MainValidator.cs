@@ -15,10 +15,16 @@ namespace webapi22.example.validation
 
         //d.GetType() == typeof(webapi22.example.dtos.DtoClasses.Todo)
 
-        public static bool Validate(dynamic d)
+        public static bool Validate(dynamic d, Guid userId, Guid todoListId, Guid todoItemId)
         {
             var v = d.GetType();
-            var r = ValidatorExtensions.ValidateTodoListItem(d);
+
+            if (v == typeof(webapi22.example.dtos.DtoClasses.Todo))
+            {
+                var validatorResults = ValidatorExtensions.ValidateTodoListItem(d);
+                var routeValidatorResults = RouteValidators.ValidatePath(todoListId, todoItemId);
+            }
+
             return false;
         }
     }

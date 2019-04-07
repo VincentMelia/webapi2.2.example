@@ -16,6 +16,9 @@ namespace webapi2._2.api.Controllers
         [HttpGet("{todoListId}/{todoListItemId}")]
         public ActionResult<Todo> Get(Guid todoListId, Guid todoListItemId)
         {
+            dynamic t = new Todo();
+            var r = MainValidator.Validate(t, new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
+
             var v = ValidatePath(todoListId, todoListItemId);
             return webapi22.example.data_access.DataAccess.AbstractGetSingleTodoItem(new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
         }

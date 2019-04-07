@@ -17,9 +17,6 @@ namespace webapi2._2.api.Controllers
         [HttpGet]
         public UserTodoLists Get()
         {
-            dynamic t = new Todo();
-            var r = MainValidator.Validate(t);
-            
             return webapi22.example.data_access.DataAccess.AbstractGetListsForUser(new Guid(HttpContext.Session.GetString("UserId")));
         }
 
