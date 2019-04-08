@@ -41,7 +41,11 @@ namespace webapi2._2.api.Controllers
         [HttpPost]
         public /*ActionResult<ToDoListWithTodos>*/ object Post(ToDoListWithTodos toDoListWithTodos)
         {
-            //no need to validate. if we pass [LogonRequired] we're good.
+            //no need to validate everything, just the DTO itself. if we pass [LogonRequired] we're good.
+            var validationResults = toDoListWithTodos.ValidateTodoListWithTodos();
+
+            if (validationResults.Item1 == false)
+                return BadRequest(validationResults.Item2.GroupBy(r => r.ErrorMessage).Select(r => r.First().ErrorMessage).ToList());
 
             return Ok(AbstractCreateTodoList(new Guid(HttpContext.Session.GetString("UserId")), toDoListWithTodos));
         }
