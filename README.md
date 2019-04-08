@@ -1,4 +1,4 @@
-# webapi2.2.example
+# webapi2.2.example - Todo List
 
 ## Overview
 An example .NET Core solution using WebAPI 2.2 Core, message-based business-layer using friendly DTOs,  an abstract DAL with in-memory and SQL implementations and business-layer route and DTO validation.
@@ -105,6 +105,9 @@ All Func declarations where we can assign a concrete implementation based on a f
 - webapi22.example.data\_access.in\_memory: concrete in-memory provider
 - webapi22.example.data\_access.sql: SQL provider
 
+### Compiled Self-Contained Folders
+- compiled-osx - seems to work on OSX
+- compiled-win - used to work until yesterday. Now it builds perfectly but the publish fails. Working on it.
 
 [1]:	postsharp.net
 [2]:	llblgen.com "LLBLGEN Pro"
