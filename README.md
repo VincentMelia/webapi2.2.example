@@ -14,7 +14,7 @@ DTO validation using [FluentValidation][3], providing declarative business-rule 
 ### Route Structure
 Currently using GUIDs for IDs. A route to a list might be:
 - http://localhost:5000/todos/{0529460d-ab4c-45c8-9a30-42abeb9a0e0a } - a todo list
-- http://localhost:5000/todos/{0529460d-ab4c-45c8-9a30-42abeb9a0e0a }/{d89ee47b-ebbd-4e67-94aa-5560568665a3}
+- http://localhost:5000/todos/{0529460d-ab4c-45c8-9a30-42abeb9a0e0a }/{d89ee47b-ebbd-4e67-94aa-5560568665a3} - a todo list item
 
 Routes:
 - /todos/logon GET. Get a list of users in the system.
