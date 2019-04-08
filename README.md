@@ -111,7 +111,7 @@ All Func declarations where we can assign a concrete implementation based on a f
 
 ### Compiled Self-Contained Folders
 - compiled-osx - seems to work on OSX. Browse to the compiled os-x folder and run `dotnet webapi2.2.api.dll`
-- compiled-win - used to work until yesterday. Now it builds perfectly but the publish fails. Working on it.
+- compiled-win - used to work until yesterday. Now it builds perfectly but the publish fails when using Visual Studio. But it works from the CLI: `dotnet publish -o..\compiled-win\ -c debug --self-contained true -r win-x64`. Simply run the webapi2.2.exe.
 
 ### Other
 As this was based off the in-memory provider, I always found it easier to implement primary keys as GUIDs.
