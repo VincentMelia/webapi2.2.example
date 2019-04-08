@@ -116,6 +116,8 @@ Also, if opening the solution in Visual Studio you might get prompted to install
 
 **start path should be /todos/logon**
 
+**if getting ‘Could not get any response’, turn off SSL validation in PostMan**
+
 [1]:	postsharp.net
 [2]:	llblgen.com "LLBLGEN Pro"
 [3]:	https://github.com/JeremySkinner/FluentValidation
