@@ -41,16 +41,12 @@ namespace webapi2._2.api.Controllers
         [HttpPost]
         public /*ActionResult<ToDoListWithTodos>*/ object Post(ToDoListWithTodos toDoListWithTodos)
         {
-            var validationResults = MainValidator.Validate(
-                new Guid(HttpContext.Session.GetString("UserId")), toDoListWithTodos.TodoListId);
-
-            if (validationResults.Any(x => !x.Item1))
-                return BadRequest(validationResults.Where(x => !x.Item1).ToList());
+            //no need to validate. if we pass [LogonRequired] we're good.
 
             return Ok(AbstractCreateTodoList(new Guid(HttpContext.Session.GetString("UserId")), toDoListWithTodos));
         }
 
-  
+
         [HttpPut("{todoListId}")]
         public /*ActionResult<ToDoListWithTodos>*/object Put(Guid todoListId, [FromBody] ToDoListWithTodos updatedTodoList)
         {
