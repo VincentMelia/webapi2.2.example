@@ -109,6 +109,9 @@ All Func declarations where we can assign a concrete implementation based on a f
 - compiled-osx - seems to work on OSX
 - compiled-win - used to work until yesterday. Now it builds perfectly but the publish fails. Working on it.
 
+### Other
+As this was based off the in-memory provider, I always found it easier to implement primary keys as GUIDs.
+
 [1]:	postsharp.net
 [2]:	llblgen.com "LLBLGEN Pro"
 [3]:	https://github.com/JeremySkinner/FluentValidation
