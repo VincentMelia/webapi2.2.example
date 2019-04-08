@@ -54,7 +54,7 @@ namespace webapi2._2.api.Controllers
         [HttpPut("{todoListId}")]
         public /*ActionResult<ToDoListWithTodos>*/object Put(Guid todoListId, [FromBody] ToDoListWithTodos updatedTodoList)
         {
-            var validationResults = MainValidator.Validate(
+            var validationResults = MainValidator.Validate(updatedTodoList,
                 new Guid(HttpContext.Session.GetString("UserId")), todoListId);
 
             if (validationResults.Any(x => !x.Item1))
