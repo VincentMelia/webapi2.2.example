@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="RouteValidators.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.2.2" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\webapi22.example.data_access.in_memory\webapi22.example.data_access.in_memory.csproj" />
+    <ProjectReference Include="..\webapi22.example.data_access.sql\webapi22.example.data_access.sql.csproj" />
+    <ProjectReference Include="..\webapi22.example.data_access\webapi22.example.data_access.csproj" />
+    <ProjectReference Include="..\webapi22.example.dtos\webapi22.example.dtos\webapi22.example.dtos.csproj" />
+  </ItemGroup>
+
+</Project>

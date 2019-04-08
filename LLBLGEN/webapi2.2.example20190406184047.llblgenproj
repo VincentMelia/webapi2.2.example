@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--LLBLGen Pro v5.4 project file. Do not manually edit this file. Incorrect references could lead to an unloadable project file.-->
+<Project Version="5.4" TargetFrameworkName="LLBLGen Pro Runtime Framework" UseLegacyDefaults="false">
+  <Properties>
+    <Abbreviations />
+    <Property Name="AdditionalTaskPerformerFolder" Value="" />
+    <Property Name="AdditionalTasksFolder" Value="" />
+    <Property Name="AdditionalTemplatesFolder" Value="" />
+    <Property Name="AdditionalTypeConverterFolder" Value="" />
+    <Property Name="AddNewElementsAfterRefresh_v5" Value="false" />
+    <Property Name="AddNewElementsAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="AddNewFieldsAfterRefresh_v5" Value="true" />
+    <Property Name="AddNewFieldsAfterRelationalModelDataSync_v5" Value="true" />
+    <Property Name="AddNewViewsAsEntitiesAfterRefresh_v5" Value="false" />
+    <Property Name="AddNewViewsAsEntitiesAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="AutoAddManyToManyRelationships" Value="false" />
+    <Property Name="AutoAssignSequencesToIntegerPks" Value="true" />
+    <Property Name="AutoAssignTypeConverterToFieldMapping" Value="true" />
+    <Property Name="ConnectionStringKeyNamePattern" Value="ConnectionString.{$ProviderName}" />
+    <Property Name="DefaultDeleteRuleAction" Value="1" />
+    <Property Name="DefaultUpdateRuleAction" Value="0" />
+    <Property Name="EncodingToUse" Value="0" />
+    <Property Name="EntityActionCombinationDefaultForTable" Value="0" />
+    <Property Name="EntityActionCombinationDefaultForView" Value="4" />
+    <Property Name="EntityFieldNameStripPattern" Value="{}{}" />
+    <Property Name="EntityNameStripPattern" Value="{tbl_}{}" />
+    <Property Name="ExcludableOrphanedElementDetectedAction" Value="3" />
+    <Property Name="FailCodeGenerationOnWriteError" Value="false" />
+    <Property Name="FieldMappedOntoRelatedFieldPattern" Value="{$RelatedFieldName}" />
+    <Property Name="FkFieldsAreNamedAfterTargetField" Value="true" />
+    <Property Name="ForeignKeyConstraintPattern" Value="FK_{$Guid}" />
+    <Property Name="ForeignKeyFieldPattern" Value="{$NavigatorName}{$RelatedFieldName}" />
+    <Property Name="GroupUsage" Value="0" />
+    <Property Name="IdentifyingFieldsFollowDBPrimaryKeyConstraints_v5" Value="true" />
+    <Property Name="InsertUnderscoreAtWordBreakCaseInsensitiveDBs" Value="false" />
+    <Property Name="InsertUnderscoreAtWordBreakCaseSensitiveDBs" Value="false" />
+    <Property Name="LengthPrecisionScaleFollowDBLengthPrecisionScale_v5" Value="true" />
+    <Property Name="MakeElementNamePascalCasing" Value="true" />
+    <Property Name="NavigatorMappedOntoManyToManyPattern" Value="{$EndEntityName}CollectionVia{$IntermediateEntityName$S}" />
+    <Property Name="NavigatorMappedOntoOneManyToOnePattern" Value="{$EndEntityName$S}" />
+    <Property Name="NavigatorMappedOntoOneToManyPattern" Value="{$EndEntityName$P}" />
+    <Property Name="NonExcludableOrphanedElementDetectedAction" Value="3" />
+    <Property Name="PreferDecimalOverCurrencyTypes" Value="true" />
+    <Property Name="PreferNaturalCharacterTypes" Value="true" />
+    <Property Name="PreferSystemSequencesOverSchemaSequencesIfApplicable" Value="true" />
+    <Property Name="PreferVariableLengthTypes" Value="true" />
+    <Property Name="PrimaryKeyConstraintPattern" Value="PK_{$Guid}" />
+    <Property Name="ProjectCreator" Value="vincent melia" />
+    <Property Name="ProjectName" Value="webapi2.2.example" />
+    <Property Name="ReflectNullabilityOfElementFieldInTargetField_v5" Value="false" />
+    <Property Name="ReflectTypeOfElementFieldInTargetField_v5" Value="true" />
+    <Property Name="RelationalModelDataElementNameCasingCaseInsensitiveDBs" Value="3" />
+    <Property Name="RelationalModelDataElementNameCasingCaseSensitiveDBs" Value="3" />
+    <Property Name="RelationshipsFollowDBForeignKeyConstraints_v5" Value="true" />
+    <Property Name="RemoveUnderscoresFromElementName" Value="true" />
+    <Property Name="RemoveUnmappedElementsAfterRefresh_v5" Value="false" />
+    <Property Name="RemoveUnmappedElementsAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="ResetFieldOrderBasedOnTargetOrderAtRefresh" Value="false" />
+    <Property Name="ResetFieldOrderBasedOnTargetOrderAtRelationalModelDataSync" Value="false" />
+    <Property Name="RetrieveDBCustomProperties" Value="false" />
+    <Property Name="RootNamespace" Value="" />
+    <Property Name="SequenceNameMatchingPattern" Value="SEQ_{$TableName}" />
+    <Property Name="SequencePattern" Value="SEQ_{$EntityName}" />
+    <Property Name="SetGroupNameAfterSchemaName" Value="true" />
+    <Property Name="SetSchemaNameAfterGroupName" Value="true" />
+    <Property Name="SingularizeElementNames" Value="true" />
+    <Property Name="StoredProcNameStripPattern" Value="{pr_, sp_}{}" />
+    <Property Name="StoreTimeLastGeneratedIntoProject" Value="false" />
+    <Property Name="StoreTimeLastSyncIntoProject" Value="true" />
+    <Property Name="SyncMappedElementNamesAfterRefresh_v5" Value="false" />
+    <Property Name="SyncMappedElementNamesAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="SyncRelationalModelDataElementNameWithModelElementName_v5" Value="false" />
+    <Property Name="SyncRenamedMappedElementNamesAfterRefresh_v5" Value="false" />
+    <Property Name="SyncRenamedMappedElementNamesAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="TableValuedFunctionNameStripPattern" Value="{fn_, pr_, sp_}{}" />
+    <Property Name="TargetPerEntityEdgesRequireBackingFkConstraint" Value="true" />
+    <Property Name="TypedViewFieldNameStripPattern" Value="{}{}" />
+    <Property Name="TypedViewMappedOnResultsetPattern" Value="{$ProcFunctionName}{$ResultsetName}Result" />
+    <Property Name="TypedViewNameStripPattern" Value="{vw_}{}" />
+    <Property Name="UniqueConstraintPattern" Value="UC_{$Guid}" />
+    <Property Name="UniqueConstraintsFollowDBUniqueConstraints_v5" Value="true" />
+    <Property Name="UpdateCustomPropertiesAfterRefresh_v5" Value="false" />
+    <Property Name="UpdateCustomPropertiesAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="UseCustomFieldOrderingOnNewElements" Value="false" />
+  </Properties>
+  <TypeShortcuts />
+  <IgnoredWarnings />
+  <SavedSearchQueries />
+  <CodeGenerationCyclePreferences>
+    <OutputType Value="3">
+      <LastUsedPreferences>
+        <DestinationRootFolder Value="D:\Users\Vmelia\Desktop\webapi2.2.example\webapi22.example.data_access.sql" />
+        <FrameworkName Value="LLBLGen Pro Runtime Framework" />
+        <LanguageName Value="C#" />
+        <PlatformName Value=".NET Standard 2.0" />
+        <PresetName Value="SD.Presets.SelfServicing.General.Netstandard" />
+        <RootNamespace Value="webapi22.example.data_access.sql" />
+        <TemplateGroup Value="SelfServicing" />
+        <TemplateBindings>
+          <Binding Name="SD.TemplateBindings.SharedTemplates.Netstandard20" />
+          <Binding Name="SD.TemplateBindings.SharedTemplates" />
+          <Binding Name="SD.TemplateBindings.SqlServerSpecific" />
+          <Binding Name="SD.TemplateBindings.General" />
+        </TemplateBindings>
+      </LastUsedPreferences>
+    </OutputType>
+  </CodeGenerationCyclePreferences>
+  <OutputSettingValues>
+    <SettingValues>
+      <SettingValue Name="1:AdapterDbGenericSubFolderName" Value="DatabaseGeneric" Type="18" />
+      <SettingValue Name="1:AdapterDbSpecificNamespaceSuffix" Value="DatabaseSpecific" Type="18" />
+      <SettingValue Name="1:AdapterDbSpecificProjectFileSuffix" Value="DBSpecific" Type="18" />
+      <SettingValue Name="1:AdapterDbSpecificSubFolderName" Value="DatabaseSpecific" Type="18" />
+      <SettingValue Name="1:ConvertNulledReferenceTypesToDefaultValue" Value="true" Type="3" />
+      <SettingValue Name="1:EntityBaseClassNameDefault" Value="CommonEntityBase" Type="18" />
+      <SettingValue Name="1:FieldPropertyIsPublicDefault" Value="true" Type="3" />
+      <SettingValue Name="1:GenerateAsNullableTypeDefault" Value="true" Type="3" />
+      <SettingValue Name="1:GenerateEntityFieldFactory" Value="false" Type="3" />
+      <SettingValue Name="1:GenerateEntityFieldsFactory" Value="false" Type="3" />
+      <SettingValue Name="1:InlineValueTypedFields" Value="true" Type="3" />
+      <SettingValue Name="1:LazyLoadingWithoutResultReturnsNew" Value="false" Type="3" />
+      <SettingValue Name="1:NavigatorPropertyIsPublicDefault" Value="true" Type="3" />
+      <SettingValue Name="1:SupportedActionCombinations" Value="0,1,2,3,4,5,6,7" Type="18" />
+      <SettingValue Name="1:TdlEmitTimeDateInOutputFiles" Value="false" Type="3" />
+      <SettingValue Name="1:TypedListOutputTypeDefault" Value="TypedDataTable" Type="18" />
+      <SettingValue Name="1:TypedViewOutputTypeDefault" Value="TypedDataTable" Type="18" />
+    </SettingValues>
+  </OutputSettingValues>
+  <CodeGenerationMetaDataDefaults>
+    <TargetElement Type="256">
+      <Defaults>
+        <Attributes>
+          <Attribute Value="Browsable($false)" />
+        </Attributes>
+      </Defaults>
+    </TargetElement>
+  </CodeGenerationMetaDataDefaults>
+  <EntityModel>
+    <ValueTypeDefinitions />
+    <EntityDefinitions>
+      <EntityDefinition Name="TodoList" ObjectID="cbf3943a-623c-464f-af04-1380375917ab">
+        <Fields>
+          <Field Name="TodoListId" Type="guid" IsPrimaryKey="true" FieldIndex="0" />
+          <Field Name="TodoListName" Type="string" MaxLength="20" FieldIndex="2" />
+          <Field Name="UserId" Type="guid" FieldIndex="1" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="TodoListItem" ObjectID="f8cacb6d-d500-4c2e-b37d-502ae6fb9167">
+        <Fields>
+          <Field Name="TodoListId" Type="guid" FieldIndex="1" />
+          <Field Name="TodoListItemId" Type="guid" IsPrimaryKey="true" FieldIndex="0" />
+          <Field Name="TodoListItemIsComplete" Type="bool" IsOptional="true" FieldIndex="3" />
+          <Field Name="TodoListItemSubject" Type="string" MaxLength="50" FieldIndex="2" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="User" ObjectID="5d99e503-2da7-4851-a655-d88b4b4de629">
+        <Fields>
+          <Field Name="UserId" Type="guid" IsPrimaryKey="true" FieldIndex="0" />
+          <Field Name="UserName" Type="string" MaxLength="10" FieldIndex="1" />
+        </Fields>
+      </EntityDefinition>
+    </EntityDefinitions>
+    <Relationships>
+      <NormalRelationship Name="TodoList.TodoListItems-TodoListItem.TodoList" Start=":TodoList" End=":TodoListItem" StartNavigator="TodoListItems" EndNavigator="TodoList" Type="2" StartIsPkSide="true" DeleteRuleAction="1">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="TodoListId" PkField="TodoListId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="User.TodoLists-TodoList.User" Start=":User" End=":TodoList" StartNavigator="TodoLists" EndNavigator="User" Type="2" StartIsPkSide="true" DeleteRuleAction="1">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="UserId" PkField="UserId" />
+        </FieldRelationships>
+      </NormalRelationship>
+    </Relationships>
+    <InheritanceHierarchies />
+  </EntityModel>
+  <TypedListDefinitions>
+    <TypedListDefinition Name="TodoListEntityDto">
+      <EntityAliases>
+        <EntityAlias Entity=":TodoList" />
+      </EntityAliases>
+      <Fields>
+        <Field FieldAlias="TodoListId" TargetField="TodoList.TodoListId" />
+        <Field FieldAlias="TodoListName" TargetField="TodoList.TodoListName" />
+        <Field FieldAlias="UserId" TargetField="TodoList.UserId" />
+      </Fields>
+      <OutputSettingValues>
+        <SettingValues>
+          <SettingValue Name="8:OutputType" Value="PocoWithQuerySpecQuery" Type="18" />
+        </SettingValues>
+      </OutputSettingValues>
+    </TypedListDefinition>
+    <TypedListDefinition Name="TodoListItemEntityDto">
+      <EntityAliases>
+        <EntityAlias Entity=":TodoList" />
+        <EntityAlias Entity=":TodoListItem" />
+      </EntityAliases>
+      <Fields>
+        <Field FieldAlias="TodoListId" TargetField="TodoListItem.TodoListId" />
+        <Field FieldAlias="TodoListItemId" TargetField="TodoListItem.TodoListItemId" />
+        <Field FieldAlias="TodoListItemSubject" TargetField="TodoListItem.TodoListItemSubject" />
+        <Field FieldAlias="TodoListItemIsComplete" TargetField="TodoListItem.TodoListItemIsComplete" />
+        <Field FieldAlias="UserId" TargetField="TodoList.UserId" />
+      </Fields>
+      <Relationships>
+        <Relationship Name="TodoList.TodoListItems-TodoListItem.TodoList" StartAlias="TodoList" EndAlias="TodoListItem" JoinHint="1" StartAliasIsStartVertex="true" />
+      </Relationships>
+      <OutputSettingValues>
+        <SettingValues>
+          <SettingValue Name="8:OutputType" Value="PocoWithQuerySpecQuery" Type="18" />
+        </SettingValues>
+      </OutputSettingValues>
+    </TypedListDefinition>
+    <TypedListDefinition Name="UserEntityDto">
+      <EntityAliases>
+        <EntityAlias Entity=":User" />
+      </EntityAliases>
+      <Fields>
+        <Field FieldAlias="UserId" TargetField="User.UserId" />
+        <Field FieldAlias="UserName" TargetField="User.UserName" />
+      </Fields>
+      <OutputSettingValues>
+        <SettingValues>
+          <SettingValue Name="8:OutputType" Value="PocoWithQuerySpecQuery" Type="18" />
+        </SettingValues>
+      </OutputSettingValues>
+    </TypedListDefinition>
+  </TypedListDefinitions>
+  <TargetDatabases>
+    <TargetDatabase Type="2D18D138-1DD2-467E-86CC-4838250611AE" SyncSource="1">
+      <ConnectionElements>
+        <ConnectionElement Name="Password" Value="" />
+      </ConnectionElements>
+      <SystemSequences>
+        <Sequence Name="SCOPE_IDENTITY()" />
+        <Sequence Name="@@IDENTITY" />
+      </SystemSequences>
+      <Catalogs>
+        <Catalog Name="Webapi22Example" CreatedByDesigner="true" SyncSource="1">
+          <Schemas>
+            <Schema Name="dbo" CreatedByDesigner="true" SyncSource="1" LastSyncWithModel="2019-04-06T22:32:00.4064096Z">
+              <Tables>
+                <Table Name="TodoList" CreatedByDesigner="true">
+                  <PkConstraintName Name="PK_3cb4a8d4a1f828d4c2da8cc60bf" />
+                  <Fields>
+                    <Field Name="TodoListId" Ordinal="1" TrackedChanges="512" IsPrimaryKey="true" CreatedByDesigner="true" DbType="25" />
+                    <Field Name="UserId" Ordinal="2" CreatedByDesigner="true" DbType="25" />
+                    <Field Name="TodoListName" Ordinal="3" CreatedByDesigner="true" DbType="12" Length="20" />
+                  </Fields>
+                </Table>
+                <Table Name="TodoListItem" CreatedByDesigner="true">
+                  <PkConstraintName Name="PK_b6fb24048e4bd1f3cddc598f1ed" />
+                  <Fields>
+                    <Field Name="TodoListItemId" Ordinal="1" TrackedChanges="512" IsPrimaryKey="true" CreatedByDesigner="true" DbType="25" />
+                    <Field Name="TodoListId" Ordinal="2" CreatedByDesigner="true" DbType="25" />
+                    <Field Name="TodoListItemSubject" Ordinal="3" CreatedByDesigner="true" DbType="12" Length="50" />
+                    <Field Name="TodoListItemIsComplete" Ordinal="4" IsOptional="true" CreatedByDesigner="true" DbType="2" />
+                  </Fields>
+                </Table>
+                <Table Name="User" CreatedByDesigner="true">
+                  <PkConstraintName Name="PK_e9021b5472aa86b86625e601682" />
+                  <Fields>
+                    <Field Name="UserId" Ordinal="1" TrackedChanges="512" IsPrimaryKey="true" CreatedByDesigner="true" DbType="25" />
+                    <Field Name="UserName" Ordinal="2" CreatedByDesigner="true" DbType="12" Length="10" />
+                  </Fields>
+                </Table>
+              </Tables>
+            </Schema>
+          </Schemas>
+          <ForeignKeyConstraints>
+            <ForeignKeyConstraint Name="dbo:TodoList:FK_3f9d69b4c39a303fc647411d926" CreatedByDesigner="true" DeleteRuleAction="1" TrackedChanges="16">
+              <FieldPairs>
+                <FieldPair PkField="dbo:User:UserId" FkField="dbo:TodoList:UserId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:TodoListItem:FK_93327b74338ab5a4526cc2c436c" CreatedByDesigner="true" DeleteRuleAction="1" TrackedChanges="16">
+              <FieldPairs>
+                <FieldPair PkField="dbo:TodoList:TodoListId" FkField="dbo:TodoListItem:TodoListId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+          </ForeignKeyConstraints>
+        </Catalog>
+      </Catalogs>
+    </TargetDatabase>
+  </TargetDatabases>
+  <MappingStores>
+    <MappingStore Type="2D18D138-1DD2-467E-86CC-4838250611AE">
+      <EntityMappings>
+        <EntityMapping EntityName=":TodoList" TargetName="Webapi22Example:dbo:TodoList">
+          <FieldMappings>
+            <FieldMapping FieldName="TodoListId" TargetFieldName="TodoListId" />
+            <FieldMapping FieldName="TodoListName" TargetFieldName="TodoListName" />
+            <FieldMapping FieldName="UserId" TargetFieldName="UserId" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":TodoListItem" TargetName="Webapi22Example:dbo:TodoListItem">
+          <FieldMappings>
+            <FieldMapping FieldName="TodoListId" TargetFieldName="TodoListId" />
+            <FieldMapping FieldName="TodoListItemId" TargetFieldName="TodoListItemId" />
+            <FieldMapping FieldName="TodoListItemIsComplete" TargetFieldName="TodoListItemIsComplete" />
+            <FieldMapping FieldName="TodoListItemSubject" TargetFieldName="TodoListItemSubject" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":User" TargetName="Webapi22Example:dbo:User">
+          <FieldMappings>
+            <FieldMapping FieldName="UserId" TargetFieldName="UserId" />
+            <FieldMapping FieldName="UserName" TargetFieldName="UserName" />
+          </FieldMappings>
+        </EntityMapping>
+      </EntityMappings>
+      <TypedViewMappings />
+      <SPCallMappings />
+      <TvfCallMappings />
+      <TypeConversionDefinitions />
+    </MappingStore>
+  </MappingStores>
+  <ModelViews>
+    <ModelView Name="Main">
+      <EntityDefinitions>
+        <Entity Name=":TodoList" />
+        <Entity Name=":TodoListItem" />
+        <Entity Name=":User" />
+      </EntityDefinitions>
+      <Documentation><![CDATA[]]></Documentation>
+    </ModelView>
+  </ModelViews>
+  <DerivedModels>
+    <DerivedModel Name="Webapi22dtos" ObjectID="d48e7e74-b960-4d9f-a2b1-c3529e01b5eb" TargetFrameworkName="DTO Class Model" UseLegacyDefaults="false">
+      <CodeGenerationMetaDataDefaults>
+        <TargetElement Type="32768">
+          <Defaults>
+            <Attributes>
+              <Attribute Value="Serializable" />
+              <Attribute Value="DataContract" />
+            </Attributes>
+          </Defaults>
+        </TargetElement>
+        <TargetElement Type="65536">
+          <Defaults>
+            <Attributes>
+              <Attribute Value="Serializable" />
+              <Attribute Value="DataContract" />
+            </Attributes>
+          </Defaults>
+        </TargetElement>
+        <TargetElement Type="131072">
+          <Defaults>
+            <Attributes>
+              <Attribute Value="DataMember" />
+            </Attributes>
+          </Defaults>
+        </TargetElement>
+        <TargetElement Type="262144">
+          <Defaults>
+            <Attributes>
+              <Attribute Value="DataMember" />
+            </Attributes>
+          </Defaults>
+        </TargetElement>
+        <TargetElement Type="524288">
+          <Defaults>
+            <Attributes>
+              <Attribute Value="DataMember" />
+            </Attributes>
+          </Defaults>
+        </TargetElement>
+      </CodeGenerationMetaDataDefaults>
+      <Settings>
+        <Property Name="DerivedElementClassNameSuffix" Value="" />
+        <Property Name="PrefixDenormalizedFieldsWithNavigatorName" Value="true" />
+      </Settings>
+      <CodeGenerationCyclePreferences OutputType="3">
+        <LastUsedPreferences>
+          <DestinationRootFolder Value="D:\Users\Vmelia\Desktop\webapi2.2.example\webapi22.example.dtos" />
+          <FrameworkName Value="DTO Class Model" />
+          <LanguageName Value="C#" />
+          <PlatformName Value=".NET Standard 2.0" />
+          <PresetName Value="SD.DTOClasses.ReadWriteDTOs" />
+          <RootNamespace Value="webapi22.example.dtos" />
+          <TemplateGroup Value="General" />
+          <TemplateBindings>
+            <Binding Name="SD.DTOClassModel.NETStandard20" />
+            <Binding Name="SD.DTOClassModel" />
+            <Binding Name="SD.TemplateBindings.General" />
+          </TemplateBindings>
+        </LastUsedPreferences>
+      </CodeGenerationCyclePreferences>
+      <Documents>
+        <Document Name="Todo">
+          <RootEntity Entity=":TodoListItem" />
+          <Fields>
+            <Field Name="TodoListItemId">
+              <EntityField Name="TodoListItemId" />
+            </Field>
+            <Field Name="TodoListItemIsComplete">
+              <EntityField Name="TodoListItemIsComplete" />
+            </Field>
+            <Field Name="TodoListItemSubject">
+              <EntityField Name="TodoListItemSubject" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="ToDoListWithTodos">
+          <RootEntity Entity=":TodoList" />
+          <Fields>
+            <Field Name="TodoListId">
+              <EntityField Name="TodoListId" />
+            </Field>
+            <Field Name="TodoListItems">
+              <Document Name="TodoListItem">
+                <RootEntity Entity=":TodoListItem" NavigatorPath="TodoListItems" />
+                <Fields>
+                  <Field Name="TodoListItemId">
+                    <EntityField Name="TodoListItemId" />
+                  </Field>
+                  <Field Name="TodoListItemIsComplete">
+                    <EntityField Name="TodoListItemIsComplete" />
+                  </Field>
+                  <Field Name="TodoListItemSubject">
+                    <EntityField Name="TodoListItemSubject" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="TodoListName">
+              <EntityField Name="TodoListName" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="User">
+          <RootEntity Entity=":User" />
+          <Fields>
+            <Field Name="UserId">
+              <EntityField Name="UserId" />
+            </Field>
+            <Field Name="UserName">
+              <EntityField Name="UserName" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="UserTodoLists">
+          <RootEntity Entity=":User" />
+          <Fields>
+            <Field Name="TodoLists">
+              <Document Name="TodoList">
+                <RootEntity Entity=":TodoList" NavigatorPath="TodoLists" />
+                <Fields>
+                  <Field Name="TodoListId">
+                    <EntityField Name="TodoListId" />
+                  </Field>
+                  <Field Name="TodoListName">
+                    <EntityField Name="TodoListName" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="UserId">
+              <EntityField Name="UserId" />
+            </Field>
+            <Field Name="UserName">
+              <EntityField Name="UserName" />
+            </Field>
+          </Fields>
+        </Document>
+      </Documents>
+    </DerivedModel>
+  </DerivedModels>
+</Project>
