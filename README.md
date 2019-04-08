@@ -12,6 +12,11 @@ The SQL-based DAL implementation is using [LLBLGEN Pro][2] for all data access. 
 DTO validation using [FluentValidation][3], providing declarative business-rule validation.
 
 ### Route Structure
+Currently using GUIDs for IDs. A route to a list might be:
+- http://localhost:5000/todos/{0529460d-ab4c-45c8-9a30-42abeb9a0e0a } - a todo list
+- http://localhost:5000/todos/{0529460d-ab4c-45c8-9a30-42abeb9a0e0a }/{d89ee47b-ebbd-4e67-94aa-5560568665a3}
+
+Routes:
 - /todos/logon GET. Get a list of users in the system.
 - /todos/logon/{user name} ANY. Log on as a user.
 - /todos GET. Get the user and their todo lists.
@@ -34,7 +39,7 @@ The validation is based off the same business-layer as the services, with option
 Pluggable with any data source, just like most repository-type patterns. The difference here is there’s no use of interfaces - it’s all based on abstract functions. One benefit is that there’s no need for interfaces and inheritance as everything is simply a function. Another benefit is that we can swap out a data source on a method-by-method basis.
 
 Here’s the complete abstract DAL specification:
-	
+
 	    public static class DataAccess
 	    {
 	        public static readonly int dataaccesstype = 0;
@@ -58,7 +63,6 @@ Here’s the complete abstract DAL specification:
 	        public static Action<Guid, Guid, Guid> AbstractDeleteSingleTodo;
 
 All Func declarations where we can assign a concrete implementation based on a flag:
-	            
 	if (dataaccesstype == 0)
 	            {
 	                AbstractValidatePathForList = in_memory.DAL.ValidatePath;
