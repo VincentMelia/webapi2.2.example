@@ -12,14 +12,14 @@ namespace webapi2._2.api.Controllers
     [ApiController]
     public class LogonController : ControllerBase
     {
-        [HttpGet]
+        //base route here. Answer on anything.
         public List<User> Get()
         {
             return AbstractGetUsers();
             
         }
 
-        [Route("{UserName}")]
+        [Route("{UserName}")] //answer on anything.
         public User Get(string userName)
         {
             var userlist = AbstractGetUsers();
