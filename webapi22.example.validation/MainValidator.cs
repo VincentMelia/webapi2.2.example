@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using static webapi22.example.data_access.DataAccess;
 
 namespace webapi22.example.validation
@@ -25,6 +26,9 @@ namespace webapi22.example.validation
 
                 routeValidatorResults.Add(userResults[0]);
 
+                routeValidatorResults = routeValidatorResults.GroupBy(i => i.Item2)
+                    .Select(i => i.First()).Where(i => !i.Item1).ToList();
+
                 return routeValidatorResults;
             }
             else if (typeofMessageBody == typeof(dtos.DtoClasses.ToDoListWithTodos))
@@ -36,6 +40,9 @@ namespace webapi22.example.validation
                     routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));
 
                 routeValidatorResults.Add(userResults[0]);
+
+                routeValidatorResults = routeValidatorResults.GroupBy(i => i.Item2)
+                    .Select(i => i.First()).Where(i => !i.Item1).ToList();
 
                 return routeValidatorResults;
             }
@@ -51,6 +58,9 @@ namespace webapi22.example.validation
 
             routeValidatorResults.Add(userResults[0]);
 
+            routeValidatorResults = routeValidatorResults.GroupBy(i => i.Item2)
+                .Select(i => i.First()).Where(i => !i.Item1).ToList();
+
             return routeValidatorResults;
         }
 
@@ -58,9 +68,18 @@ namespace webapi22.example.validation
         {
             var userResults = AbstractValidateUser(userId);
 
+//            var validatorResults = (Tuple<bool, List<FluentValidation.Results.ValidationFailure>>)ValidatorExtensions.ValidateTodoListItem(d);
+
             var routeValidatorResults = AbstractValidatePathForList(userId, todoListId);
 
+            //((List<FluentValidation.Results.ValidationFailure>)validatorResults.Item2).ForEach(f =>
+            //    routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));
+
+
             routeValidatorResults.Add(userResults[0]);
+
+            routeValidatorResults = routeValidatorResults.GroupBy(i => i.Item2)
+                .Select(i => i.First()).Where(i => !i.Item1).ToList();
 
             return routeValidatorResults;
         }

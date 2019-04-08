@@ -89,6 +89,11 @@ namespace webapi2._2.api.Controllers
             if (validationResults.Any(x => !x.Item1))
                 return BadRequest(validationResults.Where(x => !x.Item1).ToList());
 
+            //var myDistinctList = myList.GroupBy(i => i.ID)
+            //    .Select(g => g.First()).ToList();
+            var distinctlist = validationResults.GroupBy(i => i.Item2)
+                .Select(i => i.First()).ToList();
+
             return Ok(AbstractAddNewTodo(new Guid(HttpContext.Session.GetString("UserId")), todoListId, newTodoItem));
         }
 
