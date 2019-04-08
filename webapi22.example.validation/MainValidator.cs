@@ -68,13 +68,7 @@ namespace webapi22.example.validation
         {
             var userResults = AbstractValidateUser(userId);
 
-//            var validatorResults = (Tuple<bool, List<FluentValidation.Results.ValidationFailure>>)ValidatorExtensions.ValidateTodoListItem(d);
-
             var routeValidatorResults = AbstractValidatePathForList(userId, todoListId);
-
-            //((List<FluentValidation.Results.ValidationFailure>)validatorResults.Item2).ForEach(f =>
-            //    routeValidatorResults.Add(new Tuple<bool, string>(validatorResults.Item1, f.ErrorMessage)));
-
 
             routeValidatorResults.Add(userResults[0]);
 

@@ -28,7 +28,6 @@ namespace webapi2._2.api.Controllers
         [HttpPut("{todoListId}/{todoListItemId}")]
         public ActionResult<Todo> Put(Guid todoListId, Guid todoListItemId, Todo updatedTodoItem)
         {
-            //StatusCodes.Status406NotAcceptable
             var validationResults = MainValidator.Validate(updatedTodoItem,
                 new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
 
@@ -53,7 +52,6 @@ namespace webapi2._2.api.Controllers
             return Ok();
         }
 
-        //[HttpPut("{todoListId}/{todoListItemId}/MarkComplete")]
         [LogonRequired]
         [Route("{todoListId}/{todoListItemId}/MarkComplete")]
         public ActionResult<Todo> Put(Guid todoListId, Guid todoListItemId)
@@ -65,7 +63,7 @@ namespace webapi2._2.api.Controllers
                 return BadRequest(validationResults.Where(x => !x.Item1).ToList());
 
             var todoToUpdate =
-                webapi22.example.data_access.DataAccess.AbstractGetSingleTodoItem(
+                AbstractGetSingleTodoItem(
                     new Guid(HttpContext.Session.GetString("UserId")), todoListId, todoListItemId);
 
             todoToUpdate.TodoListItemIsComplete = true;

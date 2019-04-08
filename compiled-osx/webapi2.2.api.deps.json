@@ -1,10 +1,11 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2/osx-x64",
-    "signature": "7f76ce021ae2c4bcf163d4add180a6c52c9ad422"
+    "signature": "208ce4757573cb5bddb6d014ccef435e21826ff3"
   },
   "compilationOptions": {
     "defines": [
+      "POSTSHARP",
       "TRACE",
       "DEBUG",
       "NETCOREAPP",
@@ -27,7 +28,7 @@
           "Microsoft.AspNetCore.App": "2.2.1",
           "Microsoft.NETCore.App": "2.2.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "SD.Tools.OrmProfiler.Interceptor": "1.5.20150715",
+          "PostSharp": "6.1.17",
           "webapi22.example.data_access": "1.0.0",
           "webapi22.example.validation": "1.0.0"
         },
@@ -2132,6 +2133,16 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
+      "PostSharp/6.1.17": {
+        "dependencies": {
+          "PostSharp.Redist": "6.1.17"
+        }
+      },
+      "PostSharp.Redist/6.1.17": {
+        "compile": {
+          "lib/netstandard2.0/PostSharp.dll": {}
+        }
+      },
       "Remotion.Linq/2.2.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -2234,29 +2245,6 @@
         },
         "compile": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.ORMSupportClasses.dll": {}
-        }
-      },
-      "SD.Tools.Algorithmia/1.1.0": {
-        "dependencies": {
-          "SD.Tools.BCLExtensions": "1.0.0"
-        },
-        "compile": {
-          "lib/SD.Tools.Algorithmia.dll": {}
-        }
-      },
-      "SD.Tools.BCLExtensions/1.0.0": {
-        "compile": {
-          "lib/SD.Tools.BCLExtensions.dll": {}
-        }
-      },
-      "SD.Tools.OrmProfiler.Interceptor/1.5.20150715": {
-        "dependencies": {
-          "SD.Tools.Algorithmia": "1.1.0",
-          "SD.Tools.BCLExtensions": "1.0.0"
-        },
-        "compile": {
-          "lib/net35/SD.Tools.OrmProfiler.Interceptor.dll": {},
-          "lib/net35/SD.Tools.OrmProfiler.Shared.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -3265,7 +3253,7 @@
           "Microsoft.AspNetCore.App": "2.2.1",
           "Microsoft.NETCore.App": "2.2.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "SD.Tools.OrmProfiler.Interceptor": "1.5.20150715",
+          "PostSharp": "6.1.17",
           "webapi22.example.data_access": "1.0.0",
           "webapi22.example.validation": "1.0.0"
         },
@@ -5744,6 +5732,19 @@
           }
         }
       },
+      "PostSharp/6.1.17": {
+        "dependencies": {
+          "PostSharp.Redist": "6.1.17"
+        }
+      },
+      "PostSharp.Redist/6.1.17": {
+        "runtime": {
+          "lib/netstandard2.0/PostSharp.dll": {
+            "assemblyVersion": "6.1.17.0",
+            "fileVersion": "6.1.17.0"
+          }
+        }
+      },
       "Remotion.Linq/2.2.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -6539,41 +6540,6 @@
           "lib/netstandard2.0/SD.LLBLGen.Pro.ORMSupportClasses.dll": {
             "assemblyVersion": "5.4.0.0",
             "fileVersion": "5.4.0.0"
-          }
-        }
-      },
-      "SD.Tools.Algorithmia/1.1.0": {
-        "dependencies": {
-          "SD.Tools.BCLExtensions": "1.0.0"
-        },
-        "runtime": {
-          "lib/SD.Tools.Algorithmia.dll": {
-            "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.11.1129"
-          }
-        }
-      },
-      "SD.Tools.BCLExtensions/1.0.0": {
-        "runtime": {
-          "lib/SD.Tools.BCLExtensions.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.10.1127"
-          }
-        }
-      },
-      "SD.Tools.OrmProfiler.Interceptor/1.5.20150715": {
-        "dependencies": {
-          "SD.Tools.Algorithmia": "1.1.0",
-          "SD.Tools.BCLExtensions": "1.0.0"
-        },
-        "runtime": {
-          "lib/net35/SD.Tools.OrmProfiler.Interceptor.dll": {
-            "assemblyVersion": "1.5.0.0",
-            "fileVersion": "1.5.15.209"
-          },
-          "lib/net35/SD.Tools.OrmProfiler.Shared.dll": {
-            "assemblyVersion": "1.5.0.0",
-            "fileVersion": "1.5.13.1007"
           }
         }
       },
@@ -8953,6 +8919,20 @@
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
     },
+    "PostSharp/6.1.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cfp8p159h/UXNrjoGL7a6vygTIt0GxaAOGw3IlgyQG8/2cPPFKYfWNy8Kb4KDgygCsLRAfFpb7Ebmi4NWOqmMQ==",
+      "path": "postsharp/6.1.17",
+      "hashPath": "postsharp.6.1.17.nupkg.sha512"
+    },
+    "PostSharp.Redist/6.1.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6dvgF27VPQ7s4CFKqudD4fh6HsFQzUAfA1GRGhnPT7veOs7RU8Utkrn8yupLhkCA3RSvEMOSScCj8XkxtF4IeQ==",
+      "path": "postsharp.redist/6.1.17",
+      "hashPath": "postsharp.redist.6.1.17.nupkg.sha512"
+    },
     "Remotion.Linq/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -9141,27 +9121,6 @@
       "sha512": "sha512-SooCtUrqYe3Us2MiTKkQY7FOEcmBaL73ljyEXhNSzipals2lYkz3yb14UQz8+eqhy8WJIuzUFlp+/i/JTdXy0g==",
       "path": "sd.llblgen.pro.ormsupportclasses/5.4.0",
       "hashPath": "sd.llblgen.pro.ormsupportclasses.5.4.0.nupkg.sha512"
-    },
-    "SD.Tools.Algorithmia/1.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1bX3UbNyHzYaYYUTZ+XhskrzA3g8XdQs9EkAK93B24itAo06vVpZ911ToF3t6nYWBiphN8PWG0LKKCNctWViuw==",
-      "path": "sd.tools.algorithmia/1.1.0",
-      "hashPath": "sd.tools.algorithmia.1.1.0.nupkg.sha512"
-    },
-    "SD.Tools.BCLExtensions/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-cIvFT57epNlWzRvJRHkzWikflcHvU2vVYbSjs5gqf6JVB8VJAMshBFhVxry8F8CR5tnqumIumRWAqS3sjQ7v7Q==",
-      "path": "sd.tools.bclextensions/1.0.0",
-      "hashPath": "sd.tools.bclextensions.1.0.0.nupkg.sha512"
-    },
-    "SD.Tools.OrmProfiler.Interceptor/1.5.20150715": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-yiORYHHrUqaXUVfSj2p+ruaA51Sf57b3c6G0j4VjOuaYBtu5EGdYwD84aMVDLmeFj7z/eiJTyEqqne/bXVHb2A==",
-      "path": "sd.tools.ormprofiler.interceptor/1.5.20150715",
-      "hashPath": "sd.tools.ormprofiler.interceptor.1.5.20150715.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

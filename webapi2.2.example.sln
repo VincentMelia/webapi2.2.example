@@ -25,9 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{986039
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "z - deleteme", "z - deleteme", "{3D991B18-49CE-442E-B6AB-FB1262B01065}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi22.example.data_access", "webapi22.example.data_access\webapi22.example.data_access.csproj", "{667768BC-C5D5-4CAC-81CD-B964A1A5E269}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.data_access", "webapi22.example.data_access\webapi22.example.data_access.csproj", "{667768BC-C5D5-4CAC-81CD-B964A1A5E269}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi22.example.data_access.sql.dal", "webapi22.example.data_access.sql.dal\webapi22.example.data_access.sql.dal.csproj", "{1E4D3E29-68B3-45E2-A022-4E338B43AE92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.data_access.sql.dal", "webapi22.example.data_access.sql.dal\webapi22.example.data_access.sql.dal.csproj", "{1E4D3E29-68B3-45E2-A022-4E338B43AE92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

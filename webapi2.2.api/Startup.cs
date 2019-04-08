@@ -32,8 +32,6 @@ namespace webapi2._2.api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseSession();
-            //AppContext.Configure(app.ApplicationServices
-            //    .GetRequiredService<IHttpContextAccessor>());
 
             if (env.IsDevelopment())
             {

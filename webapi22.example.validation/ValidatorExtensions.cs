@@ -9,11 +9,12 @@ namespace webapi22.example.validation
     public static class ValidatorExtensions
     {
 
+        //wrapper extension methods for validators below
         public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListItem(this Todo _listItem)
         {
             var validator = new TodoListDtoRowValidator(_listItem).Validate(_listItem);
-            var r = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
-            return r;
+            var validatorResults = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
+            return validatorResults;
         }
 
 
@@ -22,15 +23,15 @@ namespace webapi22.example.validation
             this ToDoListWithTodos _todoList)
         {
             var validator = new TodoListWithTodosValidator(_todoList).Validate(_todoList);
-            var r = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
-            return r;
+            var validatorResults = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
+            return validatorResults;
         }
 
     }
 
 
-   ////////////////////////////////////////////////////////////////////////////////////////////////// 
 
+    //validators//////////////////////////////////////////////////////
 
     internal class TodoListDtoRowValidator : AbstractValidator<Todo>
     {

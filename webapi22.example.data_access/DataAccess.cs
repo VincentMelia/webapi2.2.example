@@ -10,10 +10,13 @@ namespace webapi22.example.data_access
     {
         public static readonly int dataaccesstype = 0;
 
+        //validators
         public static Func<Guid, Guid, List<Tuple<bool, string>>> AbstractValidatePathForList;
         public static Func<Guid, Guid, Guid, List<Tuple<bool, string>>> AbstractValidatePathForListAndItem;
         public static Func<Guid, List<Tuple<bool, string>>> AbstractValidateUser;
 
+
+        //data access
         public static Func<List<User>> AbstractGetUsers;
         public static Func<Guid, Guid, ToDoListWithTodos> AbstractGetTodoList;
         public static Func<Guid, UserTodoLists> AbstractGetListsForUser;

@@ -12,7 +12,6 @@ namespace webapi2._2.api.Controllers
     [ApiController]
     public class LogonController : ControllerBase
     {
-        // GET: api/Logon
         [HttpGet]
         public List<User> Get()
         {
@@ -20,7 +19,7 @@ namespace webapi2._2.api.Controllers
             
         }
 
-        [HttpGet("{UserName}")]
+        [Route("{UserName}")]
         public User Get(string userName)
         {
             var userlist = AbstractGetUsers();

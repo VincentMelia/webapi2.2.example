@@ -70,7 +70,6 @@ namespace webapi22.example.data_access.in_memory
             {
                 TodoListId = todoList.TodoListId,
                 TodoListName = todoList.TodoListName,
-                //TodoListItems = new List<TodoListItem>()
                 TodoListItems = todoItems.Where(item => item.UserId == userId && item.TodoListItemIsComplete == false).Select(item => new TodoListItem()
                 {
                     TodoListItemId = item.TodoListItemId,
@@ -160,8 +159,6 @@ namespace webapi22.example.data_access.in_memory
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 
-            var list = MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList()[0];
-
             var newid = Guid.NewGuid();
 
             MockDB._todoListItems.Add(new TodoListItemEntityDtoRow()
@@ -182,16 +179,16 @@ namespace webapi22.example.data_access.in_memory
         public static Todo GetSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemRowId)
         {
             var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
-            var item = MockDB._todoListItems.Where
+            var todoItem = MockDB._todoListItems.Where
             (i => i.UserId == userId
                   && i.TodoListItemId == todoListItemRowId
                   && i.TodoListId == todoListId).ToList().First();
 
             return new Todo()
             {
-                TodoListItemId = item.TodoListItemId,
-                TodoListItemSubject = item.TodoListItemSubject,
-                TodoListItemIsComplete = item.TodoListItemIsComplete
+                TodoListItemId = todoItem.TodoListItemId,
+                TodoListItemSubject = todoItem.TodoListItemSubject,
+                TodoListItemIsComplete = todoItem.TodoListItemIsComplete
             };
         }
 
