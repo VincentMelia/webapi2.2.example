@@ -19,12 +19,12 @@ namespace webapi22.example.data_access.in_memory
             new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's List 2", UserId = _userList[0].UserId },
             new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's List 3", UserId = _userList[0].UserId },
             new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's List 4", UserId = _userList[0].UserId },
-            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's List 5", UserId = _userList[0].UserId },
-            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's List 6", UserId = _userList[0].UserId },
-            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's List 7", UserId = _userList[0].UserId },
-            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's List 8", UserId = _userList[0].UserId },
-            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's List 9", UserId = _userList[0].UserId },
-            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Vinny's List 10", UserId = _userList[0].UserId }
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Dimitri List 1", UserId = _userList[1].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Dimitri List 2", UserId = _userList[1].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Dimitri List 3", UserId = _userList[1].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Jim List 1", UserId = _userList[2].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Jim List 2", UserId = _userList[2].UserId },
+            new TodoListEntityDtoRow() {TodoListId = Guid.NewGuid(), TodoListName = "Jim List 3", UserId = _userList[2].UserId }
 
         };
 
@@ -34,11 +34,11 @@ namespace webapi22.example.data_access.in_memory
             new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 2", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
             new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 3", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
             new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 4", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 5", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 6", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 7", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 8", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId },
-            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 9", TodoListItemIsComplete = false, TodoListId = _todoList[0].TodoListId, UserId = _userList[0].UserId }
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 1", TodoListItemIsComplete = false, TodoListId = _todoList[4].TodoListId, UserId = _userList[1].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 2", TodoListItemIsComplete = false, TodoListId = _todoList[4].TodoListId, UserId = _userList[1].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 3", TodoListItemIsComplete = false, TodoListId = _todoList[4].TodoListId, UserId = _userList[1].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 1", TodoListItemIsComplete = false, TodoListId = _todoList[7].TodoListId, UserId = _userList[2].UserId },
+            new TodoListItemEntityDtoRow() { TodoListItemId = Guid.NewGuid(), TodoListItemSubject = "Subject 2", TodoListItemIsComplete = false, TodoListId = _todoList[7].TodoListId, UserId = _userList[2].UserId }
         };
 
     }
