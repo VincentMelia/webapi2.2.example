@@ -21,6 +21,7 @@
         <None Remove="dotvvm_serialized_config.json.tmp" />
         <None Remove="Views\logon.dothtml" />
         <None Remove="Views\MasterPage.dotmaster" />
+        <None Remove="Views\todos.dothtml" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="wwwroot\" />
@@ -31,6 +32,11 @@
         <PackageReference Include="DotVVM.BusinessPack.Core" Version="2.2.0-preview05-final" />
         <PackageReference Include="DotVVM.Controls.Bootstrap" Version="2.1.0" />
         <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
         <PackageReference Include="DotVVM.AspNetCore" Version="2.2.0.1" />
         

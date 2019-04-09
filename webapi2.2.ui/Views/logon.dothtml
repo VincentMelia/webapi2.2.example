@@ -23,7 +23,7 @@
             </dot:GridViewTemplateColumn>
             <dot:GridViewTemplateColumn AllowSorting="false">
                 <ContentTemplate>
-                    <bp:Button Text="{value:  "Log On"}" Click="{command: _parent.Dummy()}" />
+                    <bp:Button Text="{value:  "Log On"}" Click="{command: _parent.LogonAs(_this.UserId)}" />
                 </ContentTemplate>
             </dot:GridViewTemplateColumn>
         </Columns>

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +22,9 @@ namespace webapi2._2.ui
             services.AddDataProtection();
             //services.AddAuthorization();
             services.AddWebEncoders();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+            services.AddHttpContextAccessor();
             services.AddDotVVM<DotvvmStartup>();
         }
 
@@ -27,6 +32,8 @@ namespace webapi2._2.ui
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
+
+            app.UseSession();
 
             // use DotVVM
             var dotvvmConfiguration = app.UseDotVVM<DotvvmStartup>(env.ContentRootPath);
@@ -36,6 +43,10 @@ namespace webapi2._2.ui
             {
                 FileProvider = new PhysicalFileProvider(env.WebRootPath)
             });
+
+            AppContext.Configure(app.ApplicationServices
+                .GetRequiredService<IHttpContextAccessor>());
+
         }
     }
 }
