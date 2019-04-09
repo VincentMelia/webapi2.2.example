@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.data_acces
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi22.example.data_access.sql.dal", "webapi22.example.data_access.sql.dal\webapi22.example.data_access.sql.dal.csproj", "{1E4D3E29-68B3-45E2-A022-4E338B43AE92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi2.2.ui", "webapi2.2.ui\webapi2.2.ui.csproj", "{A11223E1-666C-424A-822A-A6BE1F85E5BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{1E4D3E29-68B3-45E2-A022-4E338B43AE92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E4D3E29-68B3-45E2-A022-4E338B43AE92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E4D3E29-68B3-45E2-A022-4E338B43AE92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A11223E1-666C-424A-822A-A6BE1F85E5BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11223E1-666C-424A-822A-A6BE1F85E5BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A11223E1-666C-424A-822A-A6BE1F85E5BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A11223E1-666C-424A-822A-A6BE1F85E5BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

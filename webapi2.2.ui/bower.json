@@ -1,0 +1,8 @@
+{
+  "name": "webapi2.2.ui",
+  "private": true,
+  "dependencies": {
+		"jquery" : "",
+		"bootstrap" : "3.3.7"
+  }
+}
