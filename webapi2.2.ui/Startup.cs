@@ -20,7 +20,7 @@ namespace webapi2._2.ui
             services.AddDataProtection();
             //services.AddAuthorization();
             services.AddWebEncoders();
-            services.AddDotVVM();
+            services.AddDotVVM<DotvvmStartup>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

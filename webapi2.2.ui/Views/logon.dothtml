@@ -9,9 +9,26 @@
 </head>
 <body>
 
-    <dot:ComboBox DataSource="{value: _userList}" SelectedValue="{value: _userListSelectedValue}" 
-                  ItemTextBinding="{value: UserName}" ItemValueBinding="{value: UserId}" SelectionChanged="{command:Dummy() }" >
-    </dot:ComboBox>
+    <%--<dot:ComboBox DataSource="{value: _userList}" SelectedValue="{value: _userListSelectedValue}"
+                  ItemTextBinding="{value: UserName}" ItemValueBinding="{value: UserId}" SelectionChanged="{command:Dummy() }">
+    </dot:ComboBox>--%>
+
+    <dot:GridView DataSource="{value: UserGridView}" >
+        <EmptyDataTemplate></EmptyDataTemplate>
+        <Columns>
+            <dot:GridViewTemplateColumn HeaderText="User"  Width="50%">
+                <ContentTemplate>
+                    <i>{{value: UserName}}</i>
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+            <dot:GridViewTemplateColumn AllowSorting="false">
+                <ContentTemplate>
+                    <bp:Button Text="{value:  "Log On"}" Click="{command: _parent.Dummy()}" />
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+        </Columns>
+    </dot:GridView>
+
 
 </body>
 </html>

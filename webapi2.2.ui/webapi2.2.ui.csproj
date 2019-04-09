@@ -26,7 +26,9 @@
         <Folder Include="wwwroot\" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="DotVVM.BusinessPack" Version="2.0.0-preview11-final" />
+        <PackageReference Include="DotVVM" Version="2.2.0.1" />
+        <PackageReference Include="DotVVM.BusinessPack" Version="2.2.0-preview05-final" />
+        <PackageReference Include="DotVVM.BusinessPack.Core" Version="2.2.0-preview05-final" />
         <PackageReference Include="DotVVM.Controls.Bootstrap" Version="2.1.0" />
         <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
