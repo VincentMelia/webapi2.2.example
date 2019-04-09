@@ -28,7 +28,6 @@ namespace webapi2_2.ui.ViewModels
 {
     public class TodosViewModel : DotvvmViewModelBase
     {
-        public Guid _userListSelectedValue { get; set; }
         public UserTodoLists _userTodoList { get; set; }
         public GridViewDataSet<TodoList> TodoListGridView { get; set; }
 
@@ -39,6 +38,13 @@ namespace webapi2_2.ui.ViewModels
 
         public override Task Load()
         {
+            if (!Context.IsPostBack && Context.Parameters.ContainsKey("todoListId"))
+            {
+                _userTodoList = AbstractGetListsForUser(new Guid(AppContext.Current.Session.GetString("UserId")));
+
+                var list = _userTodoList.TodoLists.Where(l =>
+                    l.TodoListId == new Guid(Context.Parameters["todoListId"].ToString())).ToList();
+            }
             if (!Context.IsPostBack)
             {
                 _userTodoList = AbstractGetListsForUser(new Guid(AppContext.Current.Session.GetString("UserId")));
@@ -56,6 +62,12 @@ namespace webapi2_2.ui.ViewModels
             return base.PreRender();
         }
 
+        public void GoToList(Guid listId)
+        {
+            IDictionary<string, object> dict = new Dictionary<string, object>();
+            dict.Add("todoListId", listId);
+            Context.RedirectToRoute("TodosWithList", new { todoListId = listId });
+        }
 
     }
 }

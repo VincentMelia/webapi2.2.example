@@ -17,6 +17,12 @@
                     <i>{{value: TodoListName}}</i>
                 </ContentTemplate>
             </dot:GridViewTemplateColumn>
+            <dot:GridViewTemplateColumn AllowSorting="false">
+                <ContentTemplate>
+                    <bp:Button Text="{value: "Go to list"}" Click="{command: _parent.GoToList(TodoListId)}" />
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+
             <%--<dot:GridViewTemplateColumn AllowSorting="false">
                 <ContentTemplate>
                     <bp:Button Text="{value:  "Log On"}" Click="{command: _parent.LogonAs(_this.UserId)}" />

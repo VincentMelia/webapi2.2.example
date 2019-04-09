@@ -24,7 +24,6 @@ namespace webapi2._2.ui.ViewModels
 {
     public class LogonViewModel : DotvvmViewModelBase
     {
-        public Guid _userListSelectedValue { get; set; }
         public List<User> _userList { get; set; }
         public GridViewDataSet<User> UserGridView { get; set; }
 
