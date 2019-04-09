@@ -13,11 +13,16 @@ using DotVVM.Framework.Hosting;
 using DotVVM.Framework.Binding;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Mvc;
 
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.dtos.DtoClasses.UserTodoListsTypes;
 using static webapi22.example.data_access.DataAccess;
 using Microsoft.Extensions.DependencyInjection;
+using webapi2._2.ui;
+using AppContext = webapi2._2.ui.AppContext;
 
 namespace webapi2_2.ui.ViewModels
 {
@@ -36,8 +41,9 @@ namespace webapi2_2.ui.ViewModels
         {
             if (!Context.IsPostBack)
             {
-                _userTodoList = AbstractGetListsForUser(Guid.NewGuid());
-                if (TodoListGridView == null) TodoListGridView = new GridViewDataSet<TodoList>();
+                _userTodoList = AbstractGetListsForUser(new Guid(AppContext.Current.Session.GetString("UserId")));
+                if (TodoListGridView == null)
+                    TodoListGridView = new GridViewDataSet<TodoList>();
             }
 
             return base.Load();
@@ -50,11 +56,6 @@ namespace webapi2_2.ui.ViewModels
             return base.PreRender();
         }
 
-        public void LogonAs(Guid clickedUserId)
-        {
-
-            //Context.RedirectToRoute("todos");
-        }
 
     }
 }
