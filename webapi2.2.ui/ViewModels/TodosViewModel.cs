@@ -31,8 +31,11 @@ namespace webapi2_2.ui.ViewModels
         public UserTodoLists _userTodoList { get; set; }
         public GridViewDataSet<TodoList> TodoListGridView { get; set; }
 
+        public bool isTaskModalDisplayed { get; set; }
+    
         public override Task Init()
         {
+            if (Context.Parameters.ContainsKey("displayTodo")) isTaskModalDisplayed = true;
             return base.Init();
         }
 
@@ -64,9 +67,11 @@ namespace webapi2_2.ui.ViewModels
 
         public void GoToList(Guid listId)
         {
-            IDictionary<string, object> dict = new Dictionary<string, object>();
-            dict.Add("todoListId", listId);
-            Context.RedirectToRoute("TodosWithList", new { todoListId = listId });
+            var data = new { test1 = "val", test2 = "val2" };
+            Dictionary<string, object> p = new Dictionary<string, object>();
+            p.Add("todoListId", listId);
+            p.Add("displayTodo", true);
+            Context.RedirectToRoute("TodosWithList", new { todoListId = listId, displayTodo = true });
         }
 
     }

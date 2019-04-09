@@ -9,6 +9,11 @@
 </head>
 <body>
 
+    <bp:ModalDialog IsDisplayed="{value: isTaskModalDisplayed}" CloseOnOutsideClick="false">
+        <ContentTemplate>
+            dfdfdf
+        </ContentTemplate>
+    </bp:ModalDialog>
     <dot:GridView DataSource="{value: TodoListGridView}">
         <EmptyDataTemplate></EmptyDataTemplate>
         <Columns>
