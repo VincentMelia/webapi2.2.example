@@ -11,7 +11,11 @@
 
     <bp:ModalDialog IsDisplayed="{value: isTaskModalDisplayed}" CloseOnOutsideClick="false">
         <ContentTemplate>
-            dfdfdf
+            <bs:Form>
+                <bs:FormGroup>
+                    <bs:Button>dfdd</bs:Button>
+                </bs:FormGroup>
+            </bs:Form>
         </ContentTemplate>
     </bp:ModalDialog>
     <dot:GridView DataSource="{value: TodoListGridView}">

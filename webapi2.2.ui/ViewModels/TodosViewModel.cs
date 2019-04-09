@@ -67,10 +67,6 @@ namespace webapi2_2.ui.ViewModels
 
         public void GoToList(Guid listId)
         {
-            var data = new { test1 = "val", test2 = "val2" };
-            Dictionary<string, object> p = new Dictionary<string, object>();
-            p.Add("todoListId", listId);
-            p.Add("displayTodo", true);
             Context.RedirectToRoute("TodosWithList", new { todoListId = listId, displayTodo = true });
         }
 
