@@ -1,5 +1,7 @@
 # webapi2.2.example - Todo List
 
+_updated 4/10: global error handling_
+
 ## Overview
 An example .NET Core solution using WebAPI 2.2 Core, message-based business-layer using friendly DTOs,  an abstract DAL with in-memory and SQL implementations and business-layer route and DTO validation.
 
@@ -40,6 +42,8 @@ Pluggable with any data source, just like most repository-type patterns. The dif
 
 Here’s the complete abstract DAL specification:
 
+	
+	
 	    public static class DataAccess
 	    {
 	        public static readonly int dataaccesstype = 0;
@@ -63,6 +67,8 @@ Here’s the complete abstract DAL specification:
 	        public static Action<Guid, Guid, Guid> AbstractDeleteSingleTodo;
 
 All Func declarations where we can assign a concrete implementation based on a flag:
+	
+	
 	if (dataaccesstype == 0)
 	            {
 	                AbstractValidatePathForList = in_memory.DAL.ValidatePath;
@@ -111,7 +117,7 @@ All Func declarations where we can assign a concrete implementation based on a f
 
 ### Compiled Self-Contained Folders
 - compiled-osx - seems to work on OSX. Browse to the compiled os-x folder and run `dotnet webapi2.2.api.dll`
-- compiled-win - used to work until yesterday. Now it builds perfectly but the publish fails when using Visual Studio. But it works from the CLI: `dotnet publish -o..\compiled-win\ -c debug --self-contained true -r win-x64`. Simply run the webapi2.2.exe.
+- compiled-win - used to work until yesterday. Now it builds perfectly but the publish fails when using Visual Studio. But it works from the CLI: `dotnet publish -o ..\compiled-win\ -c debug --self-contained true -r win-x64`. Simply run the webapi2.2.exe.
 
 ### Other
 As this was based off the in-memory provider, I always found it easier to implement primary keys as GUIDs.
