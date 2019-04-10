@@ -53,19 +53,19 @@ namespace webapi2._2.api
                             Instance = $"urn:myorganization:error:{Guid.NewGuid()}"
                         };
 
-                        if (exception is BadHttpRequestException badHttpRequestException)
-                        {
-                            problemDetails.Title = "Invalid request";
-                            problemDetails.Status = (int)typeof(BadHttpRequestException).GetProperty("StatusCode",
-                                BindingFlags.NonPublic | BindingFlags.Instance).GetValue(badHttpRequestException);
-                            problemDetails.Detail = badHttpRequestException.Message;
-                        }
-                        else
-                        {
+                        //if (exception is BadHttpRequestException badHttpRequestException)
+                        //{
+                        //    problemDetails.Title = "Invalid request";
+                        //    problemDetails.Status = (int)typeof(BadHttpRequestException).GetProperty("StatusCode",
+                        //        BindingFlags.NonPublic | BindingFlags.Instance).GetValue(badHttpRequestException);
+                        //    problemDetails.Detail = badHttpRequestException.Message;
+                        //}
+                        //else
+                        //{
                             problemDetails.Title = "An unexpected error occurred!";
                             problemDetails.Status = 500;
                             problemDetails.Detail = "Server error occurred.";// exception.Demystify().ToString();
-                        }
+                        //}
                         
                         context.Response.StatusCode = problemDetails.Status.Value;
                         context.Response.WriteJson(problemDetails, "application/problem+json");
