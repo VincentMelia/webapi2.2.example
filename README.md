@@ -1,5 +1,7 @@
 # webapi2.2.example - Todo List
 
+_updated 4/10: global error handling_
+
 ## Overview
 An example .NET Core solution using WebAPI 2.2 Core, message-based business-layer using friendly DTOs,  an abstract DAL with in-memory and SQL implementations and business-layer route and DTO validation.
 
