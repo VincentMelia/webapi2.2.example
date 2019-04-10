@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using static webapi22.example.data_access.DataAccess;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.validation;
@@ -15,8 +17,7 @@ namespace webapi2._2.api.Controllers
         //base route here. Answer on anything.
         public List<User> Get()
         {
-            return AbstractGetUsers();
-            
+            return AbstractGetUsers(); 
         }
 
         [Route("{UserName}")] //answer on anything.
