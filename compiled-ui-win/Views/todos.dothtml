@@ -1,0 +1,46 @@
+﻿@viewModel webapi2_2.ui.ViewModels.TodosViewModel, webapi2.2.ui
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <bp:ModalDialog IsDisplayed="{value: isTaskModalDisplayed}" CloseOnOutsideClick="false">
+        <ContentTemplate>
+            <bs:Form>
+                <bs:FormGroup>
+                    <bs:Button>dfdd</bs:Button>
+                </bs:FormGroup>
+            </bs:Form>
+        </ContentTemplate>
+    </bp:ModalDialog>
+    <dot:GridView DataSource="{value: TodoListGridView}">
+        <EmptyDataTemplate></EmptyDataTemplate>
+        <Columns>
+            <dot:GridViewTemplateColumn HeaderText="User" Width="50%">
+                <ContentTemplate>
+                    <i>{{value: TodoListName}}</i>
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+            <dot:GridViewTemplateColumn AllowSorting="false">
+                <ContentTemplate>
+                    <bp:Button Text="{value: "Go to list"}" Click="{command: _parent.GoToList(TodoListId)}" />
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+
+            <%--<dot:GridViewTemplateColumn AllowSorting="false">
+                <ContentTemplate>
+                    <bp:Button Text="{value:  "Log On"}" Click="{command: _parent.LogonAs(_this.UserId)}" />
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>--%>
+        </Columns>
+    </dot:GridView>
+
+</body>
+</html>
+
+
