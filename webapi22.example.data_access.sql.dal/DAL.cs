@@ -85,7 +85,7 @@ namespace webapi22.example.data_access.sql.dal
         public static ToDoListWithTodos GetTodoList(Guid userId, Guid todoListId)
         {
             var qf = new QueryFactory();
-
+            
             var todolist2 = qf.Create().Select<ToDoListWithTodos>(TodoListFields.TodoListId, TodoListFields.TodoListName
                     , TodoListItemFields.TodoListItemId, TodoListItemFields.TodoListItemSubject, TodoListItemFields.TodoListItemIsComplete)
                 .From(QueryTarget.InnerJoin(qf.TodoListItem)
@@ -113,6 +113,7 @@ namespace webapi22.example.data_access.sql.dal
 
             foreach (var todoListItem in newTodoListWithTodos.TodoListItems)
             {
+                //todo can put UpdateToDo() extension here in place of manual code
                 newlist.TodoListItems.Add(new TodoListItemEntity()
                     {
                         TodoListItemId = Guid.NewGuid(),
@@ -170,10 +171,11 @@ namespace webapi22.example.data_access.sql.dal
 
         public static void DeleteTodoList(Guid userId, Guid todoListId)
         {
-            //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
+            var qf = new QueryFactory();
+            var listToDelete = qf.TodoList.Where(TodoListFields.UserId.Equal(userId)
+                .And(TodoListFields.TodoListId.Equal(todoListId))).GetFirst();
 
-            //MockDB._todoListItems.Where(i => i.TodoListId == todoListId).ToList().ForEach(item => MockDB._todoListItems.Remove(item));
-            //MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList().ForEach(list => MockDB._todoList.Remove(list));
+            listToDelete.Delete();
         }
 
 
