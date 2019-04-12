@@ -93,7 +93,7 @@ namespace webapi22.example.data_access.sql.dal
                 .Where(TodoListFields.UserId.Equal(userId)
                     .And(TodoListFields.TodoListId.Equal(todoListId)
                         .And(TodoListItemFields.TodoListItemIsComplete.NotEqual(true))));
-
+            
             var d = new TypedListDAO().FetchQuery(todolist2).First();
             return d;
         }
@@ -181,6 +181,14 @@ namespace webapi22.example.data_access.sql.dal
 
         public static Todo AddNewTodo(Guid userId, Guid todoListId, dtos.DtoClasses.Todo newItem)
         {
+            var qf = new QueryFactory();
+            var newTodo = new TodoListItemEntity();
+            newTodo.UpdateFromTodo(newItem);
+            newTodo.TodoListItemId = Guid.NewGuid();
+            newTodo.TodoListId = todoListId;
+            newTodo.Save(true);
+
+            return GetSingleTodoItem(userId, todoListId, newTodo.TodoListItemId);
             //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 
             //var list = MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList()[0];
