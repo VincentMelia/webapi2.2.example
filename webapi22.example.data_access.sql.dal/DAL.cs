@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using SD.LLBLGen.Pro.ORMSupportClasses;
 using SD.LLBLGen.Pro.QuerySpec;
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.data_access.sql.EntityClasses;
@@ -30,12 +31,6 @@ namespace webapi22.example.data_access.sql.dal
                 !itemExists ? "Todo item doesn't exist." : string.Empty));
 
             return validTodoItemResults;
-            //var result = new List<Tuple<bool, string>>();
-
-            //bool exists = MockDB._todoList.Where(l => l.TodoListId == listId && l.UserId == userId).ToList().Count > 0;
-
-            //result.Add(new Tuple<bool, string>(exists, !exists ? "Todo list doesn't exist." : string.Empty));
-            //return result;
         }
 
         public static List<Tuple<bool, string>> ValidatePath(Guid userId, Guid listId, Guid itemId)
@@ -57,29 +52,17 @@ namespace webapi22.example.data_access.sql.dal
 
             return validTodoItemResults;
 
-            //var validationList = new List<Tuple<bool, string>>();
-
-            //var validTodoListResults = ValidatePath(userId, listId);
-
-            //bool exists = MockDB._todoListItems
-            //                  .Where(i => i.TodoListId == listId && i.TodoListItemId == itemId &&
-            //                              i.UserId == userId).ToList()
-            //                  .Count > 0;
-
-            //var validTodoItemResults = new Tuple<bool, string>(exists, !exists ? "Todo item doesn't exist." : string.Empty);
-
-            //validationList.Add(validTodoListResults[0]);
-            //validationList.Add(validTodoItemResults);
-
-            //return validationList;
         }
 
         public static List<Tuple<bool, string>> ValidateUser(Guid userId)
         {
-            var user = new UserEntity(userId);
+            var qf = new QueryFactory();
+            var userExistsQuery = qf.Create().Select(UserFields.UserId).Where(UserFields.UserId.Equal(userId));
+            var userExists = new TypedListDAO().FetchQuery(userExistsQuery).Any();
+
             var validationResults = new List<Tuple<bool, string>>();
 
-            validationResults.Add(new Tuple<bool, string>(!user.IsNew, user.IsNew ? "User doesn't exist." : string.Empty));
+            validationResults.Add(new Tuple<bool, string>(userExists, !userExists ? "User doesn't exist." : string.Empty));
 
             return validationResults;
 
@@ -90,31 +73,29 @@ namespace webapi22.example.data_access.sql.dal
 
         public static List<User> GetUsers()
         {
-            List<User> users = new List<User>();
-            //return MockDB._userList.Select(u => new User() { UserId = u.UserId, UserName = u.UserName }).ToList();
-            var userentities = new UserCollection().GetMulti<UserEntity>(new QueryFactory().User);
-            foreach (UserEntity user in userentities)
-            {
-                users.Add(user.ProjectToUser());
-            }
-            return users;
+            var qf = new QueryFactory();
+
+            var usersQuery = qf.Create().Select<User, UserFields>();
+
+            var userList = new TypedListDAO().FetchQuery(usersQuery);
+
+            return userList;
         }
 
         public static ToDoListWithTodos GetTodoList(Guid userId, Guid todoListId)
         {
             var qf = new QueryFactory();
 
-            var todolist = qf.TodoList
+            var todolist2 = qf.Create().Select<ToDoListWithTodos>(TodoListFields.TodoListId, TodoListFields.TodoListName
+                    , TodoListItemFields.TodoListItemId, TodoListItemFields.TodoListItemSubject, TodoListItemFields.TodoListItemIsComplete)
                 .From(QueryTarget.InnerJoin(qf.TodoListItem)
                     .On(TodoListItemFields.TodoListId.Equal(TodoListFields.TodoListId)))
-                //.Select(Projection.Full)
                 .Where(TodoListFields.UserId.Equal(userId)
                     .And(TodoListFields.TodoListId.Equal(todoListId)
-                    .And(TodoListItemFields.TodoListItemIsComplete.NotEqual(true)))).GetFirst();
-            
-            
-            //((IQueryable<TodoListEntity>) todolist).ProjectToToDoListWithTodos();
-            return todolist.ProjectToToDoListWithTodos();
+                        .And(TodoListItemFields.TodoListItemIsComplete.NotEqual(true))));
+
+            var d = new TypedListDAO().FetchQuery(todolist2).First();
+            return d;
         }
 
         public static UserTodoLists GetListsForUser(Guid userId)
