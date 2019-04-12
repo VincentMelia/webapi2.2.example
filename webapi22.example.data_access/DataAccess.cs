@@ -8,7 +8,7 @@ namespace webapi22.example.data_access
     
     public static class DataAccess
     {
-        public static readonly int dataaccesstype = 0;
+        public static readonly int dataaccesstype = 1;
 
         //validators
         public static Func<Guid, Guid, List<Tuple<bool, string>>> AbstractValidatePathForList;
@@ -52,7 +52,7 @@ namespace webapi22.example.data_access
             {
                 AbstractValidatePathForList = sql.dal.DAL.ValidatePath;
                 AbstractValidatePathForListAndItem = sql.dal.DAL.ValidatePath;
-                //AbstractValidateUser = sql.dal.DAL.ValidateUser;
+                AbstractValidateUser = sql.dal.DAL.ValidateUser;
 
                 AbstractGetUsers = sql.dal.DAL.GetUsers;
                 AbstractGetTodoList = sql.dal.DAL.GetTodoList;

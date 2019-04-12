@@ -7,6 +7,7 @@ using webapi22.example.data_access.sql.EntityClasses;
 using webapi22.example.data_access.sql.CollectionClasses;
 using webapi22.example.data_access.sql.FactoryClasses;
 using webapi22.example.data_access.sql.HelperClasses;
+using webapi22.example.data_access.sql.DaoClasses;
 using webapi22.example.dtos.Persistence;
 using SD.LLBLGen.Pro.QuerySpec.SelfServicing;
 
@@ -16,7 +17,19 @@ namespace webapi22.example.data_access.sql.dal
     {
         public static List<Tuple<bool, string>> ValidatePath(Guid userId, Guid listId)
         {
-            return null;
+            var qf = new QueryFactory();
+            var q = qf.TodoList
+                .Where(TodoListFields.TodoListId.Equal(listId)
+                    .And(TodoListFields.UserId.Equal(userId))
+                );
+
+            var itemExists = new TodoListDAO().GetScalar<bool>(qf.Create().Select(q.Any()), null);
+
+            var validTodoItemResults = new List<Tuple<bool, string>>();
+            validTodoItemResults.Add(new Tuple<bool, string>(itemExists,
+                !itemExists ? "Todo item doesn't exist." : string.Empty));
+
+            return validTodoItemResults;
             //var result = new List<Tuple<bool, string>>();
 
             //bool exists = MockDB._todoList.Where(l => l.TodoListId == listId && l.UserId == userId).ToList().Count > 0;
@@ -27,7 +40,23 @@ namespace webapi22.example.data_access.sql.dal
 
         public static List<Tuple<bool, string>> ValidatePath(Guid userId, Guid listId, Guid itemId)
         {
-            return null;
+            var qf = new QueryFactory();
+            var q = qf.TodoListItem
+                .From(QueryTarget.InnerJoin(qf.TodoList)
+                    .On(TodoListFields.TodoListId.Equal(TodoListItemFields.TodoListId)))
+                .Where(TodoListItemFields.TodoListId.Equal(listId)
+                    .And(TodoListItemFields.TodoListItemId.Equal(itemId)
+                        .And(TodoListFields.UserId.Equal(userId))
+                    )
+                );
+
+            var itemExists = new TodoListDAO().GetScalar<bool>(qf.Create().Select(q.Any()), null);
+
+            var validTodoItemResults = new List<Tuple<bool, string>>();
+            validTodoItemResults.Add( new Tuple<bool, string>(itemExists, !itemExists ? "Todo item doesn't exist." : string.Empty));
+
+            return validTodoItemResults;
+
             //var validationList = new List<Tuple<bool, string>>();
 
             //var validTodoListResults = ValidatePath(userId, listId);
@@ -47,17 +76,13 @@ namespace webapi22.example.data_access.sql.dal
 
         public static List<Tuple<bool, string>> ValidateUser(Guid userId)
         {
-            return null;
-            //bool exists = MockDB._userList
-            //                  .Where(u => u.UserId == userId).ToList()
-            //                  .Count > 0;
+            var user = new UserEntity(userId);
+            var validationResults = new List<Tuple<bool, string>>();
 
-            //var validTodoItemResults = new Tuple<bool, string>(exists, !exists ? "User doesn't exist." : string.Empty);
+            validationResults.Add(new Tuple<bool, string>(!user.IsNew, user.IsNew ? "User doesn't exist." : string.Empty));
 
-            //var validationList = new List<Tuple<bool, string>>();
-            //validationList.Add(validTodoItemResults);
+            return validationResults;
 
-            //return validationList;
         }
 
 
@@ -82,10 +107,13 @@ namespace webapi22.example.data_access.sql.dal
             var todolist = qf.TodoList
                 .From(QueryTarget.InnerJoin(qf.TodoListItem)
                     .On(TodoListItemFields.TodoListId.Equal(TodoListFields.TodoListId)))
+                //.Select(Projection.Full)
                 .Where(TodoListFields.UserId.Equal(userId)
                     .And(TodoListFields.TodoListId.Equal(todoListId)
                     .And(TodoListItemFields.TodoListItemIsComplete.NotEqual(true)))).GetFirst();
-
+            
+            
+            //((IQueryable<TodoListEntity>) todolist).ProjectToToDoListWithTodos();
             return todolist.ProjectToToDoListWithTodos();
         }
 
