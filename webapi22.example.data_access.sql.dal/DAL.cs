@@ -11,6 +11,7 @@ using webapi22.example.data_access.sql.HelperClasses;
 using webapi22.example.data_access.sql.DaoClasses;
 using webapi22.example.dtos.Persistence;
 using SD.LLBLGen.Pro.QuerySpec.SelfServicing;
+using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
 
 namespace webapi22.example.data_access.sql.dal
 {
@@ -85,43 +86,28 @@ namespace webapi22.example.data_access.sql.dal
         public static ToDoListWithTodos GetTodoList(Guid userId, Guid todoListId)
         {
             var qf = new QueryFactory();
-            
-            //var todolist = qf.TodoList
-            //    .From(QueryTarget.InnerJoin(qf.TodoListItem)
-            //        .On(TodoListItemFields.TodoListId.Equal(TodoListFields.TodoListId)))
-            //    .Where(TodoListFields.UserId.Equal(userId)
-            //        .And(TodoListFields.TodoListId.Equal(todoListId))
-            //            .And(TodoListItemFields.TodoListItemIsComplete.NotEqual(true))
-            //    ).GetFirst();
-            
-            ////todolist.TodoListItems.Where(i => i.TodoListItemIsComplete == false);
-            //return todolist.ProjectToToDoListWithTodos();
 
-
-            var todolist2 = qf.Create().Select<ToDoListWithTodos>(TodoListFields.TodoListId, TodoListFields.TodoListName
-                    , TodoListItemFields.TodoListItemId, TodoListItemFields.TodoListItemSubject, TodoListItemFields.TodoListItemIsComplete)
-                .From(QueryTarget.InnerJoin(qf.TodoListItem)
-                    .On(TodoListItemFields.TodoListId.Equal(TodoListFields.TodoListId)))
+            var todolist = qf.TodoList
                 .Where(TodoListFields.UserId.Equal(userId)
-                    .And(TodoListFields.TodoListId.Equal(todoListId))
-                        .And(TodoListItemFields.TodoListItemIsComplete.NotEqual(true)));
-            
-                //.Where(CustomerFields.Country.Equal("Germany"))
-                //.Select(() => new
-                //{
-                //    CustomerId = CustomerFields.CustomerId.ToValue<string>(),
-                //    Orders = qf.Order
-                //        .CorrelatedOver(OrderEntity.Relations.CustomerEntityUsingCustomerId)
-                //        .Select(() => new
-                //        {
-                //            OrderId = OrderFields.OrderId.ToValue<int>(),
-                //            OrderDate = OrderFields.OrderDate.ToValue<DateTime?>()
-                //        })
-                //        .ToResultset()
-                //});
+                    .And(TodoListFields.TodoListId.Equal(todoListId)))
+                .Select(() => new ToDoListWithTodos()
+                {
+                    TodoListId = TodoListFields.TodoListId.ToValue<Guid>(),
+                    TodoListName = TodoListFields.TodoListName.ToValue<string>(),
+                    TodoListItems = (List<TodoListItem>) qf.TodoListItem
+                        .CorrelatedOver(TodoListItemEntity.Relations.TodoListEntityUsingTodoListId)
+                        .Where(TodoListItemFields.TodoListItemIsComplete.Equal(false))
+                        .Select(() => new TodoListItem()
+                        {
+                            TodoListItemId = TodoListItemFields.TodoListItemId.ToValue<Guid>(),
+                            TodoListItemSubject = TodoListItemFields.TodoListItemSubject.ToValue<string>(),
+                            TodoListItemIsComplete = TodoListItemFields.TodoListItemIsComplete.ToValue<bool>()
+                        }).ToResultset()
+                });
 
-            var d = new TypedListDAO().FetchQuery(todolist2).First();
-            return d;
+            var entirelist = new TypedListDAO().FetchQuery(todolist).First();
+            return entirelist;
+
         }
 
         public static UserTodoLists GetListsForUser(Guid userId)
