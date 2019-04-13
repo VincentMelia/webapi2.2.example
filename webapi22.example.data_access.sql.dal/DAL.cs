@@ -86,14 +86,40 @@ namespace webapi22.example.data_access.sql.dal
         {
             var qf = new QueryFactory();
             
+            //var todolist = qf.TodoList
+            //    .From(QueryTarget.InnerJoin(qf.TodoListItem)
+            //        .On(TodoListItemFields.TodoListId.Equal(TodoListFields.TodoListId)))
+            //    .Where(TodoListFields.UserId.Equal(userId)
+            //        .And(TodoListFields.TodoListId.Equal(todoListId))
+            //            .And(TodoListItemFields.TodoListItemIsComplete.NotEqual(true))
+            //    ).GetFirst();
+            
+            ////todolist.TodoListItems.Where(i => i.TodoListItemIsComplete == false);
+            //return todolist.ProjectToToDoListWithTodos();
+
+
             var todolist2 = qf.Create().Select<ToDoListWithTodos>(TodoListFields.TodoListId, TodoListFields.TodoListName
                     , TodoListItemFields.TodoListItemId, TodoListItemFields.TodoListItemSubject, TodoListItemFields.TodoListItemIsComplete)
                 .From(QueryTarget.InnerJoin(qf.TodoListItem)
                     .On(TodoListItemFields.TodoListId.Equal(TodoListFields.TodoListId)))
                 .Where(TodoListFields.UserId.Equal(userId)
-                    .And(TodoListFields.TodoListId.Equal(todoListId)
-                        .And(TodoListItemFields.TodoListItemIsComplete.NotEqual(true))));
+                    .And(TodoListFields.TodoListId.Equal(todoListId))
+                        .And(TodoListItemFields.TodoListItemIsComplete.NotEqual(true)));
             
+                //.Where(CustomerFields.Country.Equal("Germany"))
+                //.Select(() => new
+                //{
+                //    CustomerId = CustomerFields.CustomerId.ToValue<string>(),
+                //    Orders = qf.Order
+                //        .CorrelatedOver(OrderEntity.Relations.CustomerEntityUsingCustomerId)
+                //        .Select(() => new
+                //        {
+                //            OrderId = OrderFields.OrderId.ToValue<int>(),
+                //            OrderDate = OrderFields.OrderDate.ToValue<DateTime?>()
+                //        })
+                //        .ToResultset()
+                //});
+
             var d = new TypedListDAO().FetchQuery(todolist2).First();
             return d;
         }
@@ -142,27 +168,10 @@ namespace webapi22.example.data_access.sql.dal
                 itemToUpdate.TodoListId = listToUpdate.TodoListId;
                 if (itemToUpdate.IsNew)
                     itemToUpdate.TodoListItemId = Guid.NewGuid();
-                   
+                
                 itemToUpdate.TodoListItemSubject = updatedItem.TodoListItemSubject;
                 itemToUpdate.TodoListItemIsComplete = updatedItem.TodoListItemIsComplete;
             }
-
-            //foreach (Property p in newLead.Properties)
-            //{
-            //    var prop = customerentity.Properties.Where(x => x.PropertyId == p.PropertyId).FirstOrDefault() ?? customerentity.Properties.AddNew();
-            //    prop.UpdateFromPropertyDerivedRoot(p);
-
-            //    foreach (PropertyNote pn in p.PropertyNotes)
-            //    {
-            //        var note = prop.PropertyNotes.Where(x => x.PropertyNotesId == pn.PropertyNotesId).FirstOrDefault() ?? prop.PropertyNotes.AddNew();
-            //        note.UpdateFromPropertyNoteDerivedRoot(pn);
-            //    }
-            //    foreach (PropertyNote pn in _deletedPropertyNotes)
-            //    {
-            //        var note = prop.PropertyNotes.Where(x => x.PropertyNotesId == pn.PropertyNotesId).FirstOrDefault();
-            //        if (note != null) uow.AddForDelete(note);
-            //    }
-            //}
 
             listToUpdate.Save(true);
 
@@ -234,6 +243,19 @@ namespace webapi22.example.data_access.sql.dal
         public static Todo UpdateSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemId,
             Todo updatedTodoItem)
         {
+            var qf = new QueryFactory();
+
+            var itemToUpdate = qf.TodoListItem
+                .From(QueryTarget.InnerJoin(qf.TodoList).On(TodoListItemFields.TodoListId.Equal(TodoListFields.TodoListId)))
+                .Where(TodoListFields.UserId.Equal(userId)
+                    .And(TodoListItemFields.TodoListId.Equal(todoListId)
+                        .And(TodoListItemFields.TodoListItemId.Equal(todoListItemId))
+                    )).GetFirst();
+
+            itemToUpdate.UpdateFromTodo(updatedTodoItem);
+            itemToUpdate.TodoListItemId = todoListItemId;
+            itemToUpdate.Save(true);
+
             //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
 
             //var itemToUpdate = MockDB._todoListItems.Where(i =>
