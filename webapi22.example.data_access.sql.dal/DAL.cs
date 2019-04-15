@@ -14,7 +14,6 @@ using webapi22.example.data_access.sql.DaoClasses;
 using webapi22.example.dtos.Persistence;
 using SD.LLBLGen.Pro.QuerySpec.SelfServicing;
 using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
-using Transaction = System.Transactions.Transaction;
 using IsolationLevel = System.Data.IsolationLevel;
 
 namespace webapi22.example.data_access.sql.dal
