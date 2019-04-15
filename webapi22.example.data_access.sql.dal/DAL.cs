@@ -206,21 +206,6 @@ namespace webapi22.example.data_access.sql.dal
                     .And(TodoListItemFields.TodoListId.Equal(todoListId))
                     .And(TodoListItemFields.TodoListItemId.Equal(todoListItemRowId))
                 ).GetFirst().ProjectToTodo();
-                
-                
-            //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
-            //var item = MockDB._todoListItems.Where
-            //(i => i.UserId == userId
-            //      && i.TodoListItemId == todoListItemRowId
-            //      && i.TodoListId == todoListId).ToList().First();
-
-            //return new Todo()
-            //{
-            //    TodoListItemId = item.TodoListItemId,
-            //    TodoListItemSubject = item.TodoListItemSubject,
-            //    TodoListItemIsComplete = item.TodoListItemIsComplete
-            //};
-            return null;
 
         }
 
@@ -238,7 +223,7 @@ namespace webapi22.example.data_access.sql.dal
                     )).GetFirst();
 
             itemToUpdate.UpdateFromTodo(updatedTodoItem);
-            itemToUpdate.TodoListItemId = todoListItemId;
+            itemToUpdate.TodoListItemId = todoListItemId;//todo is this even needed?
             itemToUpdate.Save(true);
 
             //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
@@ -256,7 +241,7 @@ namespace webapi22.example.data_access.sql.dal
             //    TodoListItemSubject = itemToUpdate.TodoListItemSubject,
             //    TodoListItemIsComplete = itemToUpdate.TodoListItemIsComplete
             //};
-            return null;
+            return GetSingleTodoItem(userId,todoListId,itemToUpdate.TodoListItemId);
 
         }
 
