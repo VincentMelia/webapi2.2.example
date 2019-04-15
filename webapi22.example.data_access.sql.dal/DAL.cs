@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Data;
+using System.Transactions;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 using SD.LLBLGen.Pro.QuerySpec;
 using webapi22.example.dtos.DtoClasses;
@@ -12,6 +14,8 @@ using webapi22.example.data_access.sql.DaoClasses;
 using webapi22.example.dtos.Persistence;
 using SD.LLBLGen.Pro.QuerySpec.SelfServicing;
 using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
+using Transaction = System.Transactions.Transaction;
+using IsolationLevel = System.Data.IsolationLevel;
 
 namespace webapi22.example.data_access.sql.dal
 {
@@ -138,20 +142,25 @@ namespace webapi22.example.data_access.sql.dal
             return GetTodoList(userId, newlist.TodoListId);
         }
 
-        public static ToDoListWithTodos UpdateTodoList(Guid userId, Guid todoListId, ToDoListWithTodos updatedtDoListWithTodos)
+        public static ToDoListWithTodos UpdateTodoList(Guid userId, Guid todoListId,
+            ToDoListWithTodos updatedtDoListWithTodos)
         {
             var uow = new UnitOfWork();
 
             var listToUpdate = new QueryFactory().TodoList
-                .Where(TodoListFields.UserId.Equal(userId).And(TodoListFields.TodoListId.Equal(todoListId))).GetFirst();
+                .Where(TodoListFields.UserId.Equal(userId).And(TodoListFields.TodoListId.Equal(todoListId)))
+                .GetFirst();
 
             listToUpdate.UpdateFromToDoListWithTodos(updatedtDoListWithTodos);
-            
+
+            uow.AddForSave(listToUpdate);
+
             var itemsToDelete = new TodoListItemCollection()
                 .GetMulti(new QueryFactory().TodoListItem
                     .Where(TodoListItemFields.TodoListId.Equal(todoListId))
                 );
-            itemsToDelete.DeleteMulti();
+
+            uow.AddCollectionForDelete(itemsToDelete);
 
             foreach (var updatedItem in updatedtDoListWithTodos.TodoListItems)
             {
@@ -165,9 +174,11 @@ namespace webapi22.example.data_access.sql.dal
 
                 itemToUpdate.TodoListItemSubject = updatedItem.TodoListItemSubject;
                 itemToUpdate.TodoListItemIsComplete = updatedItem.TodoListItemIsComplete;
+
+                uow.AddForSave(itemToUpdate);
             }
 
-            listToUpdate.Save(true);
+            uow.Commit(new HelperClasses.Transaction(IsolationLevel.ReadCommitted, "UpdateTodoList UOW"), true);
 
             return GetTodoList(userId, todoListId);
         }
