@@ -8,7 +8,7 @@ namespace webapi22.example.data_access
     
     public static class DataAccess
     {
-        public static readonly int dataaccesstype = 1;
+        public static readonly int dataaccesstype = 0;
 
         //validators
         public static Func<Guid, Guid, List<Tuple<bool, string>>> AbstractValidatePathForList;
