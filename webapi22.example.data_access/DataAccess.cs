@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using webapi22.example.dtos.DtoClasses;
 //using webapi22.example.data_access.sql.dal;
-
+//using Microsoft.exte
 namespace webapi22.example.data_access
 {
     
     public static class DataAccess
     {
-        public static readonly int dataaccesstype = 0;
-
         //validators
         public static Func<Guid, Guid, List<Tuple<bool, string>>> AbstractValidatePathForList;
         public static Func<Guid, Guid, Guid, List<Tuple<bool, string>>> AbstractValidatePathForListAndItem;
@@ -29,7 +27,7 @@ namespace webapi22.example.data_access
         public static Action<Guid, Guid, Guid> AbstractDeleteSingleTodo;
 
 
-        static DataAccess()
+        public static void Init(int dataaccesstype)
         {
             if (dataaccesstype == 0)
             {
@@ -48,11 +46,11 @@ namespace webapi22.example.data_access
                 AbstractUpdateSingleTodoItem = in_memory.DAL.UpdateSingleTodoItem;
                 AbstractDeleteSingleTodo = in_memory.DAL.DeleteSingleTodo;
             }
-            else if(dataaccesstype == 1)
+            else if (dataaccesstype == 1)
             {
                 AbstractValidatePathForList = sql.dal.DAL.ValidatePath;
                 AbstractValidatePathForListAndItem = sql.dal.DAL.ValidatePath;
-                //AbstractValidateUser = sql.dal.DAL.ValidateUser;
+                AbstractValidateUser = sql.dal.DAL.ValidateUser;
 
                 AbstractGetUsers = sql.dal.DAL.GetUsers;
                 AbstractGetTodoList = sql.dal.DAL.GetTodoList;
@@ -70,7 +68,7 @@ namespace webapi22.example.data_access
                 throw new Exception("Wrong data access configuration.");
             }
 
-
         }
+
     }
 }
