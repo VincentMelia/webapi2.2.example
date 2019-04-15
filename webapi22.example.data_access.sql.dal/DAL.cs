@@ -91,19 +91,20 @@ namespace webapi22.example.data_access.sql.dal
                 .Where(TodoListFields.UserId.Equal(userId)
                     .And(TodoListFields.TodoListId.Equal(todoListId)))
                 .Select(() => new ToDoListWithTodos()
-                {
-                    TodoListId = TodoListFields.TodoListId.ToValue<Guid>(),
-                    TodoListName = TodoListFields.TodoListName.ToValue<string>(),
-                    TodoListItems = (List<TodoListItem>) qf.TodoListItem
-                        .CorrelatedOver(TodoListItemEntity.Relations.TodoListEntityUsingTodoListId)
-                        .Where(TodoListItemFields.TodoListItemIsComplete.Equal(false))
-                        .Select(() => new TodoListItem()
-                        {
-                            TodoListItemId = TodoListItemFields.TodoListItemId.ToValue<Guid>(),
-                            TodoListItemSubject = TodoListItemFields.TodoListItemSubject.ToValue<string>(),
-                            TodoListItemIsComplete = TodoListItemFields.TodoListItemIsComplete.ToValue<bool>()
-                        }).ToResultset()
-                });
+                    {
+                        TodoListId = TodoListFields.TodoListId.ToValue<Guid>(),
+                        TodoListName = TodoListFields.TodoListName.ToValue<string>(),
+                        TodoListItems = (List<TodoListItem>) qf.TodoListItem
+                            .CorrelatedOver(TodoListItemEntity.Relations.TodoListEntityUsingTodoListId)
+                            .Where(TodoListItemFields.TodoListItemIsComplete.Equal(false))
+                            .Select(() => new TodoListItem()
+                            {
+                                TodoListItemId = TodoListItemFields.TodoListItemId.ToValue<Guid>(),
+                                TodoListItemSubject = TodoListItemFields.TodoListItemSubject.ToValue<string>(),
+                                TodoListItemIsComplete = TodoListItemFields.TodoListItemIsComplete.ToValue<bool>()
+                            }).ToResultset()
+                    }
+                );
 
             var entirelist = new TypedListDAO().FetchQuery(todolist).First();
             return entirelist;
@@ -112,7 +113,6 @@ namespace webapi22.example.data_access.sql.dal
 
         public static UserTodoLists GetListsForUser(Guid userId)
         {
-            List<UserTodoLists> todoLists = new List<UserTodoLists>();
             return new QueryFactory().User.Where(UserFields.UserId.Equal(userId)).GetFirst().ProjectToUserTodoLists();
         }
 
@@ -140,10 +140,18 @@ namespace webapi22.example.data_access.sql.dal
 
         public static ToDoListWithTodos UpdateTodoList(Guid userId, Guid todoListId, ToDoListWithTodos updatedtDoListWithTodos)
         {
+            var uow = new UnitOfWork();
+
             var listToUpdate = new QueryFactory().TodoList
                 .Where(TodoListFields.UserId.Equal(userId).And(TodoListFields.TodoListId.Equal(todoListId))).GetFirst();
 
             listToUpdate.UpdateFromToDoListWithTodos(updatedtDoListWithTodos);
+            
+            var itemsToDelete = new TodoListItemCollection()
+                .GetMulti(new QueryFactory().TodoListItem
+                    .Where(TodoListItemFields.TodoListId.Equal(todoListId))
+                );
+            itemsToDelete.DeleteMulti();
 
             foreach (var updatedItem in updatedtDoListWithTodos.TodoListItems)
             {
@@ -154,7 +162,7 @@ namespace webapi22.example.data_access.sql.dal
                 itemToUpdate.TodoListId = listToUpdate.TodoListId;
                 if (itemToUpdate.IsNew)
                     itemToUpdate.TodoListItemId = Guid.NewGuid();
-                
+
                 itemToUpdate.TodoListItemSubject = updatedItem.TodoListItemSubject;
                 itemToUpdate.TodoListItemIsComplete = updatedItem.TodoListItemIsComplete;
             }
@@ -184,24 +192,6 @@ namespace webapi22.example.data_access.sql.dal
             newTodo.Save(true);
 
             return GetSingleTodoItem(userId, todoListId, newTodo.TodoListItemId);
-            //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
-
-            //var list = MockDB._todoList.Where(l => l.TodoListId == todoListId).ToList()[0];
-
-            //var newid = Guid.NewGuid();
-
-            //MockDB._todoListItems.Add(new TodoListItemEntityDtoRow()
-            //{
-            //    TodoListItemId = newid,
-            //    TodoListId = todoListId,
-            //    UserId = userId,
-            //    TodoListItemSubject = newItem.TodoListItemSubject,
-            //    TodoListItemIsComplete = newItem.TodoListItemIsComplete
-            //});
-
-            //return GetSingleTodoItem(user.UserId, todoListId, newid);
-            return null;
-
         }
 
 
@@ -209,6 +199,15 @@ namespace webapi22.example.data_access.sql.dal
 
         public static Todo GetSingleTodoItem(Guid userId, Guid todoListId, Guid todoListItemRowId)
         {
+            var qf = new QueryFactory();
+            return qf.TodoListItem
+                .From(QueryTarget.InnerJoin(TodoListItemEntity.Relations.TodoListEntityUsingTodoListId))
+                .Where(TodoListFields.UserId.Equal(userId)
+                    .And(TodoListItemFields.TodoListId.Equal(todoListId))
+                    .And(TodoListItemFields.TodoListItemId.Equal(todoListItemRowId))
+                ).GetFirst().ProjectToTodo();
+                
+                
             //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
             //var item = MockDB._todoListItems.Where
             //(i => i.UserId == userId
