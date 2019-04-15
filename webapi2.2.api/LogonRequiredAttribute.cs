@@ -27,6 +27,7 @@ namespace webapi2._2.api
         {
             base.OnException(args);
 
+            //complete cheese
             if (args.Exception.GetType() == typeof(ArgumentNullException) /*|| args.Exception.GetType() == typeof(InvalidCastException)*/)
             {
                 args.FlowBehavior = FlowBehavior.Return;
