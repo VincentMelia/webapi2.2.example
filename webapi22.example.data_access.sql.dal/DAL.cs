@@ -226,29 +226,22 @@ namespace webapi22.example.data_access.sql.dal
             itemToUpdate.TodoListItemId = todoListItemId;//todo is this even needed?
             itemToUpdate.Save(true);
 
-            //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
-
-            //var itemToUpdate = MockDB._todoListItems.Where(i =>
-            //        i.UserId == userId && i.TodoListId == todoListId && i.TodoListItemId == todoListItemId)
-            //    .ToList().First();
-
-            //itemToUpdate.TodoListItemIsComplete = updatedTodoItem.TodoListItemIsComplete;
-            //itemToUpdate.TodoListItemSubject = updatedTodoItem.TodoListItemSubject;
-
-            //return new Todo()
-            //{
-            //    TodoListItemId = itemToUpdate.TodoListItemId,
-            //    TodoListItemSubject = itemToUpdate.TodoListItemSubject,
-            //    TodoListItemIsComplete = itemToUpdate.TodoListItemIsComplete
-            //};
             return GetSingleTodoItem(userId,todoListId,itemToUpdate.TodoListItemId);
 
         }
 
         public static void DeleteSingleTodo(Guid userId, Guid todoListId, Guid todoItemId)
         {
-            //var user = MockDB._userList.Where(u => u.UserId == userId).ToList()[0];
-            //MockDB._todoListItems.Where(i => i.TodoListId == todoListId && i.TodoListItemId == todoItemId).ToList().ForEach(item => MockDB._todoListItems.Remove(item));
+            var qf = new QueryFactory();
+
+            var itemToDelete = qf.TodoListItem.From(QueryTarget.InnerJoin(qf.TodoList)
+                    .On(TodoListFields.TodoListId.Equal(TodoListItemFields.TodoListId)))
+                .Where(TodoListFields.UserId.Equal(userId)
+                    .And(TodoListItemFields.TodoListId.Equal(todoListId))
+                    .And(TodoListItemFields.TodoListItemId.Equal(todoItemId))
+                ).GetFirst();
+
+            itemToDelete.Delete();
 
         }
 
