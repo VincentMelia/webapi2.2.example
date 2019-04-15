@@ -1,5 +1,6 @@
 # webapi2.2.example - Todo List
 
+_updated: SQL Server DAL_
 _updated 4/10: global error handling_
 
 ## Overview
@@ -42,8 +43,8 @@ Pluggable with any data source, just like most repository-type patterns. The dif
 
 Here’s the complete abstract DAL specification:
 
-	
-	
+
+
 	    public static class DataAccess
 	    {
 	        public static readonly int dataaccesstype = 0;
@@ -67,8 +68,8 @@ Here’s the complete abstract DAL specification:
 	        public static Action<Guid, Guid, Guid> AbstractDeleteSingleTodo;
 
 All Func declarations where we can assign a concrete implementation based on a flag:
-	
-	
+
+
 	if (dataaccesstype == 0)
 	            {
 	                AbstractValidatePathForList = in_memory.DAL.ValidatePath;
