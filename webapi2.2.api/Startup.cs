@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SD.LLBLGen.Pro.DQE.SqlServer;
 using SD.LLBLGen.Pro.ORMSupportClasses;
+using webapi22.example.data_access;
 
 namespace webapi2._2.api
 {
@@ -120,6 +121,8 @@ namespace webapi2._2.api
                 c => c.SetTraceLevel(TraceLevel.Verbose)
                     .AddDbProviderFactory(typeof(System.Data.SqlClient.SqlClientFactory))
                     .SetDefaultCompatibilityLevel(SqlServerCompatibilityLevel.SqlServer2012));
+
+            DataAccess.Init(Convert.ToInt16(Configuration["DataAccessType"]));
 
         }
     }
