@@ -2,16 +2,23 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using DotVVM.Framework.Hosting;
+using webapi22.example.data_access;
 
 namespace webapi2._2.ui
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -44,6 +51,9 @@ namespace webapi2._2.ui
 
             AppContext.Configure(app.ApplicationServices
                 .GetRequiredService<IHttpContextAccessor>());
+
+            DataAccess.Init(Convert.ToInt16(Configuration["DataAccessType"]));
+
 
         }
     }
