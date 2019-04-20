@@ -23,18 +23,23 @@ namespace webapi22.example.validation
             this ToDoListWithTodos _todoList)
         {
             var validator = new TodoListWithTodosValidator(_todoList).Validate(_todoList);
-            var validatorResults = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
+            var validatorResults =
+                new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>) validator.Errors);
 
+            bool _tempSomethingIsValid = true;
             //child validation here
             _todoList.TodoListItems.ForEach(i =>
             {
                 var itemvalidator = new TodoListWithTodosItemValidator(i).Validate(i);
 
-                if (!itemvalidator.IsValid)
-                {
-
-                }
+                _tempSomethingIsValid = itemvalidator.IsValid;
             });
+
+            if (!_tempSomethingIsValid)
+            {
+                validatorResults = new Tuple<bool, List<ValidationFailure>>(false, (List<ValidationFailure>) validator.Errors);
+                validatorResults.Item2.Add(new ValidationFailure("ChildSubject", "Something wrong with a task subject."));
+            }
 
             return validatorResults;
         }
