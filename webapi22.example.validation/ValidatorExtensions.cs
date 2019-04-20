@@ -10,20 +10,32 @@ namespace webapi22.example.validation
     {
 
         //wrapper extension methods for validators below
-        public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListItem(this Todo _listItem)
+        public static Tuple<bool, List<ValidationFailure>> ValidateTodoListItem(this Todo _listItem)
         {
-            var validator = new TodoListDtoRowValidator(_listItem).Validate(_listItem);
+            var validator = new TodoValidator(_listItem).Validate(_listItem);
             var validatorResults = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
             return validatorResults;
         }
 
 
 
-        public static Tuple<bool, List<FluentValidation.Results.ValidationFailure>> ValidateTodoListWithTodos(
+        public static Tuple<bool, List<ValidationFailure>> ValidateTodoListWithTodos(
             this ToDoListWithTodos _todoList)
         {
             var validator = new TodoListWithTodosValidator(_todoList).Validate(_todoList);
             var validatorResults = new Tuple<bool, List<ValidationFailure>>(validator.IsValid, (List<ValidationFailure>)validator.Errors);
+
+            //child validation here
+            _todoList.TodoListItems.ForEach(i =>
+            {
+                var itemvalidator = new TodoListWithTodosItemValidator(i).Validate(i);
+
+                if (!itemvalidator.IsValid)
+                {
+
+                }
+            });
+
             return validatorResults;
         }
 
@@ -33,11 +45,11 @@ namespace webapi22.example.validation
 
     //validators//////////////////////////////////////////////////////
 
-    internal class TodoListDtoRowValidator : AbstractValidator<Todo>
+    internal class TodoValidator : AbstractValidator<Todo>
     {
         internal WeakReference<Todo> _todoItem;
 
-        public TodoListDtoRowValidator(Todo todoItemToValidate)
+        public TodoValidator(Todo todoItemToValidate)
         {
             _todoItem = new WeakReference<Todo>(todoItemToValidate);
 
@@ -49,7 +61,7 @@ namespace webapi22.example.validation
         }
     }
 
-
+    
 
     internal class TodoListWithTodosValidator : AbstractValidator<ToDoListWithTodos>
     {
@@ -66,4 +78,21 @@ namespace webapi22.example.validation
                 .NotEmpty().WithMessage("List name is required.");
         }
     }
+
+    internal class TodoListWithTodosItemValidator : AbstractValidator<dtos.DtoClasses.ToDoListWithTodosTypes.TodoListItem>
+    {
+        internal WeakReference<dtos.DtoClasses.ToDoListWithTodosTypes.TodoListItem> _todoList;
+
+        public TodoListWithTodosItemValidator(dtos.DtoClasses.ToDoListWithTodosTypes.TodoListItem todoListToValidate)
+        {
+            _todoList = new WeakReference<dtos.DtoClasses.ToDoListWithTodosTypes.TodoListItem>(todoListToValidate);
+
+            RuleFor(r => r.TodoListItemSubject)
+                .MaximumLength(50).WithMessage("Subject must be less than 50 characters")
+                .MinimumLength(1).WithMessage("Subject is required.")
+                .NotNull().WithMessage("Subject is required.")
+                .NotEmpty().WithMessage("Subject is required.");
+        }
+    }
+
 }
