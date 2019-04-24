@@ -40,6 +40,20 @@
         </Columns>
     </dot:GridView>
 
+    <%--<bp:GridView DataSource="{value: TodoListGridView}">
+        <Columns>
+            <bp:GridViewTextColumn Value="{value: TodoListName}"></bp:GridViewTextColumn>
+        </Columns>
+    </bp:GridView>--%>
+    
+    <%--<bs:GridView DataSource="{value: TodoListGridView}">
+        <Columns>
+            <dot:GridViewTextColumn ValueBinding="{value: TodoListName}"></dot:GridViewTextColumn>
+        </Columns>
+    </bs:GridView>--%>
+
+    <bp:ComboBox DataSource="{value: _userTodoList.TodoLists}" SelectedValue="{value: "TodoListId"}"
+                 ItemValueBinding="{value: TodoListId}" ItemKeyBinding="{value: TodoListId}" ItemTextBinding="{value: TodoListName}"></bp:ComboBox>
 </body>
 </html>
 

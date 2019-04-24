@@ -1,4 +1,5 @@
-﻿using DotVVM.Framework.Configuration;
+﻿using System.Reflection;
+using DotVVM.Framework.Configuration;
 using DotVVM.Framework.ResourceManagement;
 using DotVVM.Framework.Routing;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,7 +27,16 @@ namespace webapi2._2.ui
             ConfigureControls(config, applicationPath);
             ConfigureResources(config, applicationPath);
 
-            
+            //var assembly = typeof(BusinessPackResources).GetTypeInfo().Assembly;
+            //config.Resources.Register(BusinessPackResources.JQueryScript,
+            //    new ScriptResource
+            //    {
+            //        Location = new EmbeddedResourceLocation(assembly, "DotVVM.BusinessPack.Resources.Libs.jquery.min.js") //.min
+            //    });
+
+            //config.Resources.Register("test",
+            //    new StylesheetResource { Location = new UrlResourceLocation("~/lib/BusinessPack-7.css") });//BusinessPackResources.BusinessPackStyleDefault
+
         }
 
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)

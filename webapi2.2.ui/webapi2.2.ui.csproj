@@ -30,7 +30,7 @@
         <PackageReference Include="DotVVM" Version="2.2.0.2" />
         <PackageReference Include="DotVVM.BusinessPack" Version="2.2.0-preview05-final" />
         <PackageReference Include="DotVVM.BusinessPack.Core" Version="2.2.0-preview05-final" />
-        <PackageReference Include="DotVVM.Controls.Bootstrap" Version="2.1.0" />
+        <PackageReference Include="DotVVM.Controls.Bootstrap" Version="2.2.0.1" />
         <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.4" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />

@@ -7,6 +7,8 @@ using DotVVM.Framework.ViewModel;
 using DotVVM.Framework.Controls;
 using DotVVM.BusinessPack;
 using DotVVM.BusinessPack.Controls;
+using DotVVM.BusinessPack.Binding;
+using DotVVM.Framework.Controls.Bootstrap;
 using DotVVM.Framework.Runtime.Filters;
 using DotVVM.Framework.ViewModel.Validation;
 using DotVVM.Framework.Hosting;
@@ -29,7 +31,7 @@ namespace webapi2_2.ui.ViewModels
     public class TodosViewModel : DotvvmViewModelBase
     {
         public UserTodoLists _userTodoList { get; set; }
-        public GridViewDataSet<TodoList> TodoListGridView { get; set; }
+        public BusinessPackDataSet<TodoList> TodoListGridView { get; set; }
 
         public bool isTaskModalDisplayed { get; set; }
     
@@ -52,7 +54,7 @@ namespace webapi2_2.ui.ViewModels
             {
                 _userTodoList = AbstractGetListsForUser(new Guid(AppContext.Current.Session.GetString("UserId")));
                 if (TodoListGridView == null)
-                    TodoListGridView = new GridViewDataSet<TodoList>();
+                    TodoListGridView = new BusinessPackDataSet<TodoList>();
             }
 
             return base.Load();
