@@ -40,11 +40,11 @@
         </Columns>
     </dot:GridView>
 
-    <%--<bp:GridView DataSource="{value: TodoListGridView}">
+    <bp:GridView DataSource="{value: TodoListGridView}">
         <Columns>
             <bp:GridViewTextColumn Value="{value: TodoListName}"></bp:GridViewTextColumn>
         </Columns>
-    </bp:GridView>--%>
+    </bp:GridView>
     
     <%--<bs:GridView DataSource="{value: TodoListGridView}">
         <Columns>

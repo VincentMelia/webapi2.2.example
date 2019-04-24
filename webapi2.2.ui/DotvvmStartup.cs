@@ -72,11 +72,20 @@ namespace webapi2._2.ui
             {
                 Location = new UrlResourceLocation("~/lib/jquery/dist/jquery.min.js")
             });
+
+            //var assembly = typeof(BusinessPackResources).GetTypeInfo().Assembly;
+            //config.Resources.Register(BusinessPackResources.JQueryScript,
+            //    new ScriptResource
+            //    {
+            //        Location = new EmbeddedResourceLocation(assembly,
+            //            "DotVVM.BusinessPack.Resources.Libs.jquery.min.js") //.min
+            //    });
+
         }
-		public void ConfigureServices(IDotvvmServiceCollection options)
+        public void ConfigureServices(IDotvvmServiceCollection options)
         {
-		
-            options.AddBusinessPack();
+
+            options.AddBusinessPack(BusinessPackTheme.Bootstrap4);
             options.AddDefaultTempStorages("temp");
 		}
     }

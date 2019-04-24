@@ -18,7 +18,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Session;
 using Microsoft.AspNetCore.Mvc;
-
 using webapi22.example.dtos.DtoClasses;
 using webapi22.example.dtos.DtoClasses.UserTodoListsTypes;
 using static webapi22.example.data_access.DataAccess;
