@@ -15,11 +15,18 @@ using webapi22.example.dtos.Persistence;
 using SD.LLBLGen.Pro.QuerySpec.SelfServicing;
 using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
 using IsolationLevel = System.Data.IsolationLevel;
+using PostSharp.Patterns.Caching;
+using PostSharp.Patterns.Caching.Backends;
 
 namespace webapi22.example.data_access.sql.dal
 {
     public static class DAL
     {
+        public static void InitCaching()
+        {
+            CachingServices.DefaultBackend = new MemoryCachingBackend();
+        }
+
         public static List<Tuple<bool, string>> ValidatePath(Guid userId, Guid listId)
         {
             var qf = new QueryFactory();
@@ -73,8 +80,6 @@ namespace webapi22.example.data_access.sql.dal
         }
 
 
-
-
         public static List<User> GetUsers()
         {
             var qf = new QueryFactory();
@@ -85,7 +90,7 @@ namespace webapi22.example.data_access.sql.dal
 
             return userList;
         }
-
+        
         public static ToDoListWithTodos GetTodoList(Guid userId, Guid todoListId)
         {
             var qf = new QueryFactory();
@@ -113,7 +118,7 @@ namespace webapi22.example.data_access.sql.dal
             return entirelist;
 
         }
-
+        
         public static UserTodoLists GetListsForUser(Guid userId)
         {
             return new QueryFactory().User.Where(UserFields.UserId.Equal(userId)).GetFirst().ProjectToUserTodoLists();
