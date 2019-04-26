@@ -114,7 +114,7 @@ namespace webapi22.example.data_access.sql.dal
                     }
                 );
 
-            var entirelist = new TypedListDAO().FetchQuery(todolist).First();
+            var entirelist = new TypedListDAO().FetchQuery(todolist).Single();
             return entirelist;
 
         }
@@ -170,7 +170,7 @@ namespace webapi22.example.data_access.sql.dal
             {
                 var itemToUpdate =
                     listToUpdate.TodoListItems.Where(x => x.TodoListItemId == updatedItem.TodoListItemId)
-                        .FirstOrDefault() ?? listToUpdate.TodoListItems.AddNew();
+                        .SingleOrDefault() ?? listToUpdate.TodoListItems.AddNew();
 
                 itemToUpdate.TodoListId = listToUpdate.TodoListId;
                 if (itemToUpdate.IsNew)
