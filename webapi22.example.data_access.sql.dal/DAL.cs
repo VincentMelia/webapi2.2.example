@@ -94,10 +94,11 @@ namespace webapi22.example.data_access.sql.dal
         public static ToDoListWithTodos GetTodoList(Guid userId, Guid todoListId)
         {
             var qf = new QueryFactory();
-
+            
             var todolist = qf.TodoList
                 .Where(TodoListFields.UserId.Equal(userId)
-                    .And(TodoListFields.TodoListId.Equal(todoListId)))
+                    .And(TodoListFields.TodoListId.Equal(todoListId))
+                )
                 .Select(() => new ToDoListWithTodos()
                     {
                         TodoListId = TodoListFields.TodoListId.ToValue<Guid>(),
@@ -113,7 +114,7 @@ namespace webapi22.example.data_access.sql.dal
                             }).ToResultset()
                     }
                 );
-
+            
             var entirelist = new TypedListDAO().FetchQuery(todolist).Single();
             return entirelist;
 
