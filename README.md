@@ -10,7 +10,7 @@ An example .NET Core solution using WebAPI 2.2 Core, message-based business-laye
 This example has a simplified authentication process. Since authentication is required, most of the REST services should provide this checking. Since authentication is a cross-cutting concern, this is implemented as a reusable .NET attribute that can decorate either an entire controller or single methods. This is a nice clean way of implementing DRY. Using [PostSharp.NET][1] for this.
 
 The SQL-based DAL implementation is using [LLBLGEN Pro][2] for all data access. All code is auto-generated and allows the type of projections we would normally write, but generates the code for us.
-> NOTE: only the logon and todo list are completed at this time for the SQL implementation and work by switching the DAL flag.
+> NOTE: the SQL implementation lightly tested and can be used by switching the DAL flag in appSettings to 1.
 
 DTO validation using [FluentValidation][3], providing declarative business-rule validation.
 
@@ -39,7 +39,7 @@ The validation is based off the same business-layer as the services, with option
 - authenticated user validation.
 
 ### Data Access Layer
-Pluggable with any data source, just like most repository-type patterns. The difference here is there’s no use of interfaces - it’s all based on abstract functions. One benefit is that there’s no need for interfaces and inheritance as everything is simply a function. Another benefit is that we can swap out a data source on a method-by-method basis.
+Pluggable with any data source, just like most repository-type patterns. The difference here is there’s no use of interfaces - it’s all based on abstract functions. 
 
 Here’s the complete abstract DAL specification:
 
@@ -114,16 +114,16 @@ All Func declarations where we can assign a concrete implementation based on a f
 
 #### Implementation Projects
 - webapi22.example.data\_access.in\_memory: concrete in-memory provider
-- webapi22.example.data\_access.sql: SQL provider - _currently a work in progress. Logon and GET todo list route work_. Schema creation script is located in the \LLBLGEN\schema folder.
+- webapi22.example.data\_access.sql: SQL provider - Schema creation script is located in the \LLBLGEN\schema\ folder.
 
 ### Compiled Self-Contained Folders
 - compiled-osx - seems to work on OSX. Browse to the compiled os-x folder and run `dotnet webapi2.2.api.dll`
-- compiled-win - used to work until yesterday. Now it builds perfectly but the publish fails when using Visual Studio. But it works from the CLI: `dotnet publish -o ..\compiled-win\ -c debug --self-contained true -r win-x64`. Simply run the webapi2.2.exe.
+- compiled-win - VS publish used to work until yesterday. Now it builds perfectly but the publish fails when using Visual Studio. But it works from the CLI: `dotnet publish -o ..\compiled-win\ -c debug --self-contained true -r win-x64`. Simply run the webapi2.2.exe.
 
 ### Other
 As this was based off the in-memory provider, I always found it easier to implement primary keys as GUIDs.
 
-Also, if opening the solution in Visual Studio you might get prompted to install PostSharp. Same for anything related to the concrete SQL implementation.
+Also, if opening the solution in Visual Studio you might get prompted to install the PostSharp extension. Same for anything related to the concrete SQL implementation.
 
 **start path should be /todos/logon**
 
