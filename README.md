@@ -107,7 +107,7 @@ All Func declarations where we can assign a concrete implementation based on a f
 
 ### Solution Structure
 #### High-Level Projects
-- webapi2.2.api: REST API
+- webapi2.2.api: REST API. Includes PostMan 2.1 collection file for import.
 - webapi22.example.dtos: friendly business-layer DTOs
 - webapi22.example.validation: route and DTO validators, with DTO validators additionally providing extension methods. Route validators call into the abstract DAL. DTO validators are stand-alone.
 - webapi22.example.data\_access: abstract DAL functions mentioned above.
