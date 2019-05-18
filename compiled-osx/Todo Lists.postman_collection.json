@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "e807923f-49c2-4af7-b284-922fa4f7227f",
+		"name": "Todo Lists",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "logon",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/logon",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"logon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logon as Vinny",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/logon/vinny",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"logon",
+						"vinny"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logon as Dimitri",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/logon/dimitri",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"logon",
+						"dimitri"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logon as Jim",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/logon/jim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"logon",
+						"jim"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTodos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSingleTodoList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/0529460d-ab4c-45c8-9a30-42abeb9a0e0a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"0529460d-ab4c-45c8-9a30-42abeb9a0e0a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSingleTodo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/b2e1530c-8318-44c4-af58-464e99db9d2e/d89ee47b-ebbd-4e67-94aa-5560568665a3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"b2e1530c-8318-44c4-af58-464e99db9d2e",
+						"d89ee47b-ebbd-4e67-94aa-5560568665a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MarkSingleTodoAsComplete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/ded5da82-2c19-4033-aff6-96d9c5ce48b8/a9b72452-e9b0-4bdc-a58c-70733694a71a/markcomplete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"ded5da82-2c19-4033-aff6-96d9c5ce48b8",
+						"a9b72452-e9b0-4bdc-a58c-70733694a71a",
+						"markcomplete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateSingleTodo",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"todoListItemIsComplete\": true,\n    \"todoListItemSubject\": \"aaaaaaaaa\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/8dd2b46b-fc1f-4026-adce-0587e2fb7d0a/c687859a-7686-42a0-bc67-add89b7079cf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"8dd2b46b-fc1f-4026-adce-0587e2fb7d0a",
+						"c687859a-7686-42a0-bc67-add89b7079cf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSingleTodo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"todoListItemIsComplete\": false,\n    \"todoListItemSubject\": \"bbb\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/8dd2b46b-fc1f-4026-adce-0587e2fb7d0a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"8dd2b46b-fc1f-4026-adce-0587e2fb7d0a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteSingleTodo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/8dd2b46b-fc1f-4026-adce-0587e2fb7d0a/c687859a-7686-42a0-bc67-add89b7079cf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"8dd2b46b-fc1f-4026-adce-0587e2fb7d0a",
+						"c687859a-7686-42a0-bc67-add89b7079cf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateTodoListAndItems",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"todoListItems\": [\n        {\n            \"todoListItemId\": \"78f4bdcc-f43a-476b-b429-ca2b9ac7002e\",\n            \"todoListItemIsComplete\": true,\n            \"todoListItemSubject\": \"111111\"\n        },\n        {\n            \"todoListItemId\": \"0149fa73-d35e-423c-aefe-8b307bb14b14\",\n            \"todoListItemIsComplete\": false,\n            \"todoListItemSubject\": \"vinny2 subjhect2\"\n        },\n        {\n            \"todoListItemId\": \"97f4f582-cc2f-4610-984d-8e46977b8757\",\n            \"todoListItemIsComplete\": false,\n            \"todoListItemSubject\": \"Subject\"\n        },\n        {\n            \"todoListItemId\": \"111b435c-8092-4b2d-a173-a016fb87651d\",\n            \"todoListItemIsComplete\": false,\n            \"todoListItemSubject\": \"Subject\"\n        },\n        {\n            \"todoListItemId\": \"4fddbe26-fc74-4f13-9e90-fe25ee387e45\",\n            \"todoListItemIsComplete\": false,\n            \"todoListItemSubject\": \"Subject\"\n        },\n        {\n            \"todoListItemId\": \"b389f941-5706-42a1-a006-55c49e191ba8\",\n            \"todoListItemIsComplete\": false,\n            \"todoListItemSubject\": \"Subject\"\n        },\n        {\n            \"todoListItemId\": \"172e25ba-9163-47af-9cfb-d1b7538ab6fb\",\n            \"todoListItemIsComplete\": false,\n            \"todoListItemSubject\": \"111111\"\n        },\n        {\n            \"todoListItemId\": \"4d1658e0-c9cd-4ba9-8363-ee85ef9d890d\",\n            \"todoListItemIsComplete\": false,\n            \"todoListItemSubject\": \"111111\"\n        },\n        {\n            \"todoListItemId\": \"119834c3-1698-4dbf-9f5a-2787e93ddd55\",\n            \"todoListItemIsComplete\": false,\n            \"todoListItemSubject\": \"111111\"\n        }\n    ],\n    \"todoListName\": \"vinny2\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateTodoListAndItems",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"todoListItems\": [\n        {\n            \"todoListItemIsComplete\": false,\n            \"todoListItemSubject\": \"vinny 1 subject1\"\n        }\n\n    ],\n    \"todoListName\": \"vinny1\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/28541102-e1c1-4fb2-be37-dca4d53e5405",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"28541102-e1c1-4fb2-be37-dca4d53e5405"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTodoList",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/todos/78cd1531-382d-49b4-8095-96fc114322aa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"todos",
+						"78cd1531-382d-49b4-8095-96fc114322aa"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2/win-x64",
-    "signature": "783df40af08d38c6afc3afbf69c354989d081c38"
+    "signature": "66dd8b48c9493c97aa88a993d238a4fc10060eca"
   },
   "compilationOptions": {
     "defines": [
@@ -28,7 +28,7 @@
           "Microsoft.AspNetCore.App": "2.2.4",
           "Microsoft.NETCore.App": "2.2.4",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "PostSharp": "6.1.17",
+          "PostSharp": "6.2.5",
           "codeessentials.AspNetCore.Diagnostics.Demystifier": "1.0.54",
           "webapi22.example.data_access": "1.0.0",
           "webapi22.example.validation": "1.0.0"
@@ -55,7 +55,7 @@
           "lib/netstandard2.0/codeessentials.AspNetCore.Diagnostics.Demystifier.dll": {}
         }
       },
-      "FluentValidation/8.2.2": {
+      "FluentValidation/8.4.0": {
         "dependencies": {
           "System.ComponentModel.Annotations": "4.5.0"
         },
@@ -2152,12 +2152,12 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
-      "PostSharp/6.1.17": {
+      "PostSharp/6.2.5": {
         "dependencies": {
-          "PostSharp.Redist": "6.1.17"
+          "PostSharp.Redist": "6.2.5"
         }
       },
-      "PostSharp.Redist/6.1.17": {
+      "PostSharp.Redist/6.2.5": {
         "compile": {
           "lib/netstandard2.0/PostSharp.dll": {}
         }
@@ -2250,15 +2250,15 @@
       },
       "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
-      "SD.LLBLGen.Pro.DQE.SqlServer/5.4.0": {
+      "SD.LLBLGen.Pro.DQE.SqlServer/5.5.3": {
         "dependencies": {
-          "SD.LLBLGen.Pro.ORMSupportClasses": "5.4.0"
+          "SD.LLBLGen.Pro.ORMSupportClasses": "5.5.3"
         },
         "compile": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.DQE.SqlServer.dll": {}
         }
       },
-      "SD.LLBLGen.Pro.ORMSupportClasses/5.4.0": {
+      "SD.LLBLGen.Pro.ORMSupportClasses/5.5.3": {
         "dependencies": {
           "System.Data.SqlClient": "4.6.0"
         },
@@ -3218,7 +3218,7 @@
       },
       "webapi22.example.data_access.sql/1.0.0": {
         "dependencies": {
-          "SD.LLBLGen.Pro.DQE.SqlServer": "5.4.0"
+          "SD.LLBLGen.Pro.DQE.SqlServer": "5.5.3"
         },
         "compile": {
           "webapi22.example.data_access.sql.dll": {}
@@ -3254,7 +3254,7 @@
       },
       "webapi22.example.validation/1.0.0": {
         "dependencies": {
-          "FluentValidation": "8.2.2",
+          "FluentValidation": "8.4.0",
           "Microsoft.CSharp": "4.5.0",
           "webapi22.example.data_access": "1.0.0",
           "webapi22.example.data_access.in_memory": "1.0.0",
@@ -3272,7 +3272,7 @@
           "Microsoft.AspNetCore.App": "2.2.4",
           "Microsoft.NETCore.App": "2.2.4",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "PostSharp": "6.1.17",
+          "PostSharp": "6.2.5",
           "codeessentials.AspNetCore.Diagnostics.Demystifier": "1.0.54",
           "webapi22.example.data_access": "1.0.0",
           "webapi22.example.validation": "1.0.0"
@@ -3305,14 +3305,14 @@
           }
         }
       },
-      "FluentValidation/8.2.2": {
+      "FluentValidation/8.4.0": {
         "dependencies": {
           "System.ComponentModel.Annotations": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/FluentValidation.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.2.2.0"
+            "fileVersion": "8.4.0.0"
           }
         }
       },
@@ -5775,16 +5775,16 @@
           }
         }
       },
-      "PostSharp/6.1.17": {
+      "PostSharp/6.2.5": {
         "dependencies": {
-          "PostSharp.Redist": "6.1.17"
+          "PostSharp.Redist": "6.2.5"
         }
       },
-      "PostSharp.Redist/6.1.17": {
+      "PostSharp.Redist/6.2.5": {
         "runtime": {
           "lib/netstandard2.0/PostSharp.dll": {
-            "assemblyVersion": "6.1.17.0",
-            "fileVersion": "6.1.17.0"
+            "assemblyVersion": "6.2.5.0",
+            "fileVersion": "6.2.5.0"
           }
         }
       },
@@ -6692,25 +6692,25 @@
         }
       },
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
-      "SD.LLBLGen.Pro.DQE.SqlServer/5.4.0": {
+      "SD.LLBLGen.Pro.DQE.SqlServer/5.5.3": {
         "dependencies": {
-          "SD.LLBLGen.Pro.ORMSupportClasses": "5.4.0"
+          "SD.LLBLGen.Pro.ORMSupportClasses": "5.5.3"
         },
         "runtime": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.DQE.SqlServer.dll": {
-            "assemblyVersion": "5.4.0.0",
-            "fileVersion": "5.4.0.0"
+            "assemblyVersion": "5.5.0.0",
+            "fileVersion": "5.5.3.0"
           }
         }
       },
-      "SD.LLBLGen.Pro.ORMSupportClasses/5.4.0": {
+      "SD.LLBLGen.Pro.ORMSupportClasses/5.5.3": {
         "dependencies": {
           "System.Data.SqlClient": "4.6.0"
         },
         "runtime": {
           "lib/netstandard2.0/SD.LLBLGen.Pro.ORMSupportClasses.dll": {
-            "assemblyVersion": "5.4.0.0",
-            "fileVersion": "5.4.0.0"
+            "assemblyVersion": "5.5.0.0",
+            "fileVersion": "5.5.3.0"
           }
         }
       },
@@ -7713,7 +7713,7 @@
       },
       "webapi22.example.data_access.sql/1.0.0": {
         "dependencies": {
-          "SD.LLBLGen.Pro.DQE.SqlServer": "5.4.0"
+          "SD.LLBLGen.Pro.DQE.SqlServer": "5.5.3"
         },
         "runtime": {
           "webapi22.example.data_access.sql.dll": {}
@@ -7749,7 +7749,7 @@
       },
       "webapi22.example.validation/1.0.0": {
         "dependencies": {
-          "FluentValidation": "8.2.2",
+          "FluentValidation": "8.4.0",
           "Microsoft.CSharp": "4.5.0",
           "webapi22.example.data_access": "1.0.0",
           "webapi22.example.data_access.in_memory": "1.0.0",
@@ -7782,12 +7782,12 @@
       "path": "codeessentials.aspnetcore.diagnostics.demystifier/1.0.54",
       "hashPath": "codeessentials.aspnetcore.diagnostics.demystifier.1.0.54.nupkg.sha512"
     },
-    "FluentValidation/8.2.2": {
+    "FluentValidation/8.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vecU0PUi85MZ/g6p3L6jxym23pdRUgsZ3wTWCLAaqrD5ig9Jf4MQA+CE2yI5d4TGO0z3bvAozqkJr+L1I6OnJg==",
-      "path": "fluentvalidation/8.2.2",
-      "hashPath": "fluentvalidation.8.2.2.nupkg.sha512"
+      "sha512": "sha512-/VApywgD2sqD3aB1tzub6SIItmwxXN0D5yAiP3kuFHmjYO1W+Ryi531/m4O03/hlfcYrBgewDJn7Jd1Xk0vTdw==",
+      "path": "fluentvalidation/8.4.0",
+      "hashPath": "fluentvalidation.8.4.0.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",
@@ -9077,19 +9077,19 @@
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
     },
-    "PostSharp/6.1.17": {
+    "PostSharp/6.2.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cfp8p159h/UXNrjoGL7a6vygTIt0GxaAOGw3IlgyQG8/2cPPFKYfWNy8Kb4KDgygCsLRAfFpb7Ebmi4NWOqmMQ==",
-      "path": "postsharp/6.1.17",
-      "hashPath": "postsharp.6.1.17.nupkg.sha512"
+      "sha512": "sha512-atU3Yt1rF14DWYcTFV21CJXgL146rqQEvUVUIj3YmOfaMwY8itHfv5PX8umWMP2Hr8iu6QqhjrXSZNf3O4p9dA==",
+      "path": "postsharp/6.2.5",
+      "hashPath": "postsharp.6.2.5.nupkg.sha512"
     },
-    "PostSharp.Redist/6.1.17": {
+    "PostSharp.Redist/6.2.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6dvgF27VPQ7s4CFKqudD4fh6HsFQzUAfA1GRGhnPT7veOs7RU8Utkrn8yupLhkCA3RSvEMOSScCj8XkxtF4IeQ==",
-      "path": "postsharp.redist/6.1.17",
-      "hashPath": "postsharp.redist.6.1.17.nupkg.sha512"
+      "sha512": "sha512-PqF/BdPuwHHyUohj0X98bNiUcq89k6CJDWKhYcbBuPgMYuWsF79433oeLvbDpdlkSYzzFVnxGiVc2Xi8+C9xIw==",
+      "path": "postsharp.redist/6.2.5",
+      "hashPath": "postsharp.redist.6.2.5.nupkg.sha512"
     },
     "Remotion.Linq/2.2.0": {
       "type": "package",
@@ -9143,7 +9143,7 @@
     "runtime.native.System.Net.Http/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-guqHgQOK2eUgtJae2VKjNawBn1xjC0hfOt5wASHa60XHbIdCsQlqtvMsFG+3hy7yp88V+gi9fZCjubuDkeakcQ==",
+      "sha512": "sha512-ZVuZJqnnegJhd2k/PtAbbIcZ3aZeITq3sj06oKfMBSfphW3HDmk/t4ObvbOk/JA/swGR0LNqMksAh/f7gpTROg==",
       "path": "runtime.native.system.net.http/4.3.0",
       "hashPath": "runtime.native.system.net.http.4.3.0.nupkg.sha512"
     },
@@ -9178,7 +9178,7 @@
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Kh9W4agE0r/hK8AX1LvyQI2NrKHBL8pO0gRoDTdDb0LL6Ta1Z2OtFx3lOaAE0ZpCUc/dt9Wzs3rA7a3IsKdOVA==",
+      "sha512": "sha512-kVXCuMTrTlxq4XOOMAysuNwsXWpYeboGddNGpIgNSZmv1b6r/s/DPk0fYMB7Q5Qo4bY68o48jt4T4y5BVecbCQ==",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple/4.3.0",
       "hashPath": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple.4.3.0.nupkg.sha512"
     },
@@ -9266,19 +9266,19 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
-    "SD.LLBLGen.Pro.DQE.SqlServer/5.4.0": {
+    "SD.LLBLGen.Pro.DQE.SqlServer/5.5.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-m/vqsf5u4kHWNBEgUYXZ3FOwK37A6y1Zvuj8AFZ0Y43W2tEGqwxN6sic2oRjsPZCCJJgtmqhgW2XZeZ0A1f7ug==",
-      "path": "sd.llblgen.pro.dqe.sqlserver/5.4.0",
-      "hashPath": "sd.llblgen.pro.dqe.sqlserver.5.4.0.nupkg.sha512"
+      "sha512": "sha512-4M7errUYsppA9UK9zY2hgTkIyIfh4yBS6STvZWOqK5ypnaTA4peNcKpmsRxoodEqv7PzIJKEnHXt/kFG7HoQTQ==",
+      "path": "sd.llblgen.pro.dqe.sqlserver/5.5.3",
+      "hashPath": "sd.llblgen.pro.dqe.sqlserver.5.5.3.nupkg.sha512"
     },
-    "SD.LLBLGen.Pro.ORMSupportClasses/5.4.0": {
+    "SD.LLBLGen.Pro.ORMSupportClasses/5.5.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-SooCtUrqYe3Us2MiTKkQY7FOEcmBaL73ljyEXhNSzipals2lYkz3yb14UQz8+eqhy8WJIuzUFlp+/i/JTdXy0g==",
-      "path": "sd.llblgen.pro.ormsupportclasses/5.4.0",
-      "hashPath": "sd.llblgen.pro.ormsupportclasses.5.4.0.nupkg.sha512"
+      "sha512": "sha512-ngAhcll/BkCAEiBJicTFBcpe2RWt1UltSGMZBSNu9Q5pwBlf3feWMTMk2dpCdjrj+HS1DCoZ2FHhCHpilv1o+Q==",
+      "path": "sd.llblgen.pro.ormsupportclasses/5.5.3",
+      "hashPath": "sd.llblgen.pro.ormsupportclasses.5.5.3.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
@@ -9325,7 +9325,7 @@
     "System.Collections.Specialized/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
+      "sha512": "sha512-Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
       "path": "system.collections.specialized/4.3.0",
       "hashPath": "system.collections.specialized.4.3.0.nupkg.sha512"
     },
