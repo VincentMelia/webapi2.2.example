@@ -127,6 +127,9 @@ Also, if opening the solution in Visual Studio you might get prompted to install
 
 **start path should be /todos/logon**
 
+#### Postman Bindings
+Pre-configured Postman bindings are in the webapi2.2.api project in the Todo Lists.postman\_collection.json file for import into Postman.
+
 **if getting ‘Could not get any response’, turn off SSL validation in PostMan**
 
 [1]:	postsharp.net
