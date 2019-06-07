@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PostSharp" Version="6.1.19" />
-    <PackageReference Include="PostSharp.Patterns.Caching" Version="6.1.19" />
+    <PackageReference Include="PostSharp" Version="6.2.7" />
+    <PackageReference Include="PostSharp.Patterns.Caching" Version="6.2.7" />
   </ItemGroup>
 
   <ItemGroup>

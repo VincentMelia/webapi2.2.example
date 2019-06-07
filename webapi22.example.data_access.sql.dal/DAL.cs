@@ -122,7 +122,7 @@ namespace webapi22.example.data_access.sql.dal
         
         public static UserTodoLists GetListsForUser(Guid userId)
         {
-            return new QueryFactory().User.Where(UserFields.UserId.Equal(userId)).GetFirst().ProjectToUserTodoLists();
+            return new QueryFactory().User.Where(UserFields.UserId.Equal(userId)).GetFirst()?.ProjectToUserTodoLists();
         }
 
         public static ToDoListWithTodos CreateTodoList(Guid userId, ToDoListWithTodos newTodoListWithTodos)
