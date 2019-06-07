@@ -65,7 +65,7 @@ namespace webapi2._2.api.Controllers
             return Ok(AbstractUpdateTodoList(new Guid(HttpContext.Session.GetString("UserId")), todoListId, updatedTodoList));
         }
 
-
+        
         [HttpDelete("{todoListId}")]
         public /*IActionResult*/object Delete(Guid todoListId)
         {

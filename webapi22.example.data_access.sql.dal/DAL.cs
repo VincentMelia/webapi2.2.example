@@ -15,11 +15,18 @@ using webapi22.example.dtos.Persistence;
 using SD.LLBLGen.Pro.QuerySpec.SelfServicing;
 using webapi22.example.dtos.DtoClasses.ToDoListWithTodosTypes;
 using IsolationLevel = System.Data.IsolationLevel;
+using PostSharp.Patterns.Caching;
+using PostSharp.Patterns.Caching.Backends;
 
 namespace webapi22.example.data_access.sql.dal
 {
     public static class DAL
     {
+        public static void InitCaching()
+        {
+            CachingServices.DefaultBackend = new MemoryCachingBackend();
+        }
+
         public static List<Tuple<bool, string>> ValidatePath(Guid userId, Guid listId)
         {
             var qf = new QueryFactory();
@@ -73,8 +80,6 @@ namespace webapi22.example.data_access.sql.dal
         }
 
 
-
-
         public static List<User> GetUsers()
         {
             var qf = new QueryFactory();
@@ -85,14 +90,15 @@ namespace webapi22.example.data_access.sql.dal
 
             return userList;
         }
-
+        
         public static ToDoListWithTodos GetTodoList(Guid userId, Guid todoListId)
         {
             var qf = new QueryFactory();
-
+            
             var todolist = qf.TodoList
                 .Where(TodoListFields.UserId.Equal(userId)
-                    .And(TodoListFields.TodoListId.Equal(todoListId)))
+                    .And(TodoListFields.TodoListId.Equal(todoListId))
+                )
                 .Select(() => new ToDoListWithTodos()
                     {
                         TodoListId = TodoListFields.TodoListId.ToValue<Guid>(),
@@ -108,15 +114,15 @@ namespace webapi22.example.data_access.sql.dal
                             }).ToResultset()
                     }
                 );
-
-            var entirelist = new TypedListDAO().FetchQuery(todolist).First();
+            
+            var entirelist = new TypedListDAO().FetchQuery(todolist).Single();
             return entirelist;
 
         }
-
+        
         public static UserTodoLists GetListsForUser(Guid userId)
         {
-            return new QueryFactory().User.Where(UserFields.UserId.Equal(userId)).GetFirst().ProjectToUserTodoLists();
+            return new QueryFactory().User.Where(UserFields.UserId.Equal(userId)).GetFirst()?.ProjectToUserTodoLists();
         }
 
         public static ToDoListWithTodos CreateTodoList(Guid userId, ToDoListWithTodos newTodoListWithTodos)
@@ -165,7 +171,7 @@ namespace webapi22.example.data_access.sql.dal
             {
                 var itemToUpdate =
                     listToUpdate.TodoListItems.Where(x => x.TodoListItemId == updatedItem.TodoListItemId)
-                        .FirstOrDefault() ?? listToUpdate.TodoListItems.AddNew();
+                        .SingleOrDefault() ?? listToUpdate.TodoListItems.AddNew();
 
                 itemToUpdate.TodoListId = listToUpdate.TodoListId;
                 if (itemToUpdate.IsNew)

@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="PostSharp" Version="6.2.7" />
+    <PackageReference Include="PostSharp.Patterns.Caching" Version="6.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\webapi22.example.data_access.sql\webapi22.example.data_access.sql.csproj" />
     <ProjectReference Include="..\webapi22.example.dtos\webapi22.example.dtos.Persistence\webapi22.example.dtos.Persistence.csproj" />
     <ProjectReference Include="..\webapi22.example.dtos\webapi22.example.dtos\webapi22.example.dtos.csproj" />

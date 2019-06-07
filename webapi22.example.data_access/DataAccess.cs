@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using webapi22.example.dtos.DtoClasses;
-//using webapi22.example.data_access.sql.dal;
-//using Microsoft.exte
+
 namespace webapi22.example.data_access
 {
     
@@ -48,6 +47,8 @@ namespace webapi22.example.data_access
             }
             else if (dataaccesstype == 1)
             {
+                sql.dal.DAL.InitCaching();
+
                 AbstractValidatePathForList = sql.dal.DAL.ValidatePath;
                 AbstractValidatePathForListAndItem = sql.dal.DAL.ValidatePath;
                 AbstractValidateUser = sql.dal.DAL.ValidateUser;
