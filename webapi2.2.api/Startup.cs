@@ -39,78 +39,30 @@ namespace webapi2._2.api
             app.UseSession();
 
             if (env.IsDevelopment())
+                app.UseDeveloperExceptionPage();
+
+            app.UseExceptionHandler(errorApp =>
             {
-                //app.UseDeveloperExceptionPage();
-
-                app.UseExceptionHandler(errorApp =>
+                errorApp.Run(async context =>
                 {
-                    errorApp.Run(async context =>
+                    var errorFeature = context.Features.Get<IExceptionHandlerFeature>();
+                    var exception = errorFeature.Error;
+
+                    var problemDetails = new ProblemDetails()
                     {
-                        var errorFeature = context.Features.Get<IExceptionHandlerFeature>();
-                        var exception = errorFeature.Error;
+                        Instance = $"urn:myorganization:error:{Guid.NewGuid()}"
+                    };
 
-                        var problemDetails = new ProblemDetails
-                        {
-                            Instance = $"urn:myorganization:error:{Guid.NewGuid()}"
-                        };
+                    problemDetails.Title = "An unexpected error occurred!";
+                    problemDetails.Status = 500;
+                    problemDetails.Detail = "Server error occurred.";// exception.Demystify().ToString();
 
-                        //if (exception is BadHttpRequestException badHttpRequestException)
-                        //{
-                        //    problemDetails.Title = "Invalid request";
-                        //    problemDetails.Status = (int)typeof(BadHttpRequestException).GetProperty("StatusCode",
-                        //        BindingFlags.NonPublic | BindingFlags.Instance).GetValue(badHttpRequestException);
-                        //    problemDetails.Detail = badHttpRequestException.Message;
-                        //}
-                        //else
-                        //{
-                            problemDetails.Title = "An unexpected error occurred!";
-                            problemDetails.Status = 500;
-                            problemDetails.Detail = "Server error occurred.";// exception.Demystify().ToString();
-                        //}
-                        
-                        context.Response.StatusCode = problemDetails.Status.Value;
-                        context.Response.WriteJson(problemDetails, "application/problem+json");
-                    });
+                    context.Response.StatusCode = problemDetails.Status.Value;
+                    context.Response.WriteJson(problemDetails, "application/problem+json");
                 });
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+            });
 
-                app.UseExceptionHandler(errorApp =>
-                {
-                    errorApp.Run(async context =>
-                    {
-                        var errorFeature = context.Features.Get<IExceptionHandlerFeature>();
-                        var exception = errorFeature.Error;
-
-                        var problemDetails = new ProblemDetails
-                        {
-                            Instance = $"urn:myorganization:error:{Guid.NewGuid()}"
-                        };
-
-                        //if (exception is BadHttpRequestException badHttpRequestException)
-                        //{
-                        //    problemDetails.Title = "Invalid request";
-                        //    problemDetails.Status = (int)typeof(BadHttpRequestException).GetProperty("StatusCode",
-                        //        BindingFlags.NonPublic | BindingFlags.Instance).GetValue(badHttpRequestException);
-                        //    problemDetails.Detail = badHttpRequestException.Message;
-                        //}
-                        //else
-                        //{
-                        problemDetails.Title = "An unexpected error occurred!";
-                        problemDetails.Status = 500;
-                        problemDetails.Detail = "Server error occurred.";// exception.Demystify().ToString();
-                        //}
-
-                        context.Response.StatusCode = problemDetails.Status.Value;
-                        context.Response.WriteJson(problemDetails, "application/problem+json");
-                    });
-                });
-
-            }
-
+            app.UseHsts();
             app.UseHttpsRedirection();
             app.UseMvc();
 

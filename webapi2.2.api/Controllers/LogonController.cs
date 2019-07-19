@@ -27,7 +27,7 @@ namespace webapi2._2.api.Controllers
 
             var validatedUser = userlist.Where(u => u.UserName.ToLower() == userName.ToLower()).ToList()[0];
             HttpContext.Session.SetString("UserId", validatedUser.UserId.ToString());
-            return new User() {UserId = validatedUser.UserId, UserName = validatedUser.UserName};
+            return new User() { UserId = validatedUser.UserId, UserName = validatedUser.UserName };
         }
 
     }
