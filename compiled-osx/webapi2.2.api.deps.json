@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2/osx-x64",
-    "signature": "656b8c1e176197e7d1d87a64291ebfcb71c13f99"
+    "signature": "b99960278242bb7db01b808efc7286c046ebde79"
   },
   "compilationOptions": {
     "defines": [
@@ -28,7 +28,7 @@
           "Microsoft.AspNetCore.App": "2.2.1",
           "Microsoft.NETCore.App": "2.2.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "PostSharp": "6.2.5",
+          "PostSharp": "6.2.7",
           "codeessentials.AspNetCore.Diagnostics.Demystifier": "1.0.54",
           "webapi22.example.data_access": "1.0.0",
           "webapi22.example.validation": "1.0.0"
@@ -2152,12 +2152,42 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
-      "PostSharp/6.2.5": {
+      "PostSharp/6.2.7": {
         "dependencies": {
-          "PostSharp.Redist": "6.2.5"
+          "PostSharp.Redist": "6.2.7"
         }
       },
-      "PostSharp.Redist/6.2.5": {
+      "PostSharp.Patterns.Caching/6.2.7": {
+        "dependencies": {
+          "PostSharp.Patterns.Caching.Redist": "6.2.7",
+          "PostSharp.Patterns.Common": "6.2.7"
+        }
+      },
+      "PostSharp.Patterns.Caching.Redist/6.2.7": {
+        "dependencies": {
+          "PostSharp.Patterns.Common.Redist": "6.2.7",
+          "System.Collections.Immutable": "1.5.0",
+          "System.Runtime.Caching": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/PostSharp.Patterns.Caching.dll": {}
+        }
+      },
+      "PostSharp.Patterns.Common/6.2.7": {
+        "dependencies": {
+          "PostSharp": "6.2.7",
+          "PostSharp.Patterns.Common.Redist": "6.2.7"
+        }
+      },
+      "PostSharp.Patterns.Common.Redist/6.2.7": {
+        "dependencies": {
+          "PostSharp.Redist": "6.2.7"
+        },
+        "compile": {
+          "lib/netstandard2.0/PostSharp.Patterns.Common.dll": {}
+        }
+      },
+      "PostSharp.Redist/6.2.7": {
         "compile": {
           "lib/netstandard2.0/PostSharp.dll": {}
         }
@@ -2407,6 +2437,12 @@
         },
         "compile": {
           "lib/netstandard1.0/System.Composition.TypedParts.dll": {}
+        }
+      },
+      "System.Configuration.ConfigurationManager/4.5.0": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "4.5.0",
+          "System.Security.Permissions": "4.5.0"
         }
       },
       "System.Console/4.3.0": {
@@ -2794,6 +2830,15 @@
           "Microsoft.NETCore.Targets": "2.0.0"
         }
       },
+      "System.Runtime.Caching/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.2.0",
+          "System.Configuration.ConfigurationManager": "4.5.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Runtime.Caching.dll": {}
+        }
+      },
       "System.Runtime.CompilerServices.Unsafe/4.5.1": {
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -2967,6 +3012,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
+      "System.Security.Cryptography.ProtectedData/4.5.0": {},
       "System.Security.Cryptography.X509Certificates/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.0",
@@ -3226,6 +3272,8 @@
       },
       "webapi22.example.data_access.sql.dal/1.0.0": {
         "dependencies": {
+          "PostSharp": "6.2.7",
+          "PostSharp.Patterns.Caching": "6.2.7",
           "webapi22.example.data_access.sql": "1.0.0",
           "webapi22.example.dtos": "1.0.0",
           "webapi22.example.dtos.Persistence": "1.0.0"
@@ -3272,7 +3320,7 @@
           "Microsoft.AspNetCore.App": "2.2.1",
           "Microsoft.NETCore.App": "2.2.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "PostSharp": "6.2.5",
+          "PostSharp": "6.2.7",
           "codeessentials.AspNetCore.Diagnostics.Demystifier": "1.0.54",
           "webapi22.example.data_access": "1.0.0",
           "webapi22.example.validation": "1.0.0"
@@ -5776,16 +5824,52 @@
           }
         }
       },
-      "PostSharp/6.2.5": {
+      "PostSharp/6.2.7": {
         "dependencies": {
-          "PostSharp.Redist": "6.2.5"
+          "PostSharp.Redist": "6.2.7"
         }
       },
-      "PostSharp.Redist/6.2.5": {
+      "PostSharp.Patterns.Caching/6.2.7": {
+        "dependencies": {
+          "PostSharp.Patterns.Caching.Redist": "6.2.7",
+          "PostSharp.Patterns.Common": "6.2.7"
+        }
+      },
+      "PostSharp.Patterns.Caching.Redist/6.2.7": {
+        "dependencies": {
+          "PostSharp.Patterns.Common.Redist": "6.2.7",
+          "System.Collections.Immutable": "1.5.0",
+          "System.Runtime.Caching": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PostSharp.Patterns.Caching.dll": {
+            "assemblyVersion": "6.2.7.0",
+            "fileVersion": "6.2.7.0"
+          }
+        }
+      },
+      "PostSharp.Patterns.Common/6.2.7": {
+        "dependencies": {
+          "PostSharp": "6.2.7",
+          "PostSharp.Patterns.Common.Redist": "6.2.7"
+        }
+      },
+      "PostSharp.Patterns.Common.Redist/6.2.7": {
+        "dependencies": {
+          "PostSharp.Redist": "6.2.7"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PostSharp.Patterns.Common.dll": {
+            "assemblyVersion": "6.2.7.0",
+            "fileVersion": "6.2.7.0"
+          }
+        }
+      },
+      "PostSharp.Redist/6.2.7": {
         "runtime": {
           "lib/netstandard2.0/PostSharp.dll": {
-            "assemblyVersion": "6.2.5.0",
-            "fileVersion": "6.2.5.0"
+            "assemblyVersion": "6.2.7.0",
+            "fileVersion": "6.2.7.0"
           }
         }
       },
@@ -6752,6 +6836,18 @@
           }
         }
       },
+      "System.Configuration.ConfigurationManager/4.5.0": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "4.5.0",
+          "System.Security.Permissions": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
       "System.Console/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.0",
@@ -7159,6 +7255,18 @@
           "Microsoft.NETCore.Targets": "2.0.0"
         }
       },
+      "System.Runtime.Caching/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.2.0",
+          "System.Configuration.ConfigurationManager": "4.5.0"
+        },
+        "runtime": {
+          "runtimes/unix/lib/netcoreapp2.0/System.Runtime.Caching.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
       "System.Runtime.CompilerServices.Unsafe/4.5.1": {
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {
@@ -7345,6 +7453,14 @@
           "System.Runtime": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/4.5.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assemblyVersion": "4.0.3.0",
+            "fileVersion": "4.6.26515.6"
+          }
         }
       },
       "System.Security.Cryptography.X509Certificates/4.3.0": {
@@ -7621,6 +7737,8 @@
       },
       "webapi22.example.data_access.sql.dal/1.0.0": {
         "dependencies": {
+          "PostSharp": "6.2.7",
+          "PostSharp.Patterns.Caching": "6.2.7",
           "webapi22.example.data_access.sql": "1.0.0",
           "webapi22.example.dtos": "1.0.0",
           "webapi22.example.dtos.Persistence": "1.0.0"
@@ -8977,19 +9095,47 @@
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
     },
-    "PostSharp/6.2.5": {
+    "PostSharp/6.2.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-atU3Yt1rF14DWYcTFV21CJXgL146rqQEvUVUIj3YmOfaMwY8itHfv5PX8umWMP2Hr8iu6QqhjrXSZNf3O4p9dA==",
-      "path": "postsharp/6.2.5",
-      "hashPath": "postsharp.6.2.5.nupkg.sha512"
+      "sha512": "sha512-hPlP+2grbe5GQLiX9eFmDQ6yF0W7OuowKOAoY21ok4uUETMdYlZSn4jElRC7FlW+6aQZ6H5r8+JzQ4q8dDjHEw==",
+      "path": "postsharp/6.2.7",
+      "hashPath": "postsharp.6.2.7.nupkg.sha512"
     },
-    "PostSharp.Redist/6.2.5": {
+    "PostSharp.Patterns.Caching/6.2.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PqF/BdPuwHHyUohj0X98bNiUcq89k6CJDWKhYcbBuPgMYuWsF79433oeLvbDpdlkSYzzFVnxGiVc2Xi8+C9xIw==",
-      "path": "postsharp.redist/6.2.5",
-      "hashPath": "postsharp.redist.6.2.5.nupkg.sha512"
+      "sha512": "sha512-tFDiaG0Z9h4/lcEHS6ZkXpSSIBvJEyS3e4hnX/6G+Dg2CpXS3hZI4AvlnsrnIlt4OhWidDQwm32BlF/KpuGvlQ==",
+      "path": "postsharp.patterns.caching/6.2.7",
+      "hashPath": "postsharp.patterns.caching.6.2.7.nupkg.sha512"
+    },
+    "PostSharp.Patterns.Caching.Redist/6.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S89s785oxEZu+nzPHKydReeO7rPoQcATZgFSIx+aua4mQVYPm0gM2//V+JU8c7Dlw9kD31fLhVEkmi0AcucLhQ==",
+      "path": "postsharp.patterns.caching.redist/6.2.7",
+      "hashPath": "postsharp.patterns.caching.redist.6.2.7.nupkg.sha512"
+    },
+    "PostSharp.Patterns.Common/6.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ceuIXpaE64uAFgte0Tbatn5giBLUOF3QLXdcJpy0fi2ddsim5eSd55yT+HNrocni8OCZRtW/YwyM8YAZk9dS1g==",
+      "path": "postsharp.patterns.common/6.2.7",
+      "hashPath": "postsharp.patterns.common.6.2.7.nupkg.sha512"
+    },
+    "PostSharp.Patterns.Common.Redist/6.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-w0mt7GBsd2ybCcl6I6E2bXTn56GRxFsapFRiZMI83g7l5HuLfvCUCLeb6EZDLo/LJmIB5OesuTgbpC3VLa6qag==",
+      "path": "postsharp.patterns.common.redist/6.2.7",
+      "hashPath": "postsharp.patterns.common.redist.6.2.7.nupkg.sha512"
+    },
+    "PostSharp.Redist/6.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ApAygjuVRUkZgjZyeM11FcnnBGAffIEeGfabMcmJ3a0mHC6w44l+xk9cToGLR4FnHVEwFRYHuJQrGS66vSmx6Q==",
+      "path": "postsharp.redist/6.2.7",
+      "hashPath": "postsharp.redist.6.2.7.nupkg.sha512"
     },
     "Remotion.Linq/2.2.0": {
       "type": "package",
@@ -9278,6 +9424,13 @@
       "path": "system.composition.typedparts/1.0.31",
       "hashPath": "system.composition.typedparts.1.0.31.nupkg.sha512"
     },
+    "System.Configuration.ConfigurationManager/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UIFvaFfuKhLr9u5tWMxmVoDPkFeD+Qv8gUuap4aZgVGYSYMdERck4OhLN/2gulAc0nYTEigWXSJNNWshrmxnng==",
+      "path": "system.configuration.configurationmanager/4.5.0",
+      "hashPath": "system.configuration.configurationmanager.4.5.0.nupkg.sha512"
+    },
     "System.Console/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -9565,6 +9718,13 @@
       "path": "system.runtime/4.3.0",
       "hashPath": "system.runtime.4.3.0.nupkg.sha512"
     },
+    "System.Runtime.Caching/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-95j9KShuaAENf2gLbQ/9YoJDHIWAnoaFYA71xo4QVQyLkOMginn34cD1+6RcYIrqJamLkMXgvgUnOzwzBk+U0w==",
+      "path": "system.runtime.caching/4.5.0",
+      "hashPath": "system.runtime.caching.4.5.0.nupkg.sha512"
+    },
     "System.Runtime.CompilerServices.Unsafe/4.5.1": {
       "type": "package",
       "serviceable": true,
@@ -9683,6 +9843,13 @@
       "sha512": "sha512-7bDIyVFNL/xKeFHjhobUAQqSpJq9YTOpbEs6mR233Et01STBMXNAc/V+BM6dwYGc95gVh/Zf+iVXWzj3mE8DWg==",
       "path": "system.security.cryptography.primitives/4.3.0",
       "hashPath": "system.security.cryptography.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wLBKzFnDCxP12VL9ANydSYhk59fC4cvOr9ypYQLPnAj48NQIhqnjdD2yhP8yEKyBJEjERWS9DisKL7rX5eU25Q==",
+      "path": "system.security.cryptography.protecteddata/4.5.0",
+      "hashPath": "system.security.cryptography.protecteddata.4.5.0.nupkg.sha512"
     },
     "System.Security.Cryptography.X509Certificates/4.3.0": {
       "type": "package",
